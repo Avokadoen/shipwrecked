@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(Animator), typeof(CapsuleCollider2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(CapsuleCollider2D), typeof(SpriteRenderer))]
 public class OAPlayer : MonoBehaviour
 {
-    [SerializeField]
-    private Animator animator;
-
     [SerializeField]
     private SpriteRenderer spriteRenderer;
 
@@ -22,20 +19,15 @@ public class OAPlayer : MonoBehaviour
     private OAMovingEntity moveStats;
 #pragma warning restore CS0649  // Never assigned warning
 
-    [SerializeField]
-    private float deadZone = 0.001f;
-
     private float horizontal;
     private float vertical;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        if (!animator) 
-        {
-            animator = GetComponent<Animator>(); 
-        }
+    // TODO: Both player and AnimatorUpdater has this, find a way of deduplicate
+    [SerializeField]
+    private float deadZone = 0.001f;
 
+    void Awake()
+    {
         if (!spriteRenderer)
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
@@ -62,24 +54,6 @@ public class OAPlayer : MonoBehaviour
     {
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
-
-        if (rigid.velocity.x > deadZone || rigid.velocity.x < -deadZone)
-        {
-            animator.SetBool("hasHorizontalMovement", true);
-        }
-        else
-        {
-            animator.SetBool("hasHorizontalMovement", false);
-        }
-
-        if (rigid.velocity.y > deadZone || rigid.velocity.y < -deadZone) // TODO: falling or jumping
-        {
-            animator.SetBool("hasVerticalMovement", true);
-        }
-        else
-        {
-            animator.SetBool("hasVerticalMovement", false);
-        }
     }
 
     void FixedUpdate()
