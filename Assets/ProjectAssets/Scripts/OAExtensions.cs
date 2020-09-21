@@ -20,14 +20,15 @@ public static class OAExtentions
     public static bool CheckIfGrounded(this Collider2D collider)
     {
         Vector2 pos = collider.bounds.center;
-        Vector2 leftTestPos = new Vector2(pos.x - collider.bounds.extents.x, pos.y - collider.bounds.extents.y);
+        var rayYPos = pos.y - collider.bounds.extents.y;
+        Vector2 leftTestPos = new Vector2(pos.x - collider.bounds.extents.x, rayYPos);
         var leftHit = Physics2D.Raycast(leftTestPos, Vector2.down, 0.01f);
         if (leftHit.collider)
         {
             return true;
         }
 
-        Vector2 rightTestPos = new Vector2(pos.x + collider.bounds.extents.x, pos.y + collider.bounds.extents.y);
+        Vector2 rightTestPos = new Vector2(pos.x + collider.bounds.extents.x, rayYPos);
         var rightHit = Physics2D.Raycast(rightTestPos, Vector2.down, 0.01f);
         if (rightHit.collider)
         {
