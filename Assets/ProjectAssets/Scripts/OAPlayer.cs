@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+
+// TODO: when player release button and is grounded, (s)he should stop instantly 
 
 [RequireComponent(typeof(Rigidbody2D), typeof(CapsuleCollider2D), typeof(SpriteRenderer))]
 public class OAPlayer : MonoBehaviour
@@ -19,6 +19,11 @@ public class OAPlayer : MonoBehaviour
     private OAMovingEntity moveStats;
 #pragma warning restore CS0649  // Never assigned warning
 
+#pragma warning disable CS0649  // Never assigned warning
+    [SerializeField]
+    private OAHealth healthStat;
+#pragma warning restore CS0649  // Never assigned warning
+
     private float horizontal;
     private float vertical;
 
@@ -26,8 +31,16 @@ public class OAPlayer : MonoBehaviour
     [SerializeField]
     private float deadZone = 0.001f;
 
+    public void BulletHit(OABulletStats stats)
+    {
+        Debug.Log($"taking {stats.baseDamage} damage");
+    }
+
     void Awake()
     {
+        OAExtentions.AssertObjectNotNull(moveStats,  "Player is missing moveStats!");
+        OAExtentions.AssertObjectNotNull(healthStat, "Player is missing healthStat!");
+
         if (!spriteRenderer)
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
@@ -41,11 +54,6 @@ public class OAPlayer : MonoBehaviour
         if (!capCollider)
         {
             capCollider = GetComponent<CapsuleCollider2D>();
-        }
-
-        if (!moveStats)
-        {
-            Debug.LogError("Player is missing moveStats!");
         }
     }
 

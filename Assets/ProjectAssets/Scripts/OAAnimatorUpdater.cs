@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 /// Used to update animator for state machine.
 /// Use this on characters with a rigidbody2D

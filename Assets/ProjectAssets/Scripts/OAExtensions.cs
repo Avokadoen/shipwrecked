@@ -4,9 +4,11 @@ using UnityEngine;
 
 public static class OAExtentions
 {
-    // List
-    // O(1) remove function
-    // Very useful if you don't care about the order of the list
+    /// <summary>
+    /// Removes the element at index O(1). Does not maintain order
+    /// </summary>
+    /// <param name="list"></param>
+    /// <param name="index">Target index</param>
     public static void SwapRemoveAt<T>(this List<T> list, int index)
     {
         var lastIndex = list.Count - 1;
@@ -34,4 +36,30 @@ public static class OAExtentions
 
         return false;
     }
+
+    public static Vector3 Rotate2D(this Vector3 v, float degrees)
+    {
+        float sin = Mathf.Sin(degrees * Mathf.Deg2Rad);
+        float cos = Mathf.Cos(degrees * Mathf.Deg2Rad);
+
+        float tx = v.x;
+        float ty = v.y;
+        v.x = (cos * tx) - (sin * ty);
+        v.y = (sin * tx) + (cos * ty);
+        return new Vector3((cos * tx) - (sin * ty), (sin * tx) + (cos * ty), v.z);
+    }
+
+    // TODO: move this?
+    public static void AssertObjectNotNull<T>(T obj, string message) where T : class
+    {
+        #if UNITY_EDITOR
+        if (obj == null)
+        {
+            Debug.LogError(message);
+            UnityEditor.EditorApplication.isPlaying = false;
+        }
+        #endif
+    }
+
+
 }
