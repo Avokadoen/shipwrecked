@@ -66,7 +66,7 @@ public class OAPlayer : MonoBehaviour
 
     void FixedUpdate()
     {
-        var isGrounded = capCollider.CheckIfGrounded();
+        var isGrounded = capCollider.isGrounded();
         if (isGrounded)
         {
             rigid.isKinematic = true;
