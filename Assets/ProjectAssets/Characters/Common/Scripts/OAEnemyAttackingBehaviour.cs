@@ -2,11 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+enum AttackState
+{
+    Attacking,
+    WindingUp
+}
+
 public class OAEnemyAttackingBehaviour : StateMachineBehaviour
 {
     private OAEnemySensors sensors;
     private Rigidbody2D rb;
     private OAPlayer player;
+
+    private float duration = 0;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -22,29 +30,21 @@ public class OAEnemyAttackingBehaviour : StateMachineBehaviour
             player = sensors.Player;
 
         rb.velocity = new Vector2(0, rb.velocity.y);
+        duration = 0;
+        animator.SetBool("isAttackCompleteReady", false);
+        animator.speed = 1 / sensors.AttackStats.attackSpeed;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
-
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
-
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
-
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
+    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        duration += Time.deltaTime;
+        if (duration > sensors.AttackStats.attackSpeed)
+        {
+            player.TakeDamage(sensors.AttackStats.damage);
+            duration = 0;
+            animator.SetBool("isAttackCompleteReady", true);
+            return;
+        }
+    }
 }

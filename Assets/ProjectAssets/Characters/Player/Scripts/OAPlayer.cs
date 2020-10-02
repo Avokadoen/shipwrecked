@@ -22,6 +22,7 @@ public class OAPlayer : MonoBehaviour
 #pragma warning disable CS0649  // Never assigned warning
     [SerializeField]
     private OAHealth healthStat;
+    private int health;
 #pragma warning restore CS0649  // Never assigned warning
 
     private float horizontal;
@@ -31,9 +32,9 @@ public class OAPlayer : MonoBehaviour
     [SerializeField]
     private float deadZone = 0.001f;
 
-    public void BulletHit(OABulletStats stats)
+    public void TakeDamage(int damage)
     {
-        Debug.Log($"taking {stats.baseDamage} damage");
+        health -= damage;
     }
 
     void Awake()
@@ -42,19 +43,15 @@ public class OAPlayer : MonoBehaviour
         OAExtentions.AssertObjectNotNull(healthStat, "Player is missing healthStat!");
 
         if (!spriteRenderer)
-        {
             spriteRenderer = GetComponent<SpriteRenderer>();
-        }
 
         if (!rigid)
-        {
             rigid = GetComponent<Rigidbody2D>();
-        }
 
         if (!capCollider)
-        {
             capCollider = GetComponent<CapsuleCollider2D>();
-        }
+
+        health = healthStat.maxHealth;
     }
 
     // Update is called once per frame

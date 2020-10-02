@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edf518bb26728374aad57a99d3d65d23, type: 3}
-  m_Name: MovingPlayerDefault
+  m_Name: PlayerMovingDefault
   m_EditorClassIdentifier: 
-  movementSpeed: 4
-  maxSpeed: 8
+  movementSpeed: 6
+  maxSpeed: 10
   jumpForce: 5

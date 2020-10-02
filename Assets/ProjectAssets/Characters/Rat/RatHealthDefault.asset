@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a714e7f7c9736664eb318ec37b20f7aa, type: 3}
-  m_Name: RatDefaultAttack
+  m_Script: {fileID: 11500000, guid: c32ef42849ca98743bd51adf8d5ca99c, type: 3}
+  m_Name: RatHealthDefault
   m_EditorClassIdentifier: 
-  range: 0
-  damage: 0
+  maxHealth: 60

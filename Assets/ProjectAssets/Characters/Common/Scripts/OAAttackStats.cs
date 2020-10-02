@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// used by equipment and animals
 [CreateAssetMenu(fileName = "AttackStats", menuName = "OceanAlien/AttackStats", order = 4)]
 public class OAAttackStats : ScriptableObject
 {
     public float range;
-    public float damage;
-    // public float force;
+    public int damage;
+    // How many seconds it takes to do one attack
+    public float attackSpeed;
+    public float attackCooldown; 
 }

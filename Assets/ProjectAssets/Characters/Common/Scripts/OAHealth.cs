@@ -7,5 +7,4 @@ using UnityEngine;
 public class OAHealth : ScriptableObject
 {
     public int maxHealth;
-    public int health;
 }

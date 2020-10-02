@@ -21,6 +21,11 @@ public class OAEnemySensors : MonoBehaviour
     public OAMovingEntity MoveStats { get => moveStats; }
 
     [SerializeField]
+    private OAHealth healthStat = null;
+    public OAHealth HealthStat { get => healthStat; }
+    private int health;
+
+    [SerializeField]
     private Animator animator;
 
     [SerializeField]
@@ -49,6 +54,8 @@ public class OAEnemySensors : MonoBehaviour
 
         if (!col)
             col = GetComponent<Collider2D>();
+
+        health = healthStat.maxHealth;
     }
 
     // Update is called once per frame
@@ -58,5 +65,7 @@ public class OAEnemySensors : MonoBehaviour
 
         targetDistance = player.transform.position.x - transform.position.x;
         animator.SetBool("isInAttackRange", Mathf.Abs(targetDistance) < attackStats.range);
+
+        animator.SetInteger("health", health);
     }
 }
