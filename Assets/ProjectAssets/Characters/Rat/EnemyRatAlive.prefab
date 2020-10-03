@@ -385,9 +385,11 @@ MonoBehaviour:
   shipTransform: {fileID: 0}
   moveStats: {fileID: 11400000, guid: 4afbc20fd2abad24890c0f45c173dae5, type: 2}
   healthStat: {fileID: 11400000, guid: dc0a66509c299534e9ab4a41c03804f8, type: 2}
+  health: 60
   animator: {fileID: 0}
   rb: {fileID: 9169254372514884481}
   col: {fileID: 9169254372514884480}
+  deathHandler: {fileID: 0}
   targetDistance: 0
 --- !u!95 &-1662456986447202794
 Animator:

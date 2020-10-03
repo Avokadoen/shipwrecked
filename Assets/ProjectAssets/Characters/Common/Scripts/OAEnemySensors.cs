@@ -2,6 +2,7 @@
 
 // TODO: rename
 [RequireComponent(typeof(Animator), typeof(Rigidbody2D), typeof(Collider2D))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class OAEnemySensors : MonoBehaviour
 {
     // TODO: handle if player is too close to enemy somehow
@@ -23,7 +24,7 @@ public class OAEnemySensors : MonoBehaviour
     [SerializeField]
     private OAHealth healthStat = null;
     public OAHealth HealthStat { get => healthStat; }
-    private int health;
+    public int health;
 
     [SerializeField]
     private Animator animator;
@@ -34,6 +35,11 @@ public class OAEnemySensors : MonoBehaviour
 
     [SerializeField]
     private Collider2D col;
+
+    [SerializeField]
+    private OADeathHandler deathHandler;
+
+    private SpriteRenderer spriteRenderer;
 
     public float targetDistance; 
 
@@ -55,17 +61,29 @@ public class OAEnemySensors : MonoBehaviour
         if (!col)
             col = GetComponent<Collider2D>();
 
+        if (!deathHandler)
+            deathHandler = transform.parent.gameObject.GetComponent<OADeathHandler>();
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
         health = healthStat.maxHealth;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (health <= 0)
+        {
+            deathHandler.OnDead(spriteRenderer);
+            return;
+        }
+
         rb.isKinematic = col.isGrounded(gameObject.layer);
 
         targetDistance = player.transform.position.x - transform.position.x;
         animator.SetBool("isInAttackRange", Mathf.Abs(targetDistance) < attackStats.range);
 
         animator.SetInteger("health", health);
+
     }
 }
