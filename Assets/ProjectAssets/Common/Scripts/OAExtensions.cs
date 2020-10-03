@@ -21,14 +21,14 @@ public static class OAExtentions
         Vector2 pos = collider.bounds.center;
         var rayYPos = pos.y - collider.bounds.extents.y;
         Vector2 leftTestPos = new Vector2(pos.x - collider.bounds.extents.x, rayYPos);
-        var leftHit = Physics2D.Raycast(leftTestPos, Vector2.down, 0.01f, toIgnore);
+        var leftHit = Physics2D.Raycast(leftTestPos, Vector2.down, 0.02f, toIgnore);
         if (leftHit.collider)
         {
             return true;
         }
 
         Vector2 rightTestPos = new Vector2(pos.x + collider.bounds.extents.x, rayYPos);
-        var rightHit = Physics2D.Raycast(rightTestPos, Vector2.down, 0.01f, toIgnore);
+        var rightHit = Physics2D.Raycast(rightTestPos, Vector2.down, 0.02f, toIgnore);
         if (rightHit.collider)
         {
             return true;
