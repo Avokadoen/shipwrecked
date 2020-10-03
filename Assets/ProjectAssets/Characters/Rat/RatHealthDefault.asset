@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edf518bb26728374aad57a99d3d65d23, type: 3}
-  m_Name: MovingPlayerDefault
+  m_Script: {fileID: 11500000, guid: c32ef42849ca98743bd51adf8d5ca99c, type: 3}
+  m_Name: RatHealthDefault
   m_EditorClassIdentifier: 
-  movementSpeed: 4
-  maxSpeed: 8
-  jumpForce: 5
+  maxHealth: 60
