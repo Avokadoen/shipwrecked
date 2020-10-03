@@ -16,19 +16,21 @@ public static class OAExtentions
         list.RemoveAt(lastIndex);
     }
 
-    public static bool isGrounded(this Collider2D collider, LayerMask toIgnore)
+    public static bool isGrounded(this Collider2D collider, LayerMask self)
     {
+        LayerMask mask = Physics2D.GetLayerCollisionMask(self);
+
         Vector2 pos = collider.bounds.center;
         var rayYPos = pos.y - collider.bounds.extents.y;
         Vector2 leftTestPos = new Vector2(pos.x - collider.bounds.extents.x, rayYPos);
-        var leftHit = Physics2D.Raycast(leftTestPos, Vector2.down, 0.02f, toIgnore);
+        var leftHit = Physics2D.Raycast(leftTestPos, Vector2.down, 0.02f, mask);
         if (leftHit.collider)
         {
             return true;
         }
 
         Vector2 rightTestPos = new Vector2(pos.x + collider.bounds.extents.x, rayYPos);
-        var rightHit = Physics2D.Raycast(rightTestPos, Vector2.down, 0.02f, toIgnore);
+        var rightHit = Physics2D.Raycast(rightTestPos, Vector2.down, 0.02f, mask);
         if (rightHit.collider)
         {
             return true;
@@ -37,27 +39,6 @@ public static class OAExtentions
         return false;
     }
 
-    // TODO: avoid duplicate code
-    public static bool isGrounded(this Collider2D collider)
-    {
-        Vector2 pos = collider.bounds.center;
-        var rayYPos = pos.y - collider.bounds.extents.y;
-        Vector2 leftTestPos = new Vector2(pos.x - collider.bounds.extents.x, rayYPos);
-        var leftHit = Physics2D.Raycast(leftTestPos, Vector2.down, 0.01f);
-        if (leftHit.collider)
-        {
-            return true;
-        }
-
-        Vector2 rightTestPos = new Vector2(pos.x + collider.bounds.extents.x, rayYPos);
-        var rightHit = Physics2D.Raycast(rightTestPos, Vector2.down, 0.01f);
-        if (rightHit.collider)
-        {
-            return true;
-        }
-
-        return false;
-    }
     public static Vector3 Rotate2D(this Vector3 v, float degrees)
     {
         float sin = Mathf.Sin(degrees * Mathf.Deg2Rad);

@@ -32,7 +32,7 @@ public class OAEnemyAttackingBehaviour : StateMachineBehaviour
         rb.velocity = new Vector2(0, rb.velocity.y);
         duration = 0;
         animator.SetBool("isAttackCompleteReady", false);
-        animator.speed = 1 / sensors.AttackStats.attackSpeed;
+        animator.speed = sensors.AttackStats.attackSpeed;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

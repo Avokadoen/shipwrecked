@@ -227,7 +227,7 @@ MonoBehaviour:
   player: {fileID: 1027010644}
   shipTransform: {fileID: 0}
   moveStats: {fileID: 11400000, guid: 4afbc20fd2abad24890c0f45c173dae5, type: 2}
-  healthStat: {fileID: 0}
+  healthStat: {fileID: 11400000, guid: dc0a66509c299534e9ab4a41c03804f8, type: 2}
   animator: {fileID: 926122368}
   rb: {fileID: 926122372}
   col: {fileID: 926122373}

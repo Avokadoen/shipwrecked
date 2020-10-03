@@ -45,7 +45,6 @@ GameObject:
   - component: {fileID: 1329079103071297617}
   - component: {fileID: 1329079103071297616}
   - component: {fileID: 1329079103071297619}
-  - component: {fileID: 1329079103071297618}
   m_Layer: 0
   m_Name: EnemyRat
   m_TagString: Untagged
@@ -163,25 +162,6 @@ MonoBehaviour:
     m_Extent: {x: 2.1838732, y: 1.1772233, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
---- !u!95 &1329079103071297618
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1329079103071297629}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 33d9ae049f20206499bf76907e3e7f35, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1329079103093608133
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,7 +18,6 @@ public class OAEnemyRunningBehaviour : StateMachineBehaviour
         if (!sr)
             sr = animator.GetComponent<SpriteRenderer>();
 
-
         if (!rb) 
             rb = sensors.Rb;
 
@@ -45,5 +44,5 @@ public class OAEnemyRunningBehaviour : StateMachineBehaviour
             sr.flipX = false;
         }
         rb.velocity = new Vector2(speed, rb.velocity.y);
-    }
+    }   
 }
