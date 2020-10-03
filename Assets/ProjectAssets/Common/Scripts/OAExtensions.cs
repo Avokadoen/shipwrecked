@@ -16,8 +16,29 @@ public static class OAExtentions
         list.RemoveAt(lastIndex);
     }
 
-    // TODO: make sure we don't hit ourself
-    public static bool CheckIfGrounded(this Collider2D collider)
+    public static bool isGrounded(this Collider2D collider, LayerMask toIgnore)
+    {
+        Vector2 pos = collider.bounds.center;
+        var rayYPos = pos.y - collider.bounds.extents.y;
+        Vector2 leftTestPos = new Vector2(pos.x - collider.bounds.extents.x, rayYPos);
+        var leftHit = Physics2D.Raycast(leftTestPos, Vector2.down, 0.02f, toIgnore);
+        if (leftHit.collider)
+        {
+            return true;
+        }
+
+        Vector2 rightTestPos = new Vector2(pos.x + collider.bounds.extents.x, rayYPos);
+        var rightHit = Physics2D.Raycast(rightTestPos, Vector2.down, 0.02f, toIgnore);
+        if (rightHit.collider)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    // TODO: avoid duplicate code
+    public static bool isGrounded(this Collider2D collider)
     {
         Vector2 pos = collider.bounds.center;
         var rayYPos = pos.y - collider.bounds.extents.y;
@@ -37,7 +58,6 @@ public static class OAExtentions
 
         return false;
     }
-
     public static Vector3 Rotate2D(this Vector3 v, float degrees)
     {
         float sin = Mathf.Sin(degrees * Mathf.Deg2Rad);

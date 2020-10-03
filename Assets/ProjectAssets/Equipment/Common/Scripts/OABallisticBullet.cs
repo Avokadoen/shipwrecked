@@ -47,7 +47,7 @@ public class OABallisticBullet : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        col.gameObject.SendMessage("BulletHit", stats, SendMessageOptions.DontRequireReceiver);
+        col.gameObject.SendMessage("TakeDamage", stats.baseDamage, SendMessageOptions.DontRequireReceiver);
         pool.ReturnObject(this);
     }
 }
