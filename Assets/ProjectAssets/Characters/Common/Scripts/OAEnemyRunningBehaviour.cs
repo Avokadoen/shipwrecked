@@ -43,6 +43,7 @@ public class OAEnemyRunningBehaviour : StateMachineBehaviour
             speed = Mathf.Max(-moveStats.maxSpeed, rb.velocity.x + (xDir * moveStats.movementSpeed));
             sr.flipX = false;
         }
+
         rb.velocity = new Vector2(speed, rb.velocity.y);
     }   
 }

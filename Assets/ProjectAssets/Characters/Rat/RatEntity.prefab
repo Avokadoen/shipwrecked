@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2681734706867793273
+--- !u!1 &7014656654995325548
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2681734706867793274}
-  - component: {fileID: 2681734706867793275}
+  - component: {fileID: 7014656654995325551}
+  - component: {fileID: 7014656654995325550}
   m_Layer: 0
   m_Name: RatEntity
   m_TagString: Untagged
@@ -17,41 +17,42 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2681734706867793274
+--- !u!4 &7014656654995325551
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2681734706867793273}
+  m_GameObject: {fileID: 7014656654995325548}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2118762504094921697}
-  - {fileID: 3983075320226442671}
+  - {fileID: 6415700700207897844}
+  - {fileID: 8298101565359358650}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2681734706867793275
+--- !u!114 &7014656654995325550
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2681734706867793273}
+  m_GameObject: {fileID: 7014656654995325548}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec1abc2a46132d04b8ee2b3a8a106029, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deadObject: {fileID: 185334406923897487}
---- !u!1001 &3223747254258632045
+  deadObject: {fileID: 5114978838924240282}
+  deadDespawner: {fileID: 0}
+--- !u!1001 &7553508003175557752
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 2681734706867793274}
+    m_TransformParent: {fileID: 7014656654995325551}
     m_Modifications:
     - target: {fileID: 2016404178112538818, guid: 900bb51ec6b14e646bc0795c18e4a83b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -104,20 +105,20 @@ PrefabInstance:
     - target: {fileID: 9169254372514960510, guid: 900bb51ec6b14e646bc0795c18e4a83b, type: 3}
       propertyPath: deathHandler
       value: 
-      objectReference: {fileID: 2681734706867793275}
+      objectReference: {fileID: 7014656654995325550}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 900bb51ec6b14e646bc0795c18e4a83b, type: 3}
---- !u!4 &3983075320226442671 stripped
+--- !u!4 &8298101565359358650 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2016404178112538818, guid: 900bb51ec6b14e646bc0795c18e4a83b, type: 3}
-  m_PrefabInstance: {fileID: 3223747254258632045}
+  m_PrefabInstance: {fileID: 7553508003175557752}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &4042521719575595366
+--- !u!1001 &8968798381157230195
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 2681734706867793274}
+    m_TransformParent: {fileID: 7014656654995325551}
     m_Modifications:
     - target: {fileID: 2701798382437169799, guid: d8b0aa31455642e45a41d520ebf11d81, type: 3}
       propertyPath: m_LocalPosition.x
@@ -169,13 +170,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8b0aa31455642e45a41d520ebf11d81, type: 3}
---- !u!1 &185334406923897487 stripped
+--- !u!1 &5114978838924240282 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4218637810271355881, guid: d8b0aa31455642e45a41d520ebf11d81, type: 3}
-  m_PrefabInstance: {fileID: 4042521719575595366}
+  m_PrefabInstance: {fileID: 8968798381157230195}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &2118762504094921697 stripped
+--- !u!4 &6415700700207897844 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2701798382437169799, guid: d8b0aa31455642e45a41d520ebf11d81, type: 3}
-  m_PrefabInstance: {fileID: 4042521719575595366}
+  m_PrefabInstance: {fileID: 8968798381157230195}
   m_PrefabAsset: {fileID: 0}
