@@ -22,11 +22,6 @@ public class OAEnemySensors : MonoBehaviour
     public OAMovingEntity MoveStats { get => moveStats; }
 
     [SerializeField]
-    private OAHealth healthStat = null;
-    public OAHealth HealthStat { get => healthStat; }
-    public int health;
-
-    [SerializeField]
     private Animator animator;
 
     [SerializeField]
@@ -37,11 +32,13 @@ public class OAEnemySensors : MonoBehaviour
     private Collider2D col;
 
     [SerializeField]
-    private OADeathHandler deathHandler;
+    private OAKillable selfKillable;
 
-    private SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer; // TODO: Remove?
+    private LayerMask buildingMask;
 
     public float targetDistance; 
+
 
     // Start is called before the first frame update
     void Start()
@@ -61,29 +58,27 @@ public class OAEnemySensors : MonoBehaviour
         if (!col)
             col = GetComponent<Collider2D>();
 
-        if (!deathHandler)
-            deathHandler = transform.parent.gameObject.GetComponent<OADeathHandler>();
+        if (!selfKillable)
+            selfKillable = GetComponent<OAKillable>();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
-
-        health = healthStat.maxHealth;
+        buildingMask = LayerMask.GetMask("Building");
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (health <= 0)
-        {
-            deathHandler.OnDead(spriteRenderer);
-            return;
-        }
-
         rb.isKinematic = col.isGrounded(gameObject.layer);
 
         targetDistance = player.transform.position.x - transform.position.x;
         animator.SetBool("isInAttackRange", Mathf.Abs(targetDistance) < attackStats.range);
 
-        animator.SetInteger("health", health);
+        animator.SetInteger("health", selfKillable.Health);
 
     }
+
+    //void OnCollisionEnter2D(Collision2D col)
+    //{
+    //    col.collider.IsTouchingLayers(buildingMask);
+    //}
 }

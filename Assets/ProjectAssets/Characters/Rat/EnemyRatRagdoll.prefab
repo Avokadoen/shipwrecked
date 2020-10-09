@@ -997,6 +997,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2701798382437169799}
+  - component: {fileID: 2366062176629508949}
   m_Layer: 10
   m_Name: EnemyRatRagdoll
   m_TagString: Untagged
@@ -1020,6 +1021,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2366062176629508949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4218637810271355881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 247181ed9c8c65244b33d0ea8cd8a9bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  srList:
+  - {fileID: 4460663895068702275}
+  - {fileID: 2545608202312136869}
+  - {fileID: 3639122125409528557}
+  - {fileID: 780582450562191272}
+  - {fileID: 3880808863360574936}
+  - {fileID: 6838770413893939802}
+  - {fileID: 499777310964686603}
+  - {fileID: 6800035299190396037}
+  - {fileID: 4696582161467102039}
+  parentObject: {fileID: 0}
+  fadeStepDelay: 0.1
+  fadeStride: 0.02
 --- !u!1 &5227352439951588174
 GameObject:
   m_ObjectHideFlags: 0
