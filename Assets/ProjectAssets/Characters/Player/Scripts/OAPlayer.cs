@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 // TODO: when player release button and is grounded, (s)he should stop instantly 
 
@@ -25,12 +26,18 @@ public class OAPlayer : MonoBehaviour
     private int health;
 #pragma warning restore CS0649  // Never assigned warning
 
+    [Tooltip("Flip the player sprite when the horizontal movement is positive")]
+    [SerializeField]
+    private bool flipOnHorizontalPositive = true;
+
     private float horizontal;
     private float vertical;
 
     // TODO: Both player and AnimatorUpdater has this, find a way of deduplicate
     [SerializeField]
     private float deadZone = 0.001f;
+
+    private bool settingKinematic = false;
 
     public void TakeDamage(int damage)
     {
@@ -39,7 +46,7 @@ public class OAPlayer : MonoBehaviour
 
     void Awake()
     {
-        OAExtentions.AssertObjectNotNull(moveStats,  "Player is missing moveStats!");
+        OAExtentions.AssertObjectNotNull(moveStats, "Player is missing moveStats!");
         OAExtentions.AssertObjectNotNull(healthStat, "Player is missing healthStat!");
 
         if (!spriteRenderer)
@@ -63,12 +70,14 @@ public class OAPlayer : MonoBehaviour
 
     void FixedUpdate()
     {
-        var isGrounded = capCollider.isGrounded(gameObject.layer);
+        // TODO: this distrupt collision resolution of rigid body. Use a coroutine
+        //       to let the rigid resolve colission before doing 
+        var isGrounded = capCollider.isGrounded(gameObject.layer, 0.03f);
         if (isGrounded)
         {
-            rigid.isKinematic = true;
-            rigid.velocity = Vector2.zero;
-        } else
+            SetKinematic();
+        }
+        else
         {
             rigid.isKinematic = false;
         }
@@ -79,21 +88,35 @@ public class OAPlayer : MonoBehaviour
         {
             var speed = Mathf.Min(rigid.velocity.x + moveStats.movementSpeed, moveStats.maxSpeed);
             velocity.x = speed;
-            spriteRenderer.flipX = false;
+            spriteRenderer.flipX = flipOnHorizontalPositive;
         }
         else if (horizontal < -deadZone)
         {
             var speed = Mathf.Max(rigid.velocity.x - moveStats.movementSpeed, -moveStats.maxSpeed);
             velocity.x = speed;
-            spriteRenderer.flipX = true;
+            spriteRenderer.flipX = !flipOnHorizontalPositive;
         }
- 
+
         // Handle vertical input
         if (vertical > deadZone && isGrounded)
         {
             velocity.y = moveStats.jumpForce;
         }
-        
+
         rigid.velocity = velocity;
+    }
+
+    // hack to let rigid resolve collision before turning of simulation
+    IEnumerator SetKinematic()
+    {
+        if (settingKinematic)
+            yield break;
+
+        settingKinematic = true;
+        yield return new WaitForFixedUpdate();
+        rigid.isKinematic = true;
+        rigid.velocity = Vector2.zero;
+        settingKinematic = false;
+        yield return null;
     }
 }
