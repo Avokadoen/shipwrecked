@@ -508,10 +508,10 @@ GameObject:
   - component: {fileID: 6484923415127592921}
   - component: {fileID: 6484923415127592920}
   - component: {fileID: 6484923415127592903}
-  - component: {fileID: 7723497028016297823}
-  - component: {fileID: 1676066178116379923}
   - component: {fileID: 2301314366827355444}
   - component: {fileID: 2908377649355127553}
+  - component: {fileID: 241271463}
+  - component: {fileID: 241271462}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -528,7 +528,7 @@ Transform:
   m_GameObject: {fileID: 6484923415127592902}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.48, y: 35.54, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.11, y: 0.11, z: 1}
   m_Children:
   - {fileID: 6484923414437214678}
   m_Father: {fileID: 0}
@@ -644,13 +644,47 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 2b37f24529d9b463e9b81276ac74b47b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!50 &7723497028016297823
+--- !u!114 &2301314366827355444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6484923415127592902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69d4a5def3e0ee343b76b0d9f46db62d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 6484923415127592921}
+  rigid: {fileID: 241271463}
+  capCollider: {fileID: 241271462}
+  moveStats: {fileID: 11400000, guid: 055086963a6c9214cac34287ded59ac1, type: 2}
+  healthStat: {fileID: 11400000, guid: 25e845927caa27c4a8d4c92e652ba967, type: 2}
+  flipOnHorizontalPositive: 1
+  deadZone: 0.001
+--- !u!114 &2908377649355127553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6484923415127592902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b813e60983eceef459ba0d33ae5e21e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 6484923415127592903}
+  rigid: {fileID: 241271463}
+  deadZone: 0.001
+--- !u!50 &241271463
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -670,8 +704,8 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!70 &1676066178116379923
+  m_Constraints: 4
+--- !u!70 &241271462
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -684,43 +718,9 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.21231937, y: 6.3573537}
-  m_Size: {x: 24.45372, y: 27.189632}
+  m_Offset: {x: 0.2262343, y: 3.821737}
+  m_Size: {x: 15.568243, y: 22.69738}
   m_Direction: 0
---- !u!114 &2301314366827355444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6484923415127592902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69d4a5def3e0ee343b76b0d9f46db62d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 6484923415127592921}
-  rigid: {fileID: 7723497028016297823}
-  capCollider: {fileID: 1676066178116379923}
-  moveStats: {fileID: 11400000, guid: 055086963a6c9214cac34287ded59ac1, type: 2}
-  healthStat: {fileID: 11400000, guid: dc0a66509c299534e9ab4a41c03804f8, type: 2}
-  flipOnHorizontalPositive: 1
-  deadZone: 0.001
---- !u!114 &2908377649355127553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6484923415127592902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b813e60983eceef459ba0d33ae5e21e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 6484923415127592903}
-  rigid: {fileID: 7723497028016297823}
-  deadZone: 0.001
 --- !u!1 &6484923415250818849
 GameObject:
   m_ObjectHideFlags: 0
