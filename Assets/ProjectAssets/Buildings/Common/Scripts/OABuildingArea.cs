@@ -10,24 +10,29 @@ public class OABuildingArea : MonoBehaviour
     [SerializeField]
     private GameObject textObject = null;
 
+    [Tooltip("How long the player needs to hold Build button")]
     [SerializeField]
-    private LayerMask playerMask = -1;
+    private float timeToBuild = 0.0f;
 
-    private float builtButtonHold;
-    private bool playerInRange;
+    [Tooltip("Buildings you can build from this area\n0 is the default, 1 is the first ...")]
+    [SerializeField]
+    private List<GameObject> buildings;
+    private int currentBuilding = 0;
+    private bool CanBuild {
+        get { return currentBuilding < buildings.Count - 1; }
+    }
+
+    private float buildButtonHeldDuration;
 
     // Start is called before the first frame update
     void Start()
     {
         OAExtentions.AssertObjectNotNull(textObject, "OABuildingArea missing textObject");
-
-        if (playerMask.value <= 0)
-            playerMask = LayerMask.GetMask("Player");
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.layer != playerMask)
+        if (!CanBuild)
             return;
 
         textObject.SetActive(true);
@@ -35,17 +40,27 @@ public class OABuildingArea : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D col)
     {
-        if (col.gameObject.layer != playerMask)
+        if (!CanBuild)
             return;
 
-        // if (Input.GetKey())
+        if (Input.GetAxis("Build") > 0)
+            buildButtonHeldDuration += Time.deltaTime;
+
+        if (buildButtonHeldDuration >= timeToBuild)
+        {
+            // TODO: check and drain resources at this stage
+            // TODO: move all enemies outside of collider
+            buildings[currentBuilding].SetActive(false);
+            currentBuilding += 1;
+            buildings[currentBuilding].SetActive(true);
+
+            if (!CanBuild)
+                textObject.SetActive(false);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D col)
     {
-        if (col.gameObject.layer != playerMask)
-            return;
-
         textObject.SetActive(false);
     }
 }

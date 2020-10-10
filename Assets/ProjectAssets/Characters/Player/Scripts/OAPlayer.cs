@@ -72,10 +72,10 @@ public class OAPlayer : MonoBehaviour
     {
         // TODO: this distrupt collision resolution of rigid body. Use a coroutine
         //       to let the rigid resolve colission before doing 
-        var isGrounded = capCollider.isGrounded(gameObject.layer, 0.03f);
-        if (isGrounded)
+        var isGrounded = capCollider.isGrounded(gameObject.layer, 0.01f);
+        if (isGrounded && rigid.isKinematic == true)
         {
-            SetKinematic();
+            StartCoroutine(SetKinematic());
         }
         else
         {
@@ -106,7 +106,7 @@ public class OAPlayer : MonoBehaviour
         rigid.velocity = velocity;
     }
 
-    // hack to let rigid resolve collision before turning of simulation
+    // TODO: hack to let rigid resolve collision before turning of simulation
     IEnumerator SetKinematic()
     {
         if (settingKinematic)
@@ -114,9 +114,9 @@ public class OAPlayer : MonoBehaviour
 
         settingKinematic = true;
         yield return new WaitForFixedUpdate();
+
         rigid.isKinematic = true;
         rigid.velocity = Vector2.zero;
         settingKinematic = false;
-        yield return null;
     }
 }
