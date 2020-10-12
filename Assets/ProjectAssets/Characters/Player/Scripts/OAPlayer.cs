@@ -2,6 +2,7 @@
 using UnityEngine;
 
 // TODO: when player release button and is grounded, (s)he should stop instantly 
+// TODO: I should REALLY parts of this code with the enemy sensor logic ... (Rigidbody toggle logic)
 
 [RequireComponent(typeof(Rigidbody2D), typeof(CapsuleCollider2D), typeof(SpriteRenderer))]
 public class OAPlayer : MonoBehaviour
@@ -37,8 +38,6 @@ public class OAPlayer : MonoBehaviour
     [SerializeField]
     private float deadZone = 0.001f;
 
-    private bool settingKinematic = false;
-
     public void TakeDamage(int damage)
     {
         health -= damage;
@@ -72,17 +71,18 @@ public class OAPlayer : MonoBehaviour
     {
         // TODO: this distrupt collision resolution of rigid body. Use a coroutine
         //       to let the rigid resolve colission before doing 
-        var isGrounded = capCollider.isGrounded(gameObject.layer, 0.01f);
-        if (isGrounded && rigid.isKinematic == true)
+        var isGrounded = capCollider.isGrounded(gameObject.layer, 0.1f);
+        if (isGrounded && !rigid.isKinematic)
         {
             StartCoroutine(SetKinematic());
         }
-        else
+        else if (!isGrounded)
         {
             rigid.isKinematic = false;
         }
 
         Vector2 velocity = rigid.velocity;
+        velocity.x = 0f;
         // Handle horizontal input
         if (horizontal > deadZone)
         {
@@ -107,16 +107,17 @@ public class OAPlayer : MonoBehaviour
     }
 
     // TODO: hack to let rigid resolve collision before turning of simulation
+    //       figure out a less hacky solution ..
     IEnumerator SetKinematic()
     {
-        if (settingKinematic)
-            yield break;
-
-        settingKinematic = true;
-        yield return new WaitForFixedUpdate();
+        // Let the rigid body resolve any collision
+        // We will call this 10 fixed updates to let the rigid resolve any conflict
+        for (var i = 0; i < 10; i++)
+        {
+            yield return null;
+        }
 
         rigid.isKinematic = true;
         rigid.velocity = Vector2.zero;
-        settingKinematic = false;
     }
 }

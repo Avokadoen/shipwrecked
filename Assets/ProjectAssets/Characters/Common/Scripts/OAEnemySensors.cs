@@ -39,9 +39,7 @@ public class OAEnemySensors : MonoBehaviour
     private LayerMask buildingMask;
 
     public float targetDistance;
-
-    private bool settingKinematic = false;
-
+    private Vector3 front;
 
     // Start is called before the first frame update
     void Start()
@@ -74,24 +72,14 @@ public class OAEnemySensors : MonoBehaviour
         rb.isKinematic = col.isGrounded(gameObject.layer, 0.02f);
 
         targetDistance = player.transform.position.x - transform.position.x;
-        animator.SetBool("isInAttackRange", Mathf.Abs(targetDistance) < attackStats.range);
+        front.x = targetDistance;
+        front.Normalize();
+        var hit = Physics2D.Raycast(transform.position, front, attackStats.range);
+        bool isInTargetRange = Mathf.Abs(targetDistance) < attackStats.range;
+        animator.SetBool("isInAttackRange", isInTargetRange || hit.collider);
 
         animator.SetInteger("health", selfKillable.Health);
 
-    }
-
-    // hack to let rigid resolve collision before turning of simulation
-    IEnumerator SetKinematic()
-    {
-        if (settingKinematic)
-            yield break;
-
-        settingKinematic = true;
-        yield return new WaitForFixedUpdate();
-        rb.isKinematic = true;
-        rb.velocity = Vector2.zero;
-        settingKinematic = false;
-        yield return null;
     }
 
     //void OnCollisionEnter2D(Collision2D col)
