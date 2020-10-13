@@ -12,7 +12,7 @@ public class OAEnemyAttackingBehaviour : StateMachineBehaviour
 {
     private OAEnemySensors sensors;
     private Rigidbody2D rb;
-    private OAPlayer player;
+    private OAPlayerMovement player;
 
     private float duration = 0;
 
@@ -43,7 +43,7 @@ public class OAEnemyAttackingBehaviour : StateMachineBehaviour
         duration += Time.deltaTime;
         if (duration > sensors.AttackStats.attackSpeed)
         {
-            player.TakeDamage(sensors.AttackStats.damage);
+            // player.TakeDamage(sensors.AttackStats.damage);
             duration = 0;
             animator.SetBool("isAttackCompleteReady", true);
             return;

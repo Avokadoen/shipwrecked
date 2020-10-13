@@ -12,8 +12,8 @@ public class OAEnemySensors : MonoBehaviour
     public OAAttackStats AttackStats { get => attackStats; }
 
     [SerializeField]
-    private OAPlayer player;
-    public OAPlayer Player { get => player; }
+    private OAPlayerMovement player;
+    public OAPlayerMovement Player { get => player; }
 
     [SerializeField]
     private Transform shipTransform;

@@ -18,9 +18,6 @@ public class OABallisticBullet : MonoBehaviour
     public void ActivateBullet(Vector3 direction, Vector3 startPos)
     {
         gameObject.SetActive(true);
-        var gunTransform = transform.parent;
-        transform.parent = null;
-        transform.rotation = gunTransform.rotation;
         transform.position = startPos;
         this.direction = direction;
         rigid.velocity = direction * stats.speed;
@@ -47,7 +44,7 @@ public class OABallisticBullet : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        col.gameObject.SendMessage("TakeDamage", stats.baseDamage, SendMessageOptions.DontRequireReceiver);
+        col.gameObject.SendMessage("ApplyDamage", stats.baseDamage, SendMessageOptions.DontRequireReceiver); // TODO: this is probably terribly slow
         pool.ReturnObject(this);
     }
 }
