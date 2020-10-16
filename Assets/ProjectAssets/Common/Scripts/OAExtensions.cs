@@ -16,21 +16,21 @@ public static class OAExtentions
         list.RemoveAt(lastIndex);
     }
 
-    public static bool isGrounded(this Collider2D collider, LayerMask self)
+    public static bool isGrounded(this Collider2D collider, LayerMask self, float distance)
     {
         LayerMask mask = Physics2D.GetLayerCollisionMask(self);
 
         Vector2 pos = collider.bounds.center;
         var rayYPos = pos.y - collider.bounds.extents.y;
         Vector2 leftTestPos = new Vector2(pos.x - collider.bounds.extents.x, rayYPos);
-        var leftHit = Physics2D.Raycast(leftTestPos, Vector2.down, 0.02f, mask);
+        var leftHit = Physics2D.Raycast(leftTestPos, Vector2.down, distance, mask);
         if (leftHit.collider)
         {
             return true;
         }
 
         Vector2 rightTestPos = new Vector2(pos.x + collider.bounds.extents.x, rayYPos);
-        var rightHit = Physics2D.Raycast(rightTestPos, Vector2.down, 0.02f, mask);
+        var rightHit = Physics2D.Raycast(rightTestPos, Vector2.down, distance, mask);
         if (rightHit.collider)
         {
             return true;

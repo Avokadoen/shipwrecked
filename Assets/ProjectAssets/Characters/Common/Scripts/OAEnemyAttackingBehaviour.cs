@@ -16,6 +16,8 @@ public class OAEnemyAttackingBehaviour : StateMachineBehaviour
 
     private float duration = 0;
 
+    // TODO: we presume we attack player here, this is wrong assumption in some cases
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {

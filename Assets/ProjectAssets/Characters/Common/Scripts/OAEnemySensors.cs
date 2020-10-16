@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 // TODO: rename
 [RequireComponent(typeof(Animator), typeof(Rigidbody2D), typeof(Collider2D))]
@@ -37,8 +38,8 @@ public class OAEnemySensors : MonoBehaviour
     private SpriteRenderer spriteRenderer; // TODO: Remove?
     private LayerMask buildingMask;
 
-    public float targetDistance; 
-
+    public float targetDistance;
+    private Vector3 front;
 
     // Start is called before the first frame update
     void Start()
@@ -68,10 +69,14 @@ public class OAEnemySensors : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        rb.isKinematic = col.isGrounded(gameObject.layer);
+        rb.isKinematic = col.isGrounded(gameObject.layer, 0.02f);
 
         targetDistance = player.transform.position.x - transform.position.x;
-        animator.SetBool("isInAttackRange", Mathf.Abs(targetDistance) < attackStats.range);
+        front.x = targetDistance;
+        front.Normalize();
+        var hit = Physics2D.Raycast(transform.position, front, attackStats.range);
+        bool isInTargetRange = Mathf.Abs(targetDistance) < attackStats.range;
+        animator.SetBool("isInAttackRange", isInTargetRange || hit.collider);
 
         animator.SetInteger("health", selfKillable.Health);
 
