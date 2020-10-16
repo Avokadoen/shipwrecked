@@ -5,6 +5,7 @@ using UnityEngine;
 // TODO: I should REALLY parts of this code with the enemy sensor logic ... (Rigidbody toggle logic)
 
 [RequireComponent(typeof(Rigidbody2D), typeof(CapsuleCollider2D), typeof(SpriteRenderer))]
+[RequireComponent(typeof(Animator))]
 public class OAPlayerMovement : MonoBehaviour
 {
     [SerializeField]
@@ -20,6 +21,9 @@ public class OAPlayerMovement : MonoBehaviour
     [SerializeField]
     private OAMovingEntity moveStats;
 #pragma warning restore CS0649  // Never assigned warning
+
+    [SerializeField]
+    private Animator animator;
 
     [Tooltip("Flip the player sprite when the horizontal movement is positive")]
     [SerializeField]
@@ -45,6 +49,8 @@ public class OAPlayerMovement : MonoBehaviour
         if (!capCollider)
             capCollider = GetComponent<CapsuleCollider2D>();
 
+        if (!animator)
+            animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -58,7 +64,7 @@ public class OAPlayerMovement : MonoBehaviour
     {
         // TODO: this distrupt collision resolution of rigid body. Use a coroutine
         //       to let the rigid resolve colission before doing 
-        var isGrounded = capCollider.isGrounded(gameObject.layer, 0.1f);
+        var isGrounded = capCollider.isGrounded(gameObject.layer, 0.2f);
         if (isGrounded && !rigid.isKinematic)
         {
             StartCoroutine(SetKinematic());
@@ -91,6 +97,28 @@ public class OAPlayerMovement : MonoBehaviour
         }
 
         rigid.velocity = velocity;
+
+
+        animator.SetBool("isGrounded", isGrounded);
+
+        if (rigid.velocity.x > deadZone || rigid.velocity.x < -deadZone)
+        {
+            animator.SetBool("hasHorizontalMovement", true);
+        }
+        else
+        {
+            animator.SetBool("hasHorizontalMovement", false);
+        }
+
+        if (rigid.velocity.y > deadZone || rigid.velocity.y < -deadZone) // TODO: falling or jumping
+        {
+            animator.SetBool("hasVerticalMovement", true);
+            animator.SetBool("isVerticalMovUpwards", rigid.velocity.y > 0);
+        }
+        else
+        {
+            animator.SetBool("hasVerticalMovement", false);
+        }
     }
 
     // TODO: hack to let rigid resolve collision before turning of simulation

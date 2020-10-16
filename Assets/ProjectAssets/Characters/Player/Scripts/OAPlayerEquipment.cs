@@ -22,9 +22,11 @@ public class OAPlayerEquipment : MonoBehaviour
     [SerializeField]
     GameObject headParticles;
 
-    [Tooltip("HUD gameobject")]
+    [Tooltip("HUD prefab")]
     [SerializeField]
-    GameObject hudGameobject;
+    GameObject hudPrefab;
+
+    GameObject hudInstance;
 
     [Tooltip("Set the start equipment, -1 means no equipment")]
     [SerializeField] 
@@ -53,15 +55,20 @@ public class OAPlayerEquipment : MonoBehaviour
         }
     }
 
+    void Awake()
+    {
+        OAExtentions.AssertObjectNotNull(hudPrefab, "Player missing HUD object");
+
+        hudInstance = Instantiate(hudPrefab);
+    }
+
     void Start()
     {
-        OAExtentions.AssertObjectNotNull(hudGameobject, "Player missing HUD object");
-
         // TODO: validate that variables are set
         foreach (var equipment in equippables)
         {
             equipment.gameObject.SetActive(false);
-            Instantiate(equipment.HudPrefab, hudGameobject.transform);
+            Instantiate(equipment.HudPrefab, hudInstance.transform);
         }
 
         SetEquipmentIndex(equiptIndex);
