@@ -33,17 +33,23 @@ public class OAPlayerSwimMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Mathf.Abs(ss.Vertical) > deadZone)
+        if (CanApplyInput(ss.Vertical, (rigid.velocity.y * 2f)))
         {
             // Vertical is way stronger for some reason
             rigid.AddForce(Vector2.up * ss.Vertical * moveStats.movementSpeed * verticalSwimModifier);
         }
 
-        if (Mathf.Abs(ss.Horizontal) > deadZone)
+        if (CanApplyInput(ss.Horizontal, rigid.velocity.x))
         {
             spriteRenderer.flipX = ss.Horizontal > 0;
             rigid.AddForce(Vector2.right * ss.Horizontal * moveStats.movementSpeed * horizontalSwimModifier);
         }
+    }
+
+    bool CanApplyInput(float input, float currentSpeed)
+    {
+        // TODO: we apply force, and look at velocity. This is wrong.
+        return Mathf.Abs(input) > deadZone && (currentSpeed > -moveStats.maxSpeed && currentSpeed < moveStats.maxSpeed); 
     }
 
     void OnEnable()

@@ -72,8 +72,8 @@ public class OAPlayerEquipment : MonoBehaviour
         // TODO: validate that variables are set
         foreach (var equipment in equippables)
         {
-            equipment.gameObject.SetActive(false);
             Instantiate(equipment.HudPrefab, hudInstance.transform);
+            equipment.gameObject.SetActive(false);
         }
 
         SetEquipmentIndex(equiptIndex);
