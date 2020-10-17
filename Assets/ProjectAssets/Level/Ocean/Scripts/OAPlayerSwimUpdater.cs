@@ -2,24 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OAOcean : MonoBehaviour
+[RequireComponent(typeof(Collider2D))]
+public class OAPlayerSwimUpdater : MonoBehaviour
 {
     [Tooltip("Player reference")]
     [SerializeField]
     private OAPlayerMovement playerMov;
 
-    [Tooltip("How high the ocean will be at max")]
-    [SerializeField]
-    private float maxHeigth;
+    private Collider2D col;
 
-    [Tooltip("How wide the ocean will be at all times")]
-    [SerializeField]
-    private float wide;
-
-    // Start is called before the first frame update
     void Start()
     {
         OAExtentions.AssertObjectNotNull(playerMov, "Ocean is missing player reference");
+
+        // Assure that the object has a trigger collider 
+        col = GetComponent<Collider2D>();
+        col.isTrigger = true;
     }
 
     void OnTriggerEnter2D(Collider2D col)

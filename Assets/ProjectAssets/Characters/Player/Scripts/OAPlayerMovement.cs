@@ -58,12 +58,15 @@ public class OAPlayerMovement : MonoBehaviour
             rigid.gravityScale = 0;
             rigid.drag = 0.4f;
             rigid.mass = 0.2f;
+
+            deadZone += 0.01f;
         } else
         {
             rigid.isKinematic = true;
             rigid.gravityScale = 1;
             rigid.drag = 0f;
             rigid.mass = 1f;
+            deadZone -= 0.01f;
         }
     }
 
@@ -102,7 +105,7 @@ public class OAPlayerMovement : MonoBehaviour
         }
 
 
-        // Update 
+        // Update animator
         animator.SetBool("isUnderWater", isUnderWater);
     
         if (rigid.velocity.x > deadZone || rigid.velocity.x < -deadZone)
@@ -114,7 +117,7 @@ public class OAPlayerMovement : MonoBehaviour
             animator.SetBool("hasHorizontalMovement", false);
         }
 
-        if (rigid.velocity.y > deadZone || rigid.velocity.y < -deadZone) // TODO: falling or jumping
+        if (rigid.velocity.y > deadZone || rigid.velocity.y < -deadZone)
         {
             animator.SetBool("hasVerticalMovement", true);
             animator.SetBool("isVerticalMovUpwards", rigid.velocity.y > 0);
@@ -135,6 +138,7 @@ public class OAPlayerMovement : MonoBehaviour
 
         if (Mathf.Abs(horizontal) > deadZone)
         {
+            spriteRenderer.flipX = horizontal > 0;
             rigid.AddForce(Vector2.right * horizontal * moveStats.movementSpeed * horizontalSwimModifier);
         }
     }
