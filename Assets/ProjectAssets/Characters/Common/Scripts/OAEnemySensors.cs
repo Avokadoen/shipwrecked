@@ -12,8 +12,8 @@ public class OAEnemySensors : MonoBehaviour
     public OAAttackStats AttackStats { get => attackStats; }
 
     [SerializeField]
-    private OAPlayerMovement player;
-    public OAPlayerMovement Player { get => player; }
+    private OAPlayerStateStore playerState;
+    public OAPlayerStateStore PlayerState { get => playerState; }
 
     [SerializeField]
     private Transform shipTransform;
@@ -44,7 +44,7 @@ public class OAEnemySensors : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        OAExtentions.AssertObjectNotNull(player, "Enemy is missing playerTransform");
+        OAExtentions.AssertObjectNotNull(playerState, "Enemy is missing playerTransform");
         OAExtentions.AssertObjectNotNull(shipTransform, "Enemy is missing shipTransform");
 
         OAExtentions.AssertObjectNotNull(moveStats, "Enemy is missing MovingEntity");
@@ -71,7 +71,7 @@ public class OAEnemySensors : MonoBehaviour
     {
         rb.isKinematic = col.isGrounded(gameObject.layer, 0.02f);
 
-        targetDistance = player.transform.position.x - transform.position.x;
+        targetDistance = playerState.transform.position.x - transform.position.x;
         front.x = targetDistance;
         front.Normalize();
         var hit = Physics2D.Raycast(transform.position, front, attackStats.range);

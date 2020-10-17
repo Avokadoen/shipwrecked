@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[RequireComponent(typeof(OAPlayerStateStore))]
 public class OAPlayerEquipment : MonoBehaviour
 {
     // TODO: hold a special equipment component instead
@@ -28,6 +29,8 @@ public class OAPlayerEquipment : MonoBehaviour
 
     GameObject hudInstance;
 
+    private OAPlayerStateStore stateStore;
+
     [Tooltip("Set the start equipment, -1 means no equipment")]
     [SerializeField] 
     private int equiptIndex = -1;
@@ -48,18 +51,20 @@ public class OAPlayerEquipment : MonoBehaviour
             equippables[equiptIndex].gameObject.SetActive(true);
             equipmentParticles.SetActive(true);
             headParticles.SetActive(true);
-        } else
+        }
+        else
         {
             equipmentParticles.SetActive(false);
             headParticles.SetActive(false);
         }
     }
-
     void Awake()
     {
         OAExtentions.AssertObjectNotNull(hudPrefab, "Player missing HUD object");
 
         hudInstance = Instantiate(hudPrefab);
+
+        stateStore = GetComponent<OAPlayerStateStore>();
     }
 
     void Start()
@@ -74,8 +79,35 @@ public class OAPlayerEquipment : MonoBehaviour
         SetEquipmentIndex(equiptIndex);
     }
 
-    // TODO: unequip when the player swims
-    // Update is called once per frame
+    void Update()
+    {
+        // TODO: we migth not need this many
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SetEquipmentIndex(0);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            SetEquipmentIndex(1);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            SetEquipmentIndex(2);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            SetEquipmentIndex(3);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            SetEquipmentIndex(4);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            SetEquipmentIndex(5);
+        }
+    }
+
     void FixedUpdate()
     {
         // If the player is not using a valid index, we don't compute.

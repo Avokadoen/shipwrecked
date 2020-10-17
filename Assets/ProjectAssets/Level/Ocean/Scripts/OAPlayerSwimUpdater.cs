@@ -7,13 +7,13 @@ public class OAPlayerSwimUpdater : MonoBehaviour
 {
     [Tooltip("Player reference")]
     [SerializeField]
-    private OAPlayerMovement playerMov;
+    private OAPlayerStateStore playerState;
 
     private Collider2D col;
 
     void Start()
     {
-        OAExtentions.AssertObjectNotNull(playerMov, "Ocean is missing player reference");
+        OAExtentions.AssertObjectNotNull(playerState, "Ocean is missing player reference");
 
         // Assure that the object has a trigger collider 
         col = GetComponent<Collider2D>();
@@ -22,11 +22,11 @@ public class OAPlayerSwimUpdater : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        playerMov.SetUnderWater(true);
+        playerState.SetIsUnderWater(true);
     }
 
     void OnTriggerExit2D(Collider2D col)
     {
-        playerMov.SetUnderWater(false);
+        playerState.SetIsUnderWater(false);
     }
 }

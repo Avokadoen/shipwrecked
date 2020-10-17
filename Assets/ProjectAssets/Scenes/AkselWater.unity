@@ -123,6 +123,43 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &27188985 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6484923415127592902, guid: 913d91de287df88408f26f726444cf2f, type: 3}
+  m_PrefabInstance: {fileID: 889731443}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &27188986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27188985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857c30000957fa54790929cf5786305f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveStats: {fileID: 11400000, guid: 055086963a6c9214cac34287ded59ac1, type: 2}
+  deadZone: 0.01
+--- !u!114 &27188987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27188985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c7825487b544544992c3e116be66ba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deadZone: 0.001
+  flipOnHorizontalPositive: 0
+  verticalSwimModifier: 0.2
+  horizontalSwimModifier: 4
+  healthStat: {fileID: 11400000, guid: 25e845927caa27c4a8d4c92e652ba967, type: 2}
+  health: -1
 --- !u!4 &241271467 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6484923415127592922, guid: 913d91de287df88408f26f726444cf2f, type: 3}
@@ -146,6 +183,10 @@ PrefabInstance:
       objectReference: {fileID: 769489965}
     - target: {fileID: 385712051556700564, guid: 913d91de287df88408f26f726444cf2f, type: 3}
       propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2301314366827355444, guid: 913d91de287df88408f26f726444cf2f, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3224795561987137340, guid: 913d91de287df88408f26f726444cf2f, type: 3}
@@ -224,8 +265,8 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2301314366827355444, guid: 913d91de287df88408f26f726444cf2f, type: 3}
   m_PrefabInstance: {fileID: 889731443}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_GameObject: {fileID: 27188985}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69d4a5def3e0ee343b76b0d9f46db62d, type: 3}
   m_Name: 
