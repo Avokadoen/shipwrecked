@@ -4999,7 +4999,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: root
+    path: root/pelvis/tail/tail_20/tail_21/tail_22/tail_23
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5009,7 +5009,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: root
+    path: root/pelvis/tail/tail_20/tail_21/tail_22/tail_23
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5019,7 +5019,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: root
+    path: root/pelvis/tail/tail_20/tail_21/tail_22/tail_23
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5749,7 +5749,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: root/pelvis/tail/tail_20/tail_21/tail_22/tail_23
+    path: root
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5759,7 +5759,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: root/pelvis/tail/tail_20/tail_21/tail_22/tail_23
+    path: root
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -5769,7 +5769,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: root/pelvis/tail/tail_20/tail_21/tail_22/tail_23
+    path: root
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 1

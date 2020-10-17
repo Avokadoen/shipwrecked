@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-// TODO: when player release button and is grounded, (s)he should stop instantly 
-// TODO: I should REALLY parts of this code with the enemy sensor logic ... (Rigidbody toggle logic)
+// TODO: I should REALLY combine parts of this code with the enemy sensor logic ... (Rigidbody toggle logic)
+// TODO: split this into water and land movement component and enable/disable them in the ocean script
 
 [RequireComponent(typeof(Rigidbody2D), typeof(CapsuleCollider2D), typeof(SpriteRenderer))]
 [RequireComponent(typeof(Animator))]
@@ -36,6 +36,37 @@ public class OAPlayerMovement : MonoBehaviour
     [SerializeField]
     private float deadZone = 0.001f;
 
+    [Tooltip("Modifier on speed in y direction when swimming")]
+    [SerializeField]
+    private float verticalSwimModifier = 0.2f;
+
+    [Tooltip("Modifier on speed in x direction when swimming")]
+    [SerializeField]
+    private float horizontalSwimModifier = 4f;
+
+    private bool isUnderWater = false;
+
+    public void SetUnderWater(bool isUnderWater)
+    {
+        this.isUnderWater = isUnderWater;
+
+        if (isUnderWater)
+        {
+            // TODO: we should put data in a scriptable object when we split this.
+            //       this way all player scripts can share state through this 
+            rigid.isKinematic = false;
+            rigid.gravityScale = 0;
+            rigid.drag = 0.4f;
+            rigid.mass = 0.2f;
+        } else
+        {
+            rigid.isKinematic = true;
+            rigid.gravityScale = 1;
+            rigid.drag = 0f;
+            rigid.mass = 1f;
+        }
+    }
+
     void Awake()
     {
         OAExtentions.AssertObjectNotNull(moveStats, "Player is missing moveStats!");
@@ -61,6 +92,54 @@ public class OAPlayerMovement : MonoBehaviour
     }
 
     void FixedUpdate()
+    {
+        if (isUnderWater)
+        {
+            UpdateInWater();
+        } else
+        {
+            UpdateOnGround();
+        }
+
+
+        // Update 
+        animator.SetBool("isUnderWater", isUnderWater);
+    
+        if (rigid.velocity.x > deadZone || rigid.velocity.x < -deadZone)
+        {
+            animator.SetBool("hasHorizontalMovement", true);
+        }
+        else
+        {
+            animator.SetBool("hasHorizontalMovement", false);
+        }
+
+        if (rigid.velocity.y > deadZone || rigid.velocity.y < -deadZone) // TODO: falling or jumping
+        {
+            animator.SetBool("hasVerticalMovement", true);
+            animator.SetBool("isVerticalMovUpwards", rigid.velocity.y > 0);
+        }
+        else
+        {
+            animator.SetBool("hasVerticalMovement", false);
+        }
+    }
+
+    private void UpdateInWater()
+    {
+        if (Mathf.Abs(vertical) > deadZone)
+        {
+            // Vertical is way stronger for some reason
+            rigid.AddForce(Vector2.up * vertical * moveStats.movementSpeed * verticalSwimModifier);
+        }
+
+        if (Mathf.Abs(horizontal) > deadZone)
+        {
+            rigid.AddForce(Vector2.right * horizontal * moveStats.movementSpeed * horizontalSwimModifier);
+        }
+    }
+
+    private void UpdateOnGround()
     {
         // TODO: this distrupt collision resolution of rigid body. Use a coroutine
         //       to let the rigid resolve colission before doing 
@@ -98,27 +177,8 @@ public class OAPlayerMovement : MonoBehaviour
 
         rigid.velocity = velocity;
 
-
+        // Only update this when not in water
         animator.SetBool("isGrounded", isGrounded);
-
-        if (rigid.velocity.x > deadZone || rigid.velocity.x < -deadZone)
-        {
-            animator.SetBool("hasHorizontalMovement", true);
-        }
-        else
-        {
-            animator.SetBool("hasHorizontalMovement", false);
-        }
-
-        if (rigid.velocity.y > deadZone || rigid.velocity.y < -deadZone) // TODO: falling or jumping
-        {
-            animator.SetBool("hasVerticalMovement", true);
-            animator.SetBool("isVerticalMovUpwards", rigid.velocity.y > 0);
-        }
-        else
-        {
-            animator.SetBool("hasVerticalMovement", false);
-        }
     }
 
     // TODO: hack to let rigid resolve collision before turning of simulation

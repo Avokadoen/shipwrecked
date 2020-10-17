@@ -74,6 +74,7 @@ public class OAPlayerEquipment : MonoBehaviour
         SetEquipmentIndex(equiptIndex);
     }
 
+    // TODO: unequip when the player swims
     // Update is called once per frame
     void FixedUpdate()
     {
