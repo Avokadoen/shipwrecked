@@ -10,7 +10,12 @@ public class OAPlayerLandMovement : MonoBehaviour
     [SerializeField]
     private OAMovingEntity moveStats;
 
-    [Tooltip("deadZone for input and used to determine if the player is still")]
+    [Tooltip("How long the player has to wait before jumping again")]
+    [SerializeField]
+    private float jumpCooldown = 0.3f;
+    private float jumpCdCounter = 0f;
+
+    [Tooltip("Dead zone for input and used to determine if the player is still")]
     [SerializeField]
     private float deadZone = 0.01f;
 
@@ -27,60 +32,32 @@ public class OAPlayerLandMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (ss.IsGrounded && !rigid.isKinematic)
-        {
-            StartCoroutine(SetKinematic());
-        }
-        else if (!ss.IsGrounded)
-        {
-            rigid.isKinematic = false;
-        }
-
-        Vector2 velocity = rigid.velocity;
-        velocity.x = 0f;
         // Handle horizontal input
         if (ss.Horizontal > ss.deadZone)
         {
-            var speed = Mathf.Min(rigid.velocity.x + moveStats.movementSpeed, moveStats.maxSpeed);
-            velocity.x = speed;
+            rigid.AddForce(Vector2.right * moveStats.movementSpeed * ss.Horizontal, ForceMode2D.Impulse);
             spriteRenderer.flipX = ss.flipOnHorizontalPositive;
         }
         else if (ss.Horizontal < -ss.deadZone)
         {
-            var speed = Mathf.Max(rigid.velocity.x - moveStats.movementSpeed, -moveStats.maxSpeed);
-            velocity.x = speed;
+            rigid.AddForce(Vector2.right * moveStats.movementSpeed * ss.Horizontal, ForceMode2D.Impulse);
             spriteRenderer.flipX = !ss.flipOnHorizontalPositive;
         }
 
+        jumpCdCounter += Time.fixedDeltaTime;
         // Handle vertical input
-        if (ss.Vertical > ss.deadZone && ss.IsGrounded)
+        if (ss.Vertical > ss.deadZone && ss.IsGrounded && jumpCooldown <= jumpCdCounter)
         {
-            velocity.y = moveStats.jumpForce;
+            rigid.AddForce(Vector2.up * moveStats.jumpForce, ForceMode2D.Impulse);
+            jumpCdCounter = 0f;
         }
-
-        rigid.velocity = velocity;
     }
 
     void OnEnable()
     {
-        rigid.isKinematic = true;
         rigid.gravityScale = 1;
         rigid.drag = 0f;
         rigid.mass = 1f;
-    }
-
-    // TODO: hack to let rigid resolve collision before turning of simulation
-    //       figure out a less hacky solution ..
-    IEnumerator SetKinematic()
-    {
-        // Let the rigid body resolve any collision
-        // We will call this 10 fixed updates to let the rigid resolve any conflict
-        for (var i = 0; i < 10; i++)
-        {
-            yield return null;
-        }
-        rigid.isKinematic = true;
-        rigid.velocity = Vector2.zero;
     }
 
 }

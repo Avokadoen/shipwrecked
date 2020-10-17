@@ -24,8 +24,7 @@ public class OAPlayerStateStore : MonoBehaviour
     private bool isUnderWater = false;
     public bool IsUnderWater { get => isUnderWater; set => isUnderWater = value; }
 
-    private bool isGrounded = false;
-    public bool IsGrounded { get => isGrounded; set => isGrounded = value; }
+    public bool IsGrounded { get => groundContactCount > 0; }
 
     private float horizontal = 0f;
     public float Horizontal { get => horizontal; set => horizontal = value; }
@@ -48,6 +47,9 @@ public class OAPlayerStateStore : MonoBehaviour
     private OAPlayerLandMovement landMovement;
     private OAPlayerSwimMovement swimMovement;
     private OAPlayerEquipment playerEquipment;
+
+    private LayerMask groundLayer;
+    private int groundContactCount = 0;
 
     public void SetIsUnderWater(bool isUnderWater)
     {
@@ -72,6 +74,8 @@ public class OAPlayerStateStore : MonoBehaviour
         playerEquipment = GetComponent<OAPlayerEquipment>();
 
         SetIsUnderWater(isUnderWater);
+
+        groundLayer = LayerMask.NameToLayer("Ground");
     }
 
     void Update()
@@ -82,10 +86,8 @@ public class OAPlayerStateStore : MonoBehaviour
 
     void FixedUpdate()
     {
-        isGrounded = capCollider.isGrounded(gameObject.layer, 0.2f);
-
         // Update animator
-        animator.SetBool("isGrounded", isGrounded);
+        animator.SetBool("isGrounded", IsGrounded);
 
         if (rigid.velocity.x > deadZone || rigid.velocity.x < -deadZone)
         {
@@ -105,5 +107,29 @@ public class OAPlayerStateStore : MonoBehaviour
         {
             animator.SetBool("hasVerticalMovement", false);
         }
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.layer == groundLayer)
+        {
+            groundContactCount += 1;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D col)
+    {
+        if (col.gameObject.layer == groundLayer)
+        {
+            StartCoroutine(SmoothIsGrounded());
+        }
+    }
+
+    // TODO: Hack as edge colliders are very buggy
+    // Use something else than a edge collider
+    IEnumerator SmoothIsGrounded()
+    {
+        yield return new WaitForSeconds(0.1f);
+        groundContactCount -= 1;
     }
 }
