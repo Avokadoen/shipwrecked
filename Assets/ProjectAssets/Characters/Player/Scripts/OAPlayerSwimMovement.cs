@@ -12,13 +12,9 @@ public class OAPlayerSwimMovement : MonoBehaviour
     [SerializeField]
     private float deadZone = 0.02f;
 
-    [Tooltip("Modifier on speed in y direction when swimming")]
+    [Tooltip("Limit in vertical speed modifier")]
     [SerializeField]
-    private float verticalSwimModifier = 0.2f;
-
-    [Tooltip("Modifier on speed in x direction when swimming")]
-    [SerializeField]
-    private float horizontalSwimModifier = 4f;
+    private float verticalSwimLimit = 1.6f;
 
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rigid;
@@ -33,16 +29,16 @@ public class OAPlayerSwimMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (CanApplyInput(ss.Vertical, (rigid.velocity.y * 2f)))
-        {
-            // Vertical is way stronger for some reason
-            rigid.AddForce(Vector2.up * ss.Vertical * moveStats.movementSpeed * verticalSwimModifier);
-        }
-
         if (CanApplyInput(ss.Horizontal, rigid.velocity.x))
         {
             spriteRenderer.flipX = ss.Horizontal > 0;
-            rigid.AddForce(Vector2.right * ss.Horizontal * moveStats.movementSpeed * horizontalSwimModifier);
+            rigid.AddForce(Vector2.right * ss.Horizontal * moveStats.movementSpeed, ForceMode2D.Impulse);
+        }
+
+        if (CanApplyInput(ss.Vertical, rigid.velocity.y * verticalSwimLimit))
+        {
+            // Vertical is way stronger for some reason
+            rigid.AddForce(Vector2.up * ss.Vertical * moveStats.jumpForce, ForceMode2D.Impulse);
         }
     }
 
@@ -54,9 +50,7 @@ public class OAPlayerSwimMovement : MonoBehaviour
 
     void OnEnable()
     {
-        rigid.isKinematic = false;
         rigid.gravityScale = 0;
         rigid.drag = 0.4f;
-        rigid.mass = 0.2f;
     }
 }

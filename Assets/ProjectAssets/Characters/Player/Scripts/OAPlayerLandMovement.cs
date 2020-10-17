@@ -55,9 +55,8 @@ public class OAPlayerLandMovement : MonoBehaviour
 
     void OnEnable()
     {
-        rigid.gravityScale = 1;
+        rigid.gravityScale = 1f;
         rigid.drag = 0f;
-        rigid.mass = 1f;
     }
 
 }

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PlayerSwimMovingDefault
   m_EditorClassIdentifier: 
   movementSpeed: 10
-  maxSpeed: 13
-  jumpForce: 6.5
+  maxSpeed: 12
+  jumpForce: 0.2

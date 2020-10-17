@@ -41,6 +41,10 @@ public class OAPlayerEquipment : MonoBehaviour
 
     public void SetEquipmentIndex(int index)
     {
+        // If player is under water we don't allow setting the index
+        int isUnderWater = System.Convert.ToInt32(stateStore.IsUnderWater);
+        index = index - ((index + 1) * isUnderWater);
+
         if (IsValidEquipt)
             equippables[equiptIndex].gameObject.SetActive(false);
 
@@ -121,15 +125,15 @@ public class OAPlayerEquipment : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Vector3 equipDir = new Vector3(ray.origin.x - pivotPoint.position.x, ray.origin.y - pivotPoint.position.y);
         equipDir.Normalize();
-        
-        Vector3 calcPos = pivotPoint.position + equipDir * equipt.Distance;
-        equipt.transform.position = calcPos;
-        equipmentParticles.transform.position = calcPos;
 
         // TODO: use quaternion instead ..
         float angl = Vector3.Angle(Vector3.right, equipDir);
         angl *= (equipDir.y < 0) ? -1 : 1;
         equipt.transform.rotation = Quaternion.AngleAxis(angl, Vector3.forward);
+
+        Vector3 calcPos = pivotPoint.position + equipDir * equipt.Distance;
+        equipt.transform.position = calcPos;
+        equipmentParticles.transform.position = calcPos;
 
         // TODO: flip y on sprite renderer of equip when we have common component for that.
         if (angl > 89f || angl < -90f)
