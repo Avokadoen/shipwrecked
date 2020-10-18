@@ -243,14 +243,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6484923414437214677}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7288272, w: 0.6846977}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7288253, w: 0.68469983}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6484923414153935892}
   m_Father: {fileID: 6484923415127592922}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 93.576}
 --- !u!1 &6484923414471528394
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,8 +633,8 @@ MonoBehaviour:
   - {fileID: 6484923414678198545}
   - {fileID: 6484923414262958173}
   m_Bounds:
-    m_Center: {x: -3.157216, y: 19.31051, z: 0}
-    m_Extent: {x: 12.226948, y: 13.594817, z: 0}
+    m_Center: {x: -3.157115, y: 19.310528, z: 0}
+    m_Extent: {x: 12.226845, y: 13.594845, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!95 &6484923415127592903
@@ -690,7 +690,7 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.2262343, y: 3.9788766}
+  m_Offset: {x: -1.42, y: 17.27}
   m_Size: {x: 15.568243, y: 22.3831}
   m_Direction: 0
 --- !u!114 &300322538
@@ -742,6 +742,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveStats: {fileID: 11400000, guid: 055086963a6c9214cac34287ded59ac1, type: 2}
+  jumpCooldown: 0.3
   deadZone: 0.01
 --- !u!114 &153501430642052952
 MonoBehaviour:
@@ -757,8 +758,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveStats: {fileID: 11400000, guid: db132851f66f39e4185ea05cd2a3b8f2, type: 2}
   deadZone: 0.02
-  verticalSwimModifier: 0.2
-  horizontalSwimModifier: 4
+  verticalSwimLimit: 1.6
 --- !u!114 &27188994
 MonoBehaviour:
   m_ObjectHideFlags: 0

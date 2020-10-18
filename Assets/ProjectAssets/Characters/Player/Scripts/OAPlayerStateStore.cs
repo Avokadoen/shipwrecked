@@ -31,13 +31,7 @@ public class OAPlayerStateStore : MonoBehaviour
 
     private float vertical = 0f;
     public float Vertical { get => vertical; set => vertical = value; }
-
-
-    [Tooltip("Health stats of the player")]
-    [SerializeField]
-    private OAHealth healthStat = null;
-    public float health = -1f;
-
+    
     // Variables used to update state in animator
     private Animator animator;
     private Rigidbody2D rigid;
@@ -63,8 +57,6 @@ public class OAPlayerStateStore : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        OAExtentions.AssertObjectNotNull(healthStat, "OAPlayerStateStore is missing health state!");
-
         animator = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody2D>();
         capCollider = GetComponent<CapsuleCollider2D>();

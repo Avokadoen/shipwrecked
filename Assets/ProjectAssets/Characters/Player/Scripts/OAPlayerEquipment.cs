@@ -85,7 +85,7 @@ public class OAPlayerEquipment : MonoBehaviour
 
     void Update()
     {
-        // TODO: we migth not need this many
+        // TODO: we migth not need this many options
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             SetEquipmentIndex(0);
