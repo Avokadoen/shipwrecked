@@ -89,18 +89,18 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: Barricades
+  - name: Spike back
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
+      x: 2071
       y: 4
-      width: 2059
-      height: 917
-    spriteID: 209d9d68eb8bb914b90f8ec94417de74
+      width: 1671
+      height: 795
+    spriteID: ae81243b5faf1194c810fb94a9f7e0c2
     internalID: 0
     spriteBone: []
     spriteOutline: []
@@ -110,33 +110,120 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -451, y: -743}
+    uvTransform: {x: 1422, y: -803}
+  - name: Spikes
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 2059
+      height: 795
+    spriteID: b89d16fe7e07c2c408177d47819dc03d
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -451, y: -803}
+  - name: 'Reinforcement '
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1523
+      y: 807
+      width: 1591
+      height: 814
+    spriteID: d47da889c48deb84ca5a85c1bca2b110
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 834, y: 40}
+  - name: Base
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 807
+      width: 1511
+      height: 917
+    spriteID: ff2aafca691387849a487bd2f80efc83
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -725, y: 60}
   platformSettings: []
   mosaicLayers: 1
   documentPivot: {x: 0, y: 0}
   documentAlignment: 7
   importHiddenLayers: 0
   importedTextureWidth: 2048
-  importedTextureHeight: 512
+  importedTextureHeight: 1024
   documentSize: {x: 3032, y: 2480}
   paperDollMode: 0
   keepDupilcateSpriteName: 0
   spriteCategoryList:
     categories: []
   textureActualWidth: 4096
-  textureActualHeight: 1024
+  textureActualHeight: 2048
   spritePackingTag: 
   resliceFromLayer: 0
   characterMode: 1
   mosaicPSDLayers: []
   rigPSDLayers:
-  - name: Barricades
-    spriteName: Barricades
+  - name: Spikes
+    spriteName: Spikes
     isGroup: 0
     parentIndex: -1
-    spriteID: 209d9d68eb8bb914b90f8ec94417de74
+    spriteID: b89d16fe7e07c2c408177d47819dc03d
     layerID: 0
     mosaicPosition: {x: 4, y: 4}
+  - name: 'Reinforcement '
+    spriteName: 'Reinforcement '
+    isGroup: 0
+    parentIndex: -1
+    spriteID: d47da889c48deb84ca5a85c1bca2b110
+    layerID: 1773888835
+    mosaicPosition: {x: 1523, y: 807}
+  - name: Base
+    spriteName: Base
+    isGroup: 0
+    parentIndex: -1
+    spriteID: ff2aafca691387849a487bd2f80efc83
+    layerID: -1966747463
+    mosaicPosition: {x: 4, y: 807}
+  - name: Spike back
+    spriteName: Spike back
+    isGroup: 0
+    parentIndex: -1
+    spriteID: ae81243b5faf1194c810fb94a9f7e0c2
+    layerID: 1729623487
+    mosaicPosition: {x: 2071, y: 4}
   characterData:
     bones: []
     parts: []
