@@ -3,7 +3,6 @@ using UnityEngine;
 
 // TODO: rename
 [RequireComponent(typeof(Animator), typeof(Rigidbody2D), typeof(Collider2D))]
-[RequireComponent(typeof(SpriteRenderer))]
 public class OAEnemySensors : MonoBehaviour
 {
     // TODO: handle if player is too close to enemy somehow
@@ -17,6 +16,9 @@ public class OAEnemySensors : MonoBehaviour
 
     [SerializeField]
     private Transform shipTransform;
+
+    [SerializeField]
+    private Transform ratHead;
 
     [SerializeField]
     private OAMovingEntity moveStats = null;
@@ -35,7 +37,6 @@ public class OAEnemySensors : MonoBehaviour
     [SerializeField]
     private OAKillable selfKillable;
 
-    private SpriteRenderer spriteRenderer; // TODO: Remove?
     private LayerMask buildingMask;
 
     public float targetDistance;
@@ -62,28 +63,18 @@ public class OAEnemySensors : MonoBehaviour
         if (!selfKillable)
             selfKillable = GetComponent<OAKillable>();
 
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        buildingMask = LayerMask.GetMask("Building");
+        buildingMask = LayerMask.NameToLayer("Building");
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        rb.isKinematic = col.isGrounded(gameObject.layer, 0.02f);
-
-        targetDistance = playerState.transform.position.x - transform.position.x;
+        targetDistance = playerState.transform.position.x - ratHead.position.x;
         front.x = targetDistance;
         front.Normalize();
-        var hit = Physics2D.Raycast(transform.position, front, attackStats.range);
         bool isInTargetRange = Mathf.Abs(targetDistance) < attackStats.range;
+        var hit = Physics2D.Raycast(transform.position, front, attackStats.range, buildingMask);
         animator.SetBool("isInAttackRange", isInTargetRange || hit.collider);
-
         animator.SetInteger("health", selfKillable.Health);
-
     }
-
-    //void OnCollisionEnter2D(Collision2D col)
-    //{
-    //    col.collider.IsTouchingLayers(buildingMask);
-    //}
 }

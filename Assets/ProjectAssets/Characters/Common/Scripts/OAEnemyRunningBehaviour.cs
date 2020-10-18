@@ -6,8 +6,8 @@ public class OAEnemyRunningBehaviour : StateMachineBehaviour
 {
     private OAEnemySensors sensors;
     private Rigidbody2D rb;
-    private SpriteRenderer sr;
     private OAMovingEntity moveStats;
+    private OASpriteGroupFlipper spriteGroup;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -15,8 +15,8 @@ public class OAEnemyRunningBehaviour : StateMachineBehaviour
         if (!sensors)
             sensors = animator.GetComponent<OAEnemySensors>();
 
-        if (!sr)
-            sr = animator.GetComponent<SpriteRenderer>();
+        if (!spriteGroup)
+            spriteGroup = animator.GetComponent<OASpriteGroupFlipper>();
 
         if (!rb) 
             rb = sensors.Rb;
@@ -32,18 +32,8 @@ public class OAEnemyRunningBehaviour : StateMachineBehaviour
         float distance = sensors.targetDistance;
 
         float xDir = (distance < 0) ? -1 : 1;
-        float speed = 0.0f;
-        if (xDir > 0)
-        {
-            speed = Mathf.Min(moveStats.maxSpeed, rb.velocity.x + xDir * moveStats.movementSpeed);
-            sr.flipX = true;
-        }
-        else if (xDir < 0)
-        {
-            speed = Mathf.Max(-moveStats.maxSpeed, rb.velocity.x + (xDir * moveStats.movementSpeed));
-            sr.flipX = false;
-        }
 
-        rb.velocity = new Vector2(speed, rb.velocity.y);
-    }   
+        spriteGroup.FlipX(xDir > 0);
+        rb.AddForce(Vector2.right * moveStats.movementSpeed * xDir, ForceMode2D.Force);
+    }
 }

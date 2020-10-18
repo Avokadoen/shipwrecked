@@ -53,8 +53,7 @@ public class OAKillable : MonoBehaviour
     [ContextMenu("Debug: kill unit")]
     void DebugKill()
     {
-        health = 0;
-        onDeath.Invoke();
+        ApplyDamage(healthStats.maxHealth);
     }
 
 }
