@@ -156,7 +156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6484923415127592922, guid: 913d91de287df88408f26f726444cf2f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -167.63
+      value: -189.11
       objectReference: {fileID: 0}
     - target: {fileID: 6484923415127592922, guid: 913d91de287df88408f26f726444cf2f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -380,7 +380,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   lowTideDecline: 20
-  cycleDuration: 5
+  cycleDuration: 180
 --- !u!114 &1576219130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -677,7 +677,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8519082118366805357, guid: f7efae81fcf89bb4fa7ea3546ae6edb5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -167.63
+      value: -189.11
       objectReference: {fileID: 0}
     - target: {fileID: 8519082118366805357, guid: f7efae81fcf89bb4fa7ea3546ae6edb5, type: 3}
       propertyPath: m_LocalPosition.y

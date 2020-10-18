@@ -7,7 +7,7 @@ public class OADeathActivater : MonoBehaviour
 {
     [Tooltip("Components that should be disabled on death")]
     [SerializeField]
-    List<MonoBehaviour> disableComponents;
+    List<Behaviour> disableComponents;
 
     [Tooltip("All limbs that should be simulated on death")]
     [SerializeField]
