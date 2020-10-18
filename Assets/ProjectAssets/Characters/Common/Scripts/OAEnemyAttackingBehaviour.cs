@@ -12,11 +12,9 @@ public class OAEnemyAttackingBehaviour : StateMachineBehaviour
 {
     private OAEnemySensors sensors;
     private Rigidbody2D rb;
-    private OAPlayer player;
 
     private float duration = 0;
 
-    // TODO: we presume we attack player here, this is wrong assumption in some cases
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -27,9 +25,6 @@ public class OAEnemyAttackingBehaviour : StateMachineBehaviour
 
         if (!rb)
             rb = sensors.Rb;
-
-        if (!player)
-            player = sensors.Player;
 
         rb.velocity = new Vector2(0, rb.velocity.y);
         duration = 0;
@@ -43,7 +38,7 @@ public class OAEnemyAttackingBehaviour : StateMachineBehaviour
         duration += Time.deltaTime;
         if (duration > sensors.AttackStats.attackSpeed)
         {
-            player.TakeDamage(sensors.AttackStats.damage);
+            // player.TakeDamage(sensors.AttackStats.damage); TODO: Check colliders in a radius around attack and apply damage
             duration = 0;
             animator.SetBool("isAttackCompleteReady", true);
             return;

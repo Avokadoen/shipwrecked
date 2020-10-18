@@ -58,6 +58,7 @@ public class OABulletPool :  MonoBehaviour
         var element = freePool[freeIndex];
         // takenPool[takenPool.Count - 1] = element;
         freePool.SwapRemoveAt(freeIndex);
+        element.transform.parent = null;
         return element;
     }
 

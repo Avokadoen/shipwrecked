@@ -55,7 +55,7 @@ public static class OAExtentions
     public static void AssertObjectNotNull<T>(T obj, string message) where T : class
     {
         #if UNITY_EDITOR
-        if (obj == null)
+        if (obj == null) // TODO: find out why I can't do !obj
         {
             Debug.LogError(message);
             UnityEditor.EditorApplication.isPlaying = false;

@@ -11,7 +11,6 @@ public class OAAnimatorUpdater : MonoBehaviour
     [SerializeField]
     private Rigidbody2D rigid;
 
-    // TODO: Both player and AnimatorUpdater has this, find a way of deduplicate
     [SerializeField]
     private float deadZone = 0.001f;
 
@@ -34,16 +33,17 @@ public class OAAnimatorUpdater : MonoBehaviour
 
         if (rigid.velocity.x > deadZone || rigid.velocity.x < -deadZone)
         {
-            animator.SetBool("hasHorizontalMovement", true);
+            animator.SetBool("hasHorizontalMovement", true); 
         }
         else
         {
-            animator.SetBool("hasHorizontalMovement", false);
+            animator.SetBool("hasHorizontalMovement", false); 
         }
 
         if (rigid.velocity.y > deadZone || rigid.velocity.y < -deadZone) // TODO: falling or jumping
         {
             animator.SetBool("hasVerticalMovement", true);
+            animator.SetBool("isVerticalMovUpwards", rigid.velocity.y > 0);
         }
         else
         {

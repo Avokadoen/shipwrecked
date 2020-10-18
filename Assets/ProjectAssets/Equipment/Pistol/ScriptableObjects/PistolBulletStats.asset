@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 906502e991a074942bda81c7e2eaad83, type: 3}
   m_Name: PistolBulletStats
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 12
   baseDamage: 5
   maxRange: 20
   identifier: PistolBullet
