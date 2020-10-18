@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edf518bb26728374aad57a99d3d65d23, type: 3}
   m_Name: RatMoveDefault
   m_EditorClassIdentifier: 
-  movementSpeed: 3
+  movementSpeed: 100
   maxSpeed: 6
   jumpForce: 0
