@@ -19,6 +19,7 @@ public class OAEnemySensors : MonoBehaviour
 
     [SerializeField]
     private Transform ratHead;
+    public Transform RatHead { get => ratHead; }
 
     [SerializeField]
     private OAMovingEntity moveStats = null;
@@ -37,7 +38,10 @@ public class OAEnemySensors : MonoBehaviour
     [SerializeField]
     private OAKillable selfKillable;
 
-    private LayerMask buildingMask;
+    private LayerMask playerAndBuldingLayer;
+    private Vector2 range;
+    // We limit attack testing to 4 object. This might be more, or it migth be enough with less
+    private RaycastHit2D[] hits = new RaycastHit2D[4];
 
     public float targetDistance;
     private Vector3 front;
@@ -63,7 +67,8 @@ public class OAEnemySensors : MonoBehaviour
         if (!selfKillable)
             selfKillable = GetComponent<OAKillable>();
 
-        buildingMask = LayerMask.NameToLayer("Building");
+        playerAndBuldingLayer = LayerMask.GetMask(new string[] { "Player", "Building" });
+        range = new Vector2(AttackStats.range * 1.2f, AttackStats.range);
     }
 
     // Update is called once per frame
@@ -73,8 +78,28 @@ public class OAEnemySensors : MonoBehaviour
         front.x = targetDistance;
         front.Normalize();
         bool isInTargetRange = Mathf.Abs(targetDistance) < attackStats.range;
-        var hit = Physics2D.Raycast(transform.position, front, attackStats.range, buildingMask);
-        animator.SetBool("isInAttackRange", isInTargetRange || hit.collider);
-        animator.SetInteger("health", selfKillable.Health);
+        var hitCount = Physics2D.RaycastNonAlloc(ratHead.position, front, hits, attackStats.range, playerAndBuldingLayer);
+        Debug.DrawRay(ratHead.position, front);
+        animator.SetBool("isInAttackRange", isInTargetRange || hitCount > 0);
+    }
+
+    void CommitAttack()
+    {
+        int hitCount = Physics2D.CapsuleCastNonAlloc(
+            RatHead.position,
+            range,
+            CapsuleDirection2D.Horizontal,
+            0,
+            front,
+            hits,
+            Mathf.Infinity,
+            playerAndBuldingLayer.value
+        );
+
+        for (int i = 0; i < hitCount; i++)
+        {
+            hits[i].collider.gameObject.SendMessage("ApplyDamage", AttackStats.damage, SendMessageOptions.DontRequireReceiver); // TODO: this is probably terribly slow?
+            // TODO: apply damage
+        }
     }
 }

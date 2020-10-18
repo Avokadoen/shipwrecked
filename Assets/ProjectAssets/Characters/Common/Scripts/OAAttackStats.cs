@@ -10,5 +10,4 @@ public class OAAttackStats : ScriptableObject
     public int damage;
     // How many seconds it takes to do one attack
     public float attackSpeed;
-    public float attackCooldown; 
 }
