@@ -15,12 +15,10 @@ public class OADespawner : MonoBehaviour
 
     public void Start()
     {
-#if UNITY_EDITOR
         if (srList.Count < 0)
-            Debug.LogError("OADespawner srList is 0 in lenght");
+            Debug.LogError("OADespawner srList is 0 in length");
 
         OAExtentions.AssertObjectNotNull(parentObject, "OADespawner is missing parentObject");
-#endif
     }
 
     /// <summary>

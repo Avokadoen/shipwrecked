@@ -44,7 +44,9 @@ public class OABuildingArea : MonoBehaviour
             return;
 
         if (Input.GetAxis("Build") > 0)
+        {
             buildButtonHeldDuration += Time.deltaTime;
+        }
 
         if (buildButtonHeldDuration >= timeToBuild)
         {
@@ -62,5 +64,7 @@ public class OABuildingArea : MonoBehaviour
     private void OnTriggerExit2D(Collider2D col)
     {
         textObject.SetActive(false);
+
+        buildButtonHeldDuration = 0;
     }
 }
