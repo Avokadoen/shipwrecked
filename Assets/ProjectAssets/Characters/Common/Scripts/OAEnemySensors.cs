@@ -99,7 +99,6 @@ public class OAEnemySensors : MonoBehaviour
         for (int i = 0; i < hitCount; i++)
         {
             hits[i].collider.gameObject.SendMessage("ApplyDamage", AttackStats.damage, SendMessageOptions.DontRequireReceiver); // TODO: this is probably terribly slow?
-            // TODO: apply damage
         }
     }
 }

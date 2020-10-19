@@ -25,7 +25,6 @@ public class OADeathActivater : MonoBehaviour
         killable.AddDeathListener(OnDeath);
     }
 
-    // Update is called once per frame
     void OnDeath()
     {
         foreach (var component in disableComponents)
@@ -36,6 +35,20 @@ public class OADeathActivater : MonoBehaviour
         foreach (var limb in limbs)
         {
             limb.OnRagdoll();
+        }
+    }
+
+    [ContextMenu("Debug: necromancer?")]
+    void OnRespawn()
+    {
+        foreach (var component in disableComponents)
+        {
+            component.enabled = true;
+        }
+
+        foreach (var limb in limbs)
+        {
+            limb.OnRigid();
         }
     }
 }

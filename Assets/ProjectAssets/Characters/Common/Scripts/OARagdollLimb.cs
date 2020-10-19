@@ -31,10 +31,17 @@ public class OARagdollLimb : MonoBehaviour
         joint.enabled = false;
     }
 
-    // irreversible event where character will start to ragdoll
+    // Turn on ragdoll for this limb
     public void OnRagdoll()
     {
         rigid.simulated = true; 
         joint.enabled = true;
+    }
+
+    // Turn off ragdoll for this limb
+    public void OnRigid()
+    {
+        rigid.simulated = false;
+        joint.enabled = false;
     }
 }
