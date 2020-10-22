@@ -1690,7 +1690,7 @@ MonoBehaviour:
   pivotPoint: {fileID: 6484923415389557560}
   equipmentParticles: {fileID: 3224795561987137340}
   headParticles: {fileID: 385712051556700564}
-  hudPrefab: {fileID: 1097095213709440499, guid: e3ee721af11a0a1488e285b99889b9ae, type: 3}
+  hudPrefab: {fileID: 2410797892034325152, guid: e3ee721af11a0a1488e285b99889b9ae, type: 3}
   equiptIndex: 0
 --- !u!114 &300322545
 MonoBehaviour:

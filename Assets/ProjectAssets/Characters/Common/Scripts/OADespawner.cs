@@ -7,8 +7,9 @@ public class OADespawner : MonoBehaviour
     [SerializeField]
     private List<SpriteRenderer> srList = new List<SpriteRenderer>();
 
-    [SerializeField]
-    private GameObject parentObject = null;
+    // TODO: Enemy pool 
+    //[SerializeField]
+    //private GameObject parentObject = null;
 
     public float fadeStepDelay = .1f;
     public float fadeStride = .02f;
@@ -17,8 +18,6 @@ public class OADespawner : MonoBehaviour
     {
         if (srList.Count < 0)
             Debug.LogError("OADespawner srList is 0 in length");
-
-        OAExtentions.AssertObjectNotNull(parentObject, "OADespawner is missing parentObject");
     }
 
     /// <summary>
@@ -44,7 +43,6 @@ public class OADespawner : MonoBehaviour
             yield return new WaitForSeconds(fadeStepDelay);
         }
         
-        // TODO: supply to a pool at this point instead!
-        parentObject.SetActive(false);
+        // TODO: supply to a pool 
     }
 }

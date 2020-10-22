@@ -25,9 +25,9 @@ public class OAPlayerEquipment : MonoBehaviour
 
     [Tooltip("HUD prefab")]
     [SerializeField]
-    GameObject hudPrefab;
+    OAHUDEquipmentAssigner hudPrefab;
 
-    GameObject hudInstance;
+    OAHUDEquipmentAssigner hudInstance;
 
     private OAPlayerStateStore stateStore;
 
@@ -73,12 +73,10 @@ public class OAPlayerEquipment : MonoBehaviour
 
     void Start()
     {
-        // TODO: validate that variables are set
-        foreach (var equipment in equippables)
-        {
-            Instantiate(equipment.HudPrefab, hudInstance.transform);
-            equipment.gameObject.SetActive(false);
-        }
+        // TODO: Evaluate if the relation here makes sense ATM. The roles seems not clearly defined between hud components and this.
+        //       It might make more sense to do this type of thing in components on the hud, and then equipment exposes its equippables.
+        hudInstance.RegisterEquipmentHudElements(equippables); // Note: the order of assigning camera matters in relation to this
+        hudInstance.GetComponent<Canvas>().worldCamera = Camera.main;
 
         SetEquipmentIndex(equiptIndex);
     }

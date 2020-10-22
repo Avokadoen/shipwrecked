@@ -35,6 +35,7 @@ public class OAPlayerSwimMovement : MonoBehaviour
             rigid.AddForce(Vector2.right * ss.Horizontal * moveStats.movementSpeed, ForceMode2D.Impulse);
         }
 
+        // TODO: if player inputs opposite of move direction, we can give it a boost to make the movement feel better
         if (CanApplyInput(ss.Vertical, rigid.velocity.y * verticalSwimLimit))
         {
             // Vertical is way stronger for some reason
