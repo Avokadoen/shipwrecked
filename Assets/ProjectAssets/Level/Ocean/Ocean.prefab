@@ -136,31 +136,40 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.64372975
-      value: 0.899562
-      inSlope: 0.043643884
-      outSlope: 0.043643884
+      time: 0.21576156
+      value: 0.28491136
+      inSlope: 0.35125038
+      outSlope: 0.35125038
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
+      outWeight: 0.66258657
+    - serializedVersion: 3
+      time: 0.36718005
+      value: 0.55944246
+      inSlope: 2.429939
+      outSlope: 2.429939
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5354127
+      value: 0.8264503
+      inSlope: 0.08149357
+      outSlope: 0.08149357
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.4203875
       outWeight: 0.5438855
     - serializedVersion: 3
-      time: 0.89211386
-      value: 0.94349784
-      inSlope: 0.32369658
-      outSlope: 0.32369658
+      time: 0.89486504
+      value: 0.97003686
+      inSlope: 0.24954651
+      outSlope: 0.24954651
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 1
-    - serializedVersion: 3
-      time: 0.9615317
-      value: 0.97711235
-      inSlope: 0.57375985
-      outSlope: 0.57375985
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0.4042377
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
@@ -174,8 +183,15 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  lowTideThreshold: 0.4
   lowTideDecline: 20
   cycleDuration: 5
+  onLowTide:
+    m_PersistentCalls:
+      m_Calls: []
+  onHighTide:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8822204595630397949
 MonoBehaviour:
   m_ObjectHideFlags: 0
