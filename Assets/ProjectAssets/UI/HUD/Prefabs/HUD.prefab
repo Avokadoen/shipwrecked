@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startSlot: {fileID: 9059459434011127078}
-  slotStridePx: 10
+  slotStridePx: 80
 --- !u!1 &8032380605611487594
 GameObject:
   m_ObjectHideFlags: 0
