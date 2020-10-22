@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 3.08
   damage: 8
-  attackSpeed: 0.88
+  attackSpeed: 1.2
