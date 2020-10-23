@@ -3,7 +3,6 @@ using UnityEngine;
 
 // TODO: rename
 [RequireComponent(typeof(Animator), typeof(Rigidbody2D), typeof(Collider2D))]
-[RequireComponent(typeof(SpriteRenderer))]
 public class OAEnemySensors : MonoBehaviour
 {
     // TODO: handle if player is too close to enemy somehow
@@ -12,11 +11,15 @@ public class OAEnemySensors : MonoBehaviour
     public OAAttackStats AttackStats { get => attackStats; }
 
     [SerializeField]
-    private OAPlayerMovement player;
-    public OAPlayerMovement Player { get => player; }
+    private OAPlayerStateStore playerState;
+    public OAPlayerStateStore PlayerState { get => playerState; }
 
     [SerializeField]
     private Transform shipTransform;
+
+    [SerializeField]
+    private Transform ratHead;
+    public Transform RatHead { get => ratHead; }
 
     [SerializeField]
     private OAMovingEntity moveStats = null;
@@ -35,8 +38,10 @@ public class OAEnemySensors : MonoBehaviour
     [SerializeField]
     private OAKillable selfKillable;
 
-    private SpriteRenderer spriteRenderer; // TODO: Remove?
-    private LayerMask buildingMask;
+    private LayerMask playerAndBuldingLayer;
+    private Vector2 range;
+    // We limit attack testing to 4 object. This might be more, or it migth be enough with less
+    private RaycastHit2D[] hits = new RaycastHit2D[4];
 
     public float targetDistance;
     private Vector3 front;
@@ -44,7 +49,7 @@ public class OAEnemySensors : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        OAExtentions.AssertObjectNotNull(player, "Enemy is missing playerTransform");
+        OAExtentions.AssertObjectNotNull(playerState, "Enemy is missing playerTransform");
         OAExtentions.AssertObjectNotNull(shipTransform, "Enemy is missing shipTransform");
 
         OAExtentions.AssertObjectNotNull(moveStats, "Enemy is missing MovingEntity");
@@ -62,28 +67,38 @@ public class OAEnemySensors : MonoBehaviour
         if (!selfKillable)
             selfKillable = GetComponent<OAKillable>();
 
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        buildingMask = LayerMask.GetMask("Building");
+        playerAndBuldingLayer = LayerMask.GetMask(new string[] { "Player", "Building" });
+        range = new Vector2(AttackStats.range * 1.2f, AttackStats.range);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        rb.isKinematic = col.isGrounded(gameObject.layer, 0.02f);
-
-        targetDistance = player.transform.position.x - transform.position.x;
+        targetDistance = playerState.transform.position.x - ratHead.position.x;
         front.x = targetDistance;
         front.Normalize();
-        var hit = Physics2D.Raycast(transform.position, front, attackStats.range);
         bool isInTargetRange = Mathf.Abs(targetDistance) < attackStats.range;
-        animator.SetBool("isInAttackRange", isInTargetRange || hit.collider);
-
-        animator.SetInteger("health", selfKillable.Health);
-
+        var hitCount = Physics2D.RaycastNonAlloc(ratHead.position, front, hits, attackStats.range, playerAndBuldingLayer);
+        Debug.DrawRay(ratHead.position, front);
+        animator.SetBool("isInAttackRange", isInTargetRange || hitCount > 0);
     }
 
-    //void OnCollisionEnter2D(Collision2D col)
-    //{
-    //    col.collider.IsTouchingLayers(buildingMask);
-    //}
+    void CommitAttack()
+    {
+        int hitCount = Physics2D.CapsuleCastNonAlloc(
+            RatHead.position,
+            range,
+            CapsuleDirection2D.Horizontal,
+            0,
+            front,
+            hits,
+            Mathf.Infinity,
+            playerAndBuldingLayer.value
+        );
+
+        for (int i = 0; i < hitCount; i++)
+        {
+            hits[i].collider.gameObject.SendMessage("ApplyDamage", AttackStats.damage, SendMessageOptions.DontRequireReceiver); // TODO: this is probably terribly slow?
+        }
+    }
 }

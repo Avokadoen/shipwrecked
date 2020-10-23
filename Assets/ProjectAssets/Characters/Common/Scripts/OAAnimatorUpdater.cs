@@ -11,7 +11,6 @@ public class OAAnimatorUpdater : MonoBehaviour
     [SerializeField]
     private Rigidbody2D rigid;
 
-    // TODO: Both player and AnimatorUpdater has this, find a way of deduplicate
     [SerializeField]
     private float deadZone = 0.001f;
 
