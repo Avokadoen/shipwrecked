@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(OAKillable))]
+[RequireComponent(typeof(OAKillable), typeof(OADespawner))]
 public class OADeathActivater : MonoBehaviour
 {
     [Tooltip("Components that should be disabled on death")]
@@ -16,11 +16,20 @@ public class OADeathActivater : MonoBehaviour
     [SerializeField]
     OAKillable killable;
 
+    [SerializeField]
+    OADespawner despawner;
+
+    public float fadeStepDelay = .1f;
+    public float fadeStride = .02f;
+
     // Start is called before the first frame update
     void Start()
     {
         if (!killable)
             killable = GetComponent<OAKillable>();
+
+        if (!despawner)
+            despawner = GetComponent<OADespawner>();
 
         killable.AddDeathListener(OnDeath);
     }
@@ -36,6 +45,8 @@ public class OADeathActivater : MonoBehaviour
         {
             limb.OnRagdoll();
         }
+
+        despawner.Despawn();
     }
 
     [ContextMenu("Debug: necromancer?")]
