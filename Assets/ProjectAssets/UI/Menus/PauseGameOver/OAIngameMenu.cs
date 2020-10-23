@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+enum GameState
+{
+    Running,
+    Paused,
+    PlayerDead
+}
+
 public class OAIngameMenu : MonoBehaviour
 {
     [SerializeField]
@@ -23,10 +30,9 @@ public class OAIngameMenu : MonoBehaviour
     [SerializeField]
     Button mainMenuBtn;
 
-
     OAKillable playerKillable;
 
-    bool hasDied = false;
+    GameState gameState = GameState.Running;
 
     void Start()
     {
@@ -40,33 +46,67 @@ public class OAIngameMenu : MonoBehaviour
         playerKillable.AddDeathListener(OnDied);
     }
 
+    void Update()
+    {
+        // Set time scale to 0 if we have paused
+        Time.timeScale = (gameState == GameState.Paused) ? 0 : 1;
+
+        if (!Input.GetKeyDown(KeyCode.Escape))
+        {
+            return;
+        }
+
+        switch(gameState)
+        {
+            case GameState.Running:
+                OnPause();
+                break;
+            case GameState.Paused:
+                OnResume();
+                break;
+            case GameState.PlayerDead:
+                break;
+        }
+
+    }
+
     void OnDied()
     {
-        hasDied = true;
+        gameState = GameState.PlayerDead;
 
         menu.SetActive(true);
         pauseText.SetActive(false);
         deadText.SetActive(true);
     }
 
-    void Update()
+    void OnPause()
     {
-        if (hasDied)
-            return;
+        gameState = GameState.Paused;
+
+        menu.SetActive(true);
+        pauseText.SetActive(true);
+        deadText.SetActive(false);
+    }
+
+    void OnResume()
+    {
+        gameState = GameState.Running;
+        menu.SetActive(false);
     }
 
     public void OnQuitClick()
     {
-        Debug.Log("Quit");
+        Application.Quit();
     }
 
     public void OnRetryClick()
     {
-        Debug.Log("Retry");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene");
     }
 
     public void OnMainMenuClick()
     {
-        Debug.Log("Main menu");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
+
 }
