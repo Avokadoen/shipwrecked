@@ -13,6 +13,7 @@ public class OABulletPool :  MonoBehaviour
     [Tooltip("Prefab that is meant to be pooled")]
     private GameObject prefab;
 
+    [SerializeField]
     private List<OABallisticBullet> freePool;
     // private List<OABallisticBullet> takenPool; TODO: use this to reclaim bullets in the future
 
@@ -43,7 +44,7 @@ public class OABulletPool :  MonoBehaviour
 
     /// <summary>
     /// Retrieves the next object in the pool
-    /// Object will be recollected after max duration is reached
+    /// Object will be re-collected after max duration is reached
     /// Object will be null if there is no objects left in the pool
     /// </summary>
     /// <returns>A gameobject from the free pool</returns>
@@ -56,7 +57,6 @@ public class OABulletPool :  MonoBehaviour
         }
 
         var element = freePool[freeIndex];
-        // takenPool[takenPool.Count - 1] = element;
         freePool.SwapRemoveAt(freeIndex);
         element.transform.parent = null;
         return element;
