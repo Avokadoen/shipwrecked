@@ -42,7 +42,7 @@ public class OABallisticBullet : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
         col.gameObject.SendMessage("ApplyDamage", stats.baseDamage, SendMessageOptions.DontRequireReceiver); // TODO: this is probably terribly slow?
         pool.ReturnObject(this);
