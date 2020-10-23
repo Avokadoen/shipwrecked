@@ -52,19 +52,17 @@ public class OATideAnimator : MonoBehaviour
         startPos = transform.position;
         startPos.y -= lowTideDecline;
         transform.position = startPos;
-
-        onLowTide.AddListener(Test1);
-        onHighTide.AddListener(Test2);
+        
     }
 
-    void Test1()
+    public void AddLowTideListener(UnityAction call)
     {
-        Debug.Log("Lowtide!");
+        onLowTide.AddListener(call);
     }
 
-    void Test2()
+    public void AddHighTideListener(UnityAction call)
     {
-        Debug.Log("Hightide!");
+        onHighTide.AddListener(call);
     }
 
     void Update()
@@ -80,12 +78,10 @@ public class OATideAnimator : MonoBehaviour
         bool isUnderThreshold = tideState <= lowTideThreshold;
         if (isUnderThreshold && !wasUnderLowTideThresholdPrevious)
         {
-            Debug.Log(tideState);
             onLowTide.Invoke();
         }
         else if (!isUnderThreshold && wasUnderLowTideThresholdPrevious)
         {
-            Debug.Log(tideState);
             onHighTide.Invoke();
         }
         wasUnderLowTideThresholdPrevious = isUnderThreshold;
