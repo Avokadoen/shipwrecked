@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
@@ -12,11 +13,9 @@ public class OABgmTrackselector : MonoBehaviour
     private List<AudioClip> tracks;
 
     [SerializeField]
-    private AudioSource audioSource;
-
-    [SerializeField]
     private Vector2 breakRange;
 
+    private AudioSource audioSource;
     private float trackPlayedDuration;
     private float trackLength;
     private float trackBreak;
@@ -27,17 +26,14 @@ public class OABgmTrackselector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!audioSource)
-        {
-            audioSource = GetComponent<AudioSource>(); // adds audioSource if it's missing
-
-
-        }
+        audioSource = GetComponent<AudioSource>(); // adds audioSource if it's missing
 
         if (tracks.Count < 2)
         {
+#if UNITY_EDITOR
             Debug.LogError("OABgmTrackselector need atleast 2 tracks!");
-            UnityEditor.EditorApplication.isPlaying = false;
+            EditorApplication.isPlaying = false;
+#endif
         }
 
     }

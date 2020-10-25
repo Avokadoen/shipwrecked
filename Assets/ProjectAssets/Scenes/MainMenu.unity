@@ -548,7 +548,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1058828866}
         m_TargetAssemblyTypeName: OAMainMenu, Assembly-CSharp
-        m_MethodName: OnPlayBtnClick
+        m_MethodName: OnSettingBtnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -794,7 +794,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1058828866}
         m_TargetAssemblyTypeName: OAMainMenu, Assembly-CSharp
-        m_MethodName: OnPlayBtnClick
+        m_MethodName: OnQuitBtnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
