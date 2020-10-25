@@ -86,7 +86,7 @@ public class OAEnemySensors : MonoBehaviour
         front.Normalize();
         bool isInTargetRange = Mathf.Abs(targetDistance) < attackStats.range;
         var hitCount = Physics2D.RaycastNonAlloc(ratHead.position, front, hits, attackStats.range, playerAndBuldingLayer);
-        Debug.DrawRay(ratHead.position, front);
+
         animator.SetBool("isInAttackRange", isInTargetRange || hitCount > 0);
     }
 
