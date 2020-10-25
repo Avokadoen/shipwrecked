@@ -50,14 +50,13 @@ public class OABulletPool :  MonoBehaviour
     /// <returns>A gameobject from the free pool</returns>
     public OABallisticBullet GetNext()
     {
-        var freeIndex = freePool.Count - 1;
-        if (freeIndex < 0)
+        if (freePool.Count <= 0)
         {
             return null; // TODO: add to pool?
         }
 
-        var element = freePool[freeIndex];
-        freePool.SwapRemoveAt(freeIndex);
+        var element = freePool[0];
+        freePool.SwapRemoveAt(0);
         element.transform.parent = null;
         return element;
     }
