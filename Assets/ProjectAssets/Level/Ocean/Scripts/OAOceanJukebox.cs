@@ -11,6 +11,10 @@ public class OAOceanJukebox : MonoBehaviour
     [SerializeField]
     OATideAnimator tideAnimator;
 
+    [Tooltip("All caves in the level")]
+    [SerializeField]
+    List<OACaveTrigger> caveTriggers;
+
     [Tooltip("Theme for high tide")]
     [SerializeField]
     OAThemeTracks highTideTheme;
@@ -32,12 +36,16 @@ public class OAOceanJukebox : MonoBehaviour
     /// <summary>
     /// Used by cave triggers to play cave soundtrack
     /// </summary>
-    public void OnEnterCave()
+    public void OnEnterLeaveCave(OACaveTrigger.TriggerType triggerType)
     {
-        // TODO: implement this, also think about:
-        // - We need to deal with low tide taking priority
-        // - Avoid player abusing this trigger to break sound
-        Debug.LogError("OnEnterCave is not implemented");
+        // TODO: this will break when you are in a cave and then the 
+        //       tide changes to high-tide as it should set the track to cave track, but will change it to high tide track
+        if (currentId == lowTideThemeId)
+            return;
+
+        // TODO: Avoid player abusing this trigger to break sound
+        var trackId = (triggerType == OACaveTrigger.TriggerType.Enter) ? caveThemeId : highTideThemeId;
+        SetTheme(trackId);
     }
 
     // Start is called before the first frame update
@@ -53,6 +61,11 @@ public class OAOceanJukebox : MonoBehaviour
 
         tideAnimator.AddHighTideListener(OnHighTide);
         tideAnimator.AddLowTideListener(OnLowTide);
+
+        foreach (var cave in caveTriggers)
+        {
+            cave.AddListener(OnEnterLeaveCave);
+        }
     }
 
     void OnHighTide()
