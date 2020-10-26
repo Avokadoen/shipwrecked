@@ -6,18 +6,18 @@ public class OAPlayerSound : MonoBehaviour
 {
 
 	[SerializeField]
-	private OAAudioPlayer ground;
+	private OAAudioPlayer footstepPlayer;
 
 	[SerializeField]
-	private OAAudioPlayer water;
+	private OAAudioPlayer swimmingPlayer;
  
     public void PlayFootstepSound() 
     {
-		ground.PlayRandomClip();
+		footstepPlayer.PlayRandomClip();
     }
 
    public void PlaySwimmingSound() 
     {
-		water.PlayRandomClip();
+		swimmingPlayer.PlayRandomClip();
     }
 }
