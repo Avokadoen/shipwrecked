@@ -42,7 +42,8 @@ public class OADespawner : MonoBehaviour
             }
             yield return new WaitForSeconds(fadeStepDelay);
         }
-        
-        // TODO: supply to a pool 
+
+        // TODO: supply to a pool instead
+        Destroy(this.gameObject);
     }
 }

@@ -51,7 +51,9 @@ public class OAPlayerStateStore : MonoBehaviour
         animator.SetBool("isUnderWater", isUnderWater);
         landMovement.enabled = !isUnderWater;
         swimMovement.enabled = isUnderWater;
-        playerEquipment.SetEquipmentIndex(-1);
+
+        if (isUnderWater)
+            playerEquipment.SetEquipmentIndex(-1);
     }
 
     // Start is called before the first frame update
@@ -66,8 +68,14 @@ public class OAPlayerStateStore : MonoBehaviour
         playerEquipment = GetComponent<OAPlayerEquipment>();
 
         SetIsUnderWater(isUnderWater);
+        playerEquipment.SetEquipmentIndex(-1);
 
         groundLayer = LayerMask.NameToLayer("Ground");
+
+        // This fixes a bug that only occurs when we build (Currently only tested WebGL) where gravity
+        // does not affect the player. Probably some race-ish problem with land vs swim movement
+        rigid.isKinematic = false;
+        rigid.gravityScale = 1;
     }
 
     void Update()

@@ -49,8 +49,7 @@ public class OAEnemySensors : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        OAExtentions.AssertObjectNotNull(playerState, "Enemy is missing playerTransform");
-        OAExtentions.AssertObjectNotNull(shipTransform, "Enemy is missing shipTransform");
+        // OAExtentions.AssertObjectNotNull(shipTransform, "Enemy is missing shipTransform");
 
         OAExtentions.AssertObjectNotNull(moveStats, "Enemy is missing MovingEntity");
         OAExtentions.AssertObjectNotNull(attackStats, "Enemy is missing AttackStats");
@@ -67,6 +66,14 @@ public class OAEnemySensors : MonoBehaviour
         if (!selfKillable)
             selfKillable = GetComponent<OAKillable>();
 
+        // TODO: This is slow, use a manager (anti) pattern to supply these
+        playerState = GameObject.FindWithTag("Player").GetComponent<OAPlayerStateStore>();
+        // TODO: Also slow
+        // Find ocean and listen for hightide. When we reach hightide we kill the enemy
+        GameObject.FindWithTag("Ocean")
+            .GetComponent<OATideAnimator>()
+            .AddHighTideListener(selfKillable.Kill);
+
         playerAndBuldingLayer = LayerMask.GetMask(new string[] { "Player", "Building" });
         range = new Vector2(AttackStats.range * 1.2f, AttackStats.range);
     }
@@ -79,7 +86,7 @@ public class OAEnemySensors : MonoBehaviour
         front.Normalize();
         bool isInTargetRange = Mathf.Abs(targetDistance) < attackStats.range;
         var hitCount = Physics2D.RaycastNonAlloc(ratHead.position, front, hits, attackStats.range, playerAndBuldingLayer);
-        Debug.DrawRay(ratHead.position, front);
+
         animator.SetBool("isInAttackRange", isInTargetRange || hitCount > 0);
     }
 
@@ -101,4 +108,5 @@ public class OAEnemySensors : MonoBehaviour
             hits[i].collider.gameObject.SendMessage("ApplyDamage", AttackStats.damage, SendMessageOptions.DontRequireReceiver); // TODO: this is probably terribly slow?
         }
     }
+
 }
