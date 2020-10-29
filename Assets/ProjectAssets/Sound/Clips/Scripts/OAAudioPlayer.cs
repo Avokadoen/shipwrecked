@@ -17,9 +17,10 @@ public class OAAudioPlayer : MonoBehaviour
     AudioSource source;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        source = GetComponent<AudioSource>();    
+        source = GetComponent<AudioSource>();
+        source.playOnAwake = false;
     }
 
     // Update is called once per frame

@@ -12,6 +12,7 @@ public class OAThemeTracks : ScriptableObject
     public List<AudioClip> clips;
 
     [Tooltip("How long fade will take")]
+    [Min(0.1f)]
     public float fadeDuration = 1f;
 
     [Tooltip("How each song should fade in")]
