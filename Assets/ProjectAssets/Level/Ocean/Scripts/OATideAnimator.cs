@@ -27,6 +27,10 @@ public class OATideAnimator : MonoBehaviour
     [SerializeField]
     private float cycleDuration = 180;
 
+    [Tooltip("How far in the cycle in seconds the ocean is at start")]
+    [SerializeField]
+    private float cycleStartPosition = 0;
+
     [Tooltip("Delegate of low tide event")]
     [SerializeField]
     UnityEvent onLowTide;
@@ -48,7 +52,7 @@ public class OATideAnimator : MonoBehaviour
         lowTideDecline = Mathf.Abs(lowTideDecline);
 
 
-        cycleDurationPos = 0;
+        cycleDurationPos = cycleStartPosition;
         startPos = transform.position;
         startPos.y -= lowTideDecline;
         transform.position = startPos;
