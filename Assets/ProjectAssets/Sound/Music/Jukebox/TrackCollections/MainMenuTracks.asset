@@ -15,6 +15,7 @@ MonoBehaviour:
   pauseRndRange: {x: 0, y: 5}
   clips:
   - {fileID: 8300000, guid: 4771cfd1cf60da148b9ee8a5b766e2e5, type: 3}
+  fadeDuration: 10
   fadeIn:
     serializedVersion: 2
     m_Curve:

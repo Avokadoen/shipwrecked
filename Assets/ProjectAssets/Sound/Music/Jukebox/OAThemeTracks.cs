@@ -11,6 +11,9 @@ public class OAThemeTracks : ScriptableObject
     [Tooltip("All songs that should be grouped together i,e 'all main menu music'")]
     public List<AudioClip> clips;
 
+    [Tooltip("How long fade will take")]
+    public float fadeDuration = 1f;
+
     [Tooltip("How each song should fade in")]
     public AnimationCurve fadeIn;
 

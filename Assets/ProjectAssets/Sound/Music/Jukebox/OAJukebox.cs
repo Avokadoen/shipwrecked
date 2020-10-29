@@ -76,6 +76,7 @@ public class OAJukebox : MonoBehaviour
 
         // TODO: avoid previous track if possible
         int trackIndex = Random.Range(0, selected.clips.Count);
+
         source.clip = selected.clips[trackIndex];
         trackDuration = selected.clips[trackIndex].length;
         trackCursor = 0f;
@@ -85,7 +86,7 @@ public class OAJukebox : MonoBehaviour
         {
             source.volume = selected.fadeIn.Evaluate(time);
             yield return new WaitForFixedUpdate();
-            time += Time.fixedDeltaTime;
+            time += (Time.fixedDeltaTime / selected.fadeDuration);
         }
     }
 }
