@@ -77,7 +77,7 @@ public class OAJukebox : MonoBehaviour
         // TODO: avoid previous track if possible
         int trackIndex = Random.Range(0, selected.clips.Count);
         source.clip = selected.clips[trackIndex];
-        trackDuration = source.clip.length;
+        trackDuration = selected.clips[trackIndex].length;
         trackCursor = 0f;
         source.Play();
         time = 0f;
