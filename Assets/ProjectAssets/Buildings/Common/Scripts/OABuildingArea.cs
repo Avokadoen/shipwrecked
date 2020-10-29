@@ -39,6 +39,16 @@ public class OABuildingArea : MonoBehaviour
         textObject.SetActive(true);
     }
 
+    public void OnBuildingTierDestroyed()
+    {
+        if (currentBuilding > 1)
+            return;
+
+        buildings[currentBuilding].SetActive(false);
+        currentBuilding -= 1;
+        buildings[currentBuilding].SetActive(true);
+    }
+
     void OnTriggerStay2D(Collider2D col)
     {
         if (!CanBuild)
