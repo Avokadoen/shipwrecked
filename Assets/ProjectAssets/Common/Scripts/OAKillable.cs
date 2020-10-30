@@ -10,6 +10,10 @@ using UnityEngine.Events;
 /// </summary>
 public class OAKillable : MonoBehaviour
 {
+    [Tooltip("When the entity recieves damage")]
+    [SerializeField]
+    private UnityEvent onHurt;
+
     [SerializeField]
     private OAHealth healthStats = null;
 
@@ -42,7 +46,10 @@ public class OAKillable : MonoBehaviour
         if (health <= 0)
         {
             onDeath.Invoke();
+            return;
         }
+
+        onHurt.Invoke();
     }
 
     public void AddDeathListener(UnityAction call)
