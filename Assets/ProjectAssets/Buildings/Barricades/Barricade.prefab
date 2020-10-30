@@ -97,6 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48845a1220c20664f9539e81c809e862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onHurt:
+    m_PersistentCalls:
+      m_Calls: []
   healthStats: {fileID: 11400000, guid: 981e6a0abdcfbcb42b418682b837e2d6, type: 2}
   health: -1
   onDeath:
@@ -293,6 +296,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48845a1220c20664f9539e81c809e862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onHurt:
+    m_PersistentCalls:
+      m_Calls: []
   healthStats: {fileID: 11400000, guid: e1479d427c84ec94292502ce33a43fa7, type: 2}
   health: -1
   onDeath:
@@ -587,7 +593,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -1.36}
+  m_AnchoredPosition: {x: 0, y: 1.05}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &4072066865421754112
@@ -709,6 +715,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4998ffc2302e9947ae6e8d3bfa4b620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onBuilt:
+    m_PersistentCalls:
+      m_Calls: []
+  onDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
   textObject: {fileID: 4072066865421754124}
   timeToBuild: 1.5
   buildings:
@@ -859,6 +871,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48845a1220c20664f9539e81c809e862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onHurt:
+    m_PersistentCalls:
+      m_Calls: []
   healthStats: {fileID: 11400000, guid: a72451352f668c34ea5a20f071dfeadb, type: 2}
   health: -1
   onDeath:
