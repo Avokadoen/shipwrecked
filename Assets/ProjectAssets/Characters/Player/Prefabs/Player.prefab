@@ -25,12 +25,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1129640921907076762}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6484923415127592922}
-  m_RootOrder: 5
+  m_Father: {fileID: 6863157354909398736}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1102593504601644366
 AudioSource:
@@ -143,6 +143,117 @@ MonoBehaviour:
   pitchRange: {x: 0.5, y: 0.5}
   clips:
   - {fileID: 8300000, guid: 5196649f607e146369a6e0581952ce1a, type: 3}
+--- !u!82 &4201767603415475585
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5051115951825695508}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &5533769063812198329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5051115951825695508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5754771fdaaf1704f9cd4aaf75e5b22a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pitchRange: {x: 0.8, y: 1.2}
+  clips:
+  - {fileID: 8300000, guid: 3f9b188e97158425489b1dc6f6375e96, type: 3}
 --- !u!1 &5235779448058737274
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,12 +279,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5235779448058737274}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6484923415127592922}
-  m_RootOrder: 4
+  m_Father: {fileID: 6863157354909398736}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &4050733905353669464
 AudioSource:
@@ -286,6 +397,38 @@ MonoBehaviour:
   pitchRange: {x: 1, y: 1}
   clips:
   - {fileID: 8300000, guid: 8fc8f0838d4be4278a7676277b3fbcaf, type: 3}
+--- !u!1 &6159356483679602301
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6863157354909398736}
+  m_Layer: 8
+  m_Name: SoundPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6863157354909398736
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6159356483679602301}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4992679435029642221}
+  - {fileID: 3340636556767659007}
+  m_Father: {fileID: 6484923415127592922}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6484923414026451506
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,7 +529,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 2.8035364, y: 0.000049444723}
+  m_ConnectedAnchor: {x: 2.803588, y: 0.0000032511598}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -506,7 +649,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 3.243132, y: -0.000022961323}
+  m_ConnectedAnchor: {x: 3.2431395, y: 0.000045990382}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -625,7 +768,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -1.2204832, y: 0.8830568}
+  m_ConnectedAnchor: {x: -1.2204314, y: 0.8830106}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -748,7 +891,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.14870384, y: 10.53498}
+  m_ConnectedAnchor: {x: -0.14870384, y: 10.5349455}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1017,7 +1160,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 2.7457838, y: 0.00001198866}
+  m_ConnectedAnchor: {x: 2.7457907, y: -0.000021945343}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1168,7 +1311,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 2.5225856, y: -0.0000049106106}
+  m_ConnectedAnchor: {x: 2.5225513, y: -0.000007789245}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1528,7 +1671,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.016050868, y: -0.0103576705}
-  m_ConnectedAnchor: {x: 2.6505737, y: -0.12999018}
+  m_ConnectedAnchor: {x: 2.650602, y: -0.12992698}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1647,7 +1790,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 2.6169786, y: 0.000012936905}
+  m_ConnectedAnchor: {x: 2.6170104, y: 0.000027092994}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1807,8 +1950,7 @@ Transform:
   - {fileID: 3224795561987137329}
   - {fileID: 385712051556700569}
   - {fileID: 6484923414437214678}
-  - {fileID: 3340636556767659007}
-  - {fileID: 4992679435029642221}
+  - {fileID: 6863157354909398736}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1905,8 +2047,8 @@ MonoBehaviour:
   - {fileID: 6484923414678198545}
   - {fileID: 6484923414262958173}
   m_Bounds:
-    m_Center: {x: -3.0609636, y: 19.340126, z: 0}
-    m_Extent: {x: 12.162678, y: 13.624413, z: 0}
+    m_Center: {x: -3.0609636, y: 19.340096, z: 0}
+    m_Extent: {x: 12.162678, y: 13.624443, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!95 &6484923415127592903
@@ -1996,6 +2138,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48845a1220c20664f9539e81c809e862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onHurt:
+    m_PersistentCalls:
+      m_Calls: []
   healthStats: {fileID: 11400000, guid: 25e845927caa27c4a8d4c92e652ba967, type: 2}
   health: -1
   onDeath:
@@ -2271,7 +2416,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 2.9958, y: 0.000031427884}
+  m_ConnectedAnchor: {x: 2.9958272, y: -0.0000325116}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -2391,7 +2536,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 10.737586, y: -2.7259724}
+  m_ConnectedAnchor: {x: 10.737656, y: -2.7259696}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -2621,7 +2766,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 4.0445223, y: -0.060909666}
+  m_ConnectedAnchor: {x: 4.044459, y: -0.060881354}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -2741,7 +2886,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 3.0310102, y: 0.00007843425}
+  m_ConnectedAnchor: {x: 3.0309937, y: 0.000047683687}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -2861,7 +3006,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 2.8044834, y: 0.000052424955}
+  m_ConnectedAnchor: {x: 2.804419, y: 0.00007796011}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -3251,7 +3396,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.6175772, y: 1.4616071}
+  m_ConnectedAnchor: {x: -0.61755145, y: 1.461584}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -3361,24 +3506,57 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7831042024067847239, guid: c000d1c91d6e1ea45a70091aa1c2b82e, type: 3}
+      propertyPath: onFire.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7831042024067847239, guid: c000d1c91d6e1ea45a70091aa1c2b82e, type: 3}
+      propertyPath: onFire.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7831042024067847239, guid: c000d1c91d6e1ea45a70091aa1c2b82e, type: 3}
+      propertyPath: onFire.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7831042024067847239, guid: c000d1c91d6e1ea45a70091aa1c2b82e, type: 3}
+      propertyPath: onFire.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5533769063812198329}
+    - target: {fileID: 7831042024067847239, guid: c000d1c91d6e1ea45a70091aa1c2b82e, type: 3}
+      propertyPath: onFire.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: OAAudioPlayer, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7831042024067847239, guid: c000d1c91d6e1ea45a70091aa1c2b82e, type: 3}
+      propertyPath: onFire.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayRandomClip
+      objectReference: {fileID: 0}
+    - target: {fileID: 7831042024067847239, guid: c000d1c91d6e1ea45a70091aa1c2b82e, type: 3}
+      propertyPath: onFire.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c000d1c91d6e1ea45a70091aa1c2b82e, type: 3}
---- !u!4 &5051115951825695510 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7831042024067847238, guid: c000d1c91d6e1ea45a70091aa1c2b82e, type: 3}
-  m_PrefabInstance: {fileID: 3077181240178730832}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &51662162963873028 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3027494814969190996, guid: c000d1c91d6e1ea45a70091aa1c2b82e, type: 3}
   m_PrefabInstance: {fileID: 3077181240178730832}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 5051115951825695508}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c091570f6ed817c4d9d38e24eeb6d385, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &5051115951825695510 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7831042024067847238, guid: c000d1c91d6e1ea45a70091aa1c2b82e, type: 3}
+  m_PrefabInstance: {fileID: 3077181240178730832}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5051115951825695508 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7831042024067847236, guid: c000d1c91d6e1ea45a70091aa1c2b82e, type: 3}
+  m_PrefabInstance: {fileID: 3077181240178730832}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5567115620254860342
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3444,14 +3622,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 978996d439dac9446a994a18a11fffc8, type: 3}
---- !u!1 &3224795561987137340 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7026345852808338186, guid: 978996d439dac9446a994a18a11fffc8, type: 3}
-  m_PrefabInstance: {fileID: 5567115620254860342}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3224795561987137329 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7026345852808338183, guid: 978996d439dac9446a994a18a11fffc8, type: 3}
+  m_PrefabInstance: {fileID: 5567115620254860342}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3224795561987137340 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7026345852808338186, guid: 978996d439dac9446a994a18a11fffc8, type: 3}
   m_PrefabInstance: {fileID: 5567115620254860342}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7266781484352129694
