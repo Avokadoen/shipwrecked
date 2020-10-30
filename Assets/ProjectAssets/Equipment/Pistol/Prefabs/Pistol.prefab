@@ -97,6 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63430e3ee5d2dd344a005139e7d97f0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onFire:
+    m_PersistentCalls:
+      m_Calls: []
   bullets: {fileID: 7831042024067847232}
   fireCooldown: 0.2
   bulletSpawnXOffset: 0.5
@@ -115,6 +118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: 50
   prefab: {fileID: 1169819889637591576, guid: 4133cddeff36d26419b46e86dcf102b0, type: 3}
+  freePool: []
 --- !u!114 &3027494814969190996
 MonoBehaviour:
   m_ObjectHideFlags: 0

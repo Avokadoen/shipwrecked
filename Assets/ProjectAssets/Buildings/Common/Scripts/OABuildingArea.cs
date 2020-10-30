@@ -1,11 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 // TODO: Register event when user holds build button
 // TODO: Change text based on bound key to built button
 public class OABuildingArea : MonoBehaviour
 {
+    [Tooltip("When the building area gets a new (better) building")]
+    [SerializeField]
+    private UnityEvent onBuilt;
+
+    [Tooltip("When the building area gets destroyed one tier")]
+    [SerializeField]
+    private UnityEvent onDestroyed;
+
     [Tooltip("Child object that holds canvas for text")]
     [SerializeField]
     private GameObject textObject = null;
@@ -44,9 +53,12 @@ public class OABuildingArea : MonoBehaviour
         if (currentBuilding > 1)
             return;
 
+        // TODO: set previous health to full
         buildings[currentBuilding].SetActive(false);
         currentBuilding -= 1;
         buildings[currentBuilding].SetActive(true);
+
+        onDestroyed.Invoke();
     }
 
     void OnTriggerStay2D(Collider2D col)
@@ -64,7 +76,9 @@ public class OABuildingArea : MonoBehaviour
 
         if (buildButtonHeldDuration >= timeToBuild)
         {
+
             // TODO: check and drain resources at this stage
+            // TODO: set health of building to full, and set health of next building to full
             buildings[currentBuilding].SetActive(false);
             currentBuilding += 1;
             buildings[currentBuilding].SetActive(true);
@@ -72,6 +86,8 @@ public class OABuildingArea : MonoBehaviour
 
             if (!CanBuild)
                 textObject.SetActive(false);
+
+            onBuilt.Invoke();
         }
     }
 
