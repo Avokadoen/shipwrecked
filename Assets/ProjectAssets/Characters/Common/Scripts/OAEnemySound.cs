@@ -21,3 +21,4 @@ public class OAEnemySound : MonoBehaviour
 		attackPlayer.PlayRandomClip();
 	}
 }
+ 
