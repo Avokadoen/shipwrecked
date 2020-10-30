@@ -43,13 +43,19 @@ public class OAKillable : MonoBehaviour
     {
         health -= damage;
 
-        if (health <= 0)
+        if (health + damage <= 0) // if we did not die in this call
         {
-            onDeath.Invoke();
             return;
         }
 
-        onHurt.Invoke();
+        if (health <= 0)
+        {
+            onDeath.Invoke();
+        }
+        else
+        {
+            onHurt.Invoke();
+        }
     }
 
     public void AddDeathListener(UnityAction call)
