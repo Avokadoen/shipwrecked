@@ -53,7 +53,7 @@ public class OABuildingArea : MonoBehaviour
         if (currentBuilding > 1)
             return;
 
-
+        // TODO: set previous health to full
         buildings[currentBuilding].SetActive(false);
         currentBuilding -= 1;
         buildings[currentBuilding].SetActive(true);
@@ -78,6 +78,7 @@ public class OABuildingArea : MonoBehaviour
         {
 
             // TODO: check and drain resources at this stage
+            // TODO: set health of building to full, and set health of next building to full
             buildings[currentBuilding].SetActive(false);
             currentBuilding += 1;
             buildings[currentBuilding].SetActive(true);
