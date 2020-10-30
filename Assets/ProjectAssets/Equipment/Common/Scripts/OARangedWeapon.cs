@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class OARangedWeapon : MonoBehaviour
 {
+    [SerializeField]
+    private UnityEvent onFire = new UnityEvent();
+
     [SerializeField]
     private OABulletPool bullets;
 
@@ -39,6 +43,8 @@ public class OARangedWeapon : MonoBehaviour
             var bullet = bullets.GetNext();
             if (bullet)
             {
+                onFire.Invoke();
+
                 var direction = Vector3.right.Rotate2D(transform.eulerAngles.z);
                 Vector3 spawn = transform.position + (direction * bulletSpawnXOffset);
                 spawn.y += bulletSpawnYOffset;
