@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OAResource : MonoBehaviour
+[CreateAssetMenu(fileName = "Resource", menuName = "OceanAlien/Resource")]
+public class OAResource : ScriptableObject
 {
     public enum Type
     {
         Unset,
-        Wood,
-        Scale
+        ShinyScale,
+        BlueScale,
+        Spike,
     }
 
 
@@ -20,13 +22,4 @@ public class OAResource : MonoBehaviour
     [SerializeField]
     Type instanceType = Type.Unset;
     public Type InstanceType { get => instanceType; }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        if (instanceType == Type.Unset)
-        {
-            Debug.LogError("OAResource has instanceType of Unset");
-        }
-    }
 }

@@ -6,8 +6,9 @@ using UnityEngine;
 public class OAPlayerInventory : MonoBehaviour
 {
     Dictionary<OAResource.Type, uint> resources = new Dictionary<OAResource.Type, uint>(){
-        {OAResource.Type.Scale, 0},
-        {OAResource.Type.Wood, 0}
+        {OAResource.Type.ShinyScale, 0},
+        {OAResource.Type.BlueScale, 0},
+        {OAResource.Type.Spike, 0},
     };
 
     void Awake()
@@ -18,6 +19,12 @@ public class OAPlayerInventory : MonoBehaviour
             Debug.LogError("OAPlayerInventory initialized resources with wrong count");
 #endif
     }
+
+    public bool CanWithdraw(OAResource resource)
+    {
+        return resources[resource.InstanceType] >= resource.Amount;
+    }
+
 
     public void OnPickup(OAResource resource)
     {
@@ -31,7 +38,7 @@ public class OAPlayerInventory : MonoBehaviour
     /// <returns>True on success, false otherwise</returns>
     public bool OnWithdrawResource(OAResource resource) 
     {
-        if (resources[resource.InstanceType] < resource.Amount)
+        if (!CanWithdraw(resource))
             return false;
 
         resources[resource.InstanceType] -= resource.Amount;

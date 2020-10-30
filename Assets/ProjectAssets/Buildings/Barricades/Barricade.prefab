@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4593694870336984521}
   - component: {fileID: 4318911524806399824}
   - component: {fileID: 2779292463041424320}
+  - component: {fileID: 1216151258472383370}
   m_Layer: 11
   m_Name: BarricadeSpikes
   m_TagString: Untagged
@@ -117,6 +118,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1216151258472383370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403922315478949704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c04e11e9e0400fd429f9bb1814502ae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: {fileID: 11400000, guid: 54c6d9904ae10e540bc71d45ba97247e, type: 2}
 --- !u!1 &3303246877036327910
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,6 +225,7 @@ GameObject:
   - component: {fileID: 5560147214003263870}
   - component: {fileID: 5891538703023886763}
   - component: {fileID: 3163270024881953648}
+  - component: {fileID: 4284587557471649942}
   m_Layer: 11
   m_Name: BarricadeArmor
   m_TagString: Untagged
@@ -342,6 +357,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 15.18, y: 9.2}
   m_EdgeRadius: 0
+--- !u!114 &4284587557471649942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3745752065916943639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c04e11e9e0400fd429f9bb1814502ae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: {fileID: 11400000, guid: 50a041795630cf144a5a0da976786575, type: 2}
 --- !u!1 &4072066865153387027
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,6 +514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4072066865170603463}
   - component: {fileID: 4072066865170603480}
+  - component: {fileID: 5456783218702927046}
   m_Layer: 12
   m_Name: Unbuilt
   m_TagString: Untagged
@@ -558,6 +587,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5456783218702927046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4072066865170603462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c04e11e9e0400fd429f9bb1814502ae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: {fileID: 0}
 --- !u!1 &4072066865421754124
 GameObject:
   m_ObjectHideFlags: 0
@@ -724,10 +766,10 @@ MonoBehaviour:
   textObject: {fileID: 4072066865421754124}
   timeToBuild: 1.5
   buildings:
-  - {fileID: 4072066865170603462}
-  - {fileID: 5015480291657181026}
-  - {fileID: 3745752065916943639}
-  - {fileID: 1403922315478949704}
+  - {fileID: 5456783218702927046}
+  - {fileID: 1475267008158708339}
+  - {fileID: 4284587557471649942}
+  - {fileID: 1216151258472383370}
 --- !u!50 &4072066866085774301
 Rigidbody2D:
   serializedVersion: 4
@@ -761,6 +803,7 @@ GameObject:
   - component: {fileID: 6311980558678867123}
   - component: {fileID: 6030113171826809196}
   - component: {fileID: 595913353462281425}
+  - component: {fileID: 1475267008158708339}
   m_Layer: 11
   m_Name: Barricade
   m_TagString: Untagged
@@ -891,6 +934,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1475267008158708339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5015480291657181026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c04e11e9e0400fd429f9bb1814502ae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: {fileID: 11400000, guid: d7fb2b0b46eec7d4b91ad580f1534ef6, type: 2}
 --- !u!1 &6890812939234391223
 GameObject:
   m_ObjectHideFlags: 0

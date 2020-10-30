@@ -25,11 +25,17 @@ public class OABuildingArea : MonoBehaviour
 
     [Tooltip("Buildings you can build from this area\n0 is the default, 1 is the first ...")]
     [SerializeField]
-    private List<GameObject> buildings;
+    private List<OABuildingCost> buildings;
+
+    private OAPlayerInventory inventory;
 
     private int currentBuilding = 0;
     private bool CanBuild {
-        get { return currentBuilding < buildings.Count - 1; }
+        get {
+            bool isMaxed = currentBuilding < buildings.Count - 1;
+            bool canAfford = inventory.CanWithdraw(buildings[currentBuilding].Cost);
+            return isMaxed && canAfford;
+        }
     }
 
     private float buildButtonHeldDuration;
@@ -38,6 +44,7 @@ public class OABuildingArea : MonoBehaviour
     void Start()
     {
         OAExtentions.AssertObjectNotNull(textObject, "OABuildingArea missing textObject");
+        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<OAPlayerInventory>();
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -54,9 +61,9 @@ public class OABuildingArea : MonoBehaviour
             return;
 
         // TODO: set previous health to full
-        buildings[currentBuilding].SetActive(false);
+        buildings[currentBuilding].gameObject.SetActive(false);
         currentBuilding -= 1;
-        buildings[currentBuilding].SetActive(true);
+        buildings[currentBuilding].gameObject.SetActive(true);
 
         onDestroyed.Invoke();
     }
@@ -76,12 +83,13 @@ public class OABuildingArea : MonoBehaviour
 
         if (buildButtonHeldDuration >= timeToBuild)
         {
+            bool didWithdraw = inventory.OnWithdrawResource(buildings[currentBuilding + 1].Cost);
 
             // TODO: check and drain resources at this stage
             // TODO: set health of building to full, and set health of next building to full
-            buildings[currentBuilding].SetActive(false);
+            buildings[currentBuilding].gameObject.SetActive(false);
             currentBuilding += 1;
-            buildings[currentBuilding].SetActive(true);
+            buildings[currentBuilding].gameObject.SetActive(true);
             buildButtonHeldDuration = 0;
 
             if (!CanBuild)

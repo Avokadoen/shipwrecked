@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class OABuildingCost : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [Tooltip("The cost of building this structure")]
+    [SerializeField]
+    private OAResource cost;
+    public OAResource Cost { get => cost; }
 }
