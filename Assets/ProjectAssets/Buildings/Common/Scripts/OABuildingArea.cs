@@ -17,6 +17,7 @@ public class OABuildingArea : MonoBehaviour
     [Tooltip("Buildings you can build from this area\n0 is the default, 1 is the first ...")]
     [SerializeField]
     private List<GameObject> buildings;
+
     private int currentBuilding = 0;
     private bool CanBuild {
         get { return currentBuilding < buildings.Count - 1; }
@@ -38,6 +39,16 @@ public class OABuildingArea : MonoBehaviour
         textObject.SetActive(true);
     }
 
+    public void OnBuildingTierDestroyed()
+    {
+        if (currentBuilding > 1)
+            return;
+
+        buildings[currentBuilding].SetActive(false);
+        currentBuilding -= 1;
+        buildings[currentBuilding].SetActive(true);
+    }
+
     void OnTriggerStay2D(Collider2D col)
     {
         if (!CanBuild)
@@ -46,15 +57,18 @@ public class OABuildingArea : MonoBehaviour
         if (Input.GetAxis("Build") > 0)
         {
             buildButtonHeldDuration += Time.deltaTime;
+        } else
+        {
+            buildButtonHeldDuration = 0;
         }
 
         if (buildButtonHeldDuration >= timeToBuild)
         {
             // TODO: check and drain resources at this stage
-            // TODO: move all enemies outside of collider
             buildings[currentBuilding].SetActive(false);
             currentBuilding += 1;
             buildings[currentBuilding].SetActive(true);
+            buildButtonHeldDuration = 0;
 
             if (!CanBuild)
                 textObject.SetActive(false);

@@ -52,6 +52,8 @@ public class OAEnemySpawner : MonoBehaviour
                 enemy.transform.position = transform.position;
             }
         }
+
+        tideCycleCount += 1;
     }
 
     void OnLowTideEnd()

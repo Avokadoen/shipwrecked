@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c0431d7cd6920048b68c65aa089eb20, type: 3}
+  m_Name: CaveTracks
+  m_EditorClassIdentifier: 
+  pauseRndRange: {x: 0, y: 0}
+  clips:
+  - {fileID: 8300000, guid: ba4c5a890f36fe6418a73d5c91878a4c, type: 3}
+  - {fileID: 8300000, guid: 3f75bce4e8b7d4da3b3f3bb6c8afeba8, type: 3}
+  fadeDuration: 2
+  fadeIn:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  fadeOut:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.0041675568
+      value: 1
+      inSlope: -0.318391
+      outSlope: -0.318391
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.1983483
+    - serializedVersion: 3
+      time: 1.0041646
+      value: 0.0000017993152
+      inSlope: -2.9435163
+      outSlope: -2.9435163
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.041320313
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
