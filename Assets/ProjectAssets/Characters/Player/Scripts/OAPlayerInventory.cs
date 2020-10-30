@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Not to be confused with OAPlayerEquipment
-[ExecuteInEditMode]
 public class OAPlayerInventory : MonoBehaviour
 {
     Dictionary<OAResource.Type, uint> resources = new Dictionary<OAResource.Type, uint>(){
@@ -33,9 +32,7 @@ public class OAPlayerInventory : MonoBehaviour
     public bool OnWithdrawResource(OAResource resource) 
     {
         if (resources[resource.InstanceType] < resource.Amount)
-        {
             return false;
-        }
 
         resources[resource.InstanceType] -= resource.Amount;
         return true;
