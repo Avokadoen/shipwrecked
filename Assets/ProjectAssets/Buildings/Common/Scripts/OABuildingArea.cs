@@ -32,16 +32,16 @@ public class OABuildingArea : MonoBehaviour
     private int currentBuilding = 0;
     private bool CanBuild {
         get {
-            bool isMaxed = currentBuilding < buildings.Count - 1;
-            bool canAfford = inventory.CanWithdraw(buildings[currentBuilding].Cost);
-            return isMaxed && canAfford;
+            // remove the base building from count
+            bool isMaxed = currentBuilding >= buildings.Count - 1;
+            return !isMaxed && inventory.CanWithdraw(buildings[currentBuilding + 1].Cost);
         }
     }
 
     private float buildButtonHeldDuration;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         OAExtentions.AssertObjectNotNull(textObject, "OABuildingArea missing textObject");
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<OAPlayerInventory>();

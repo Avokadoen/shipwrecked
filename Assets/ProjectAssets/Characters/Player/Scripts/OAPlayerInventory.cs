@@ -6,9 +6,9 @@ using UnityEngine;
 public class OAPlayerInventory : MonoBehaviour
 {
     Dictionary<OAResource.Type, uint> resources = new Dictionary<OAResource.Type, uint>(){
-        {OAResource.Type.ShinyScale, 0},
-        {OAResource.Type.BlueScale, 0},
-        {OAResource.Type.Spike, 0},
+        {OAResource.Type.ShinyScale, 100},
+        {OAResource.Type.BlueScale, 100},
+        {OAResource.Type.Spike, 100},
     };
 
     void Awake()
@@ -22,6 +22,7 @@ public class OAPlayerInventory : MonoBehaviour
 
     public bool CanWithdraw(OAResource resource)
     {
+        Debug.Log(resource.InstanceType);
         return resources[resource.InstanceType] >= resource.Amount;
     }
 
