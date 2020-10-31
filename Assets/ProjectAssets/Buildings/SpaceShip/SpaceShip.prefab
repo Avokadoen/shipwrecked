@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 8346333977200126801}
   - component: {fileID: 7295015911284637624}
   - component: {fileID: 1194665808}
+  - component: {fileID: 5099824569964274024}
   m_Layer: 11
   m_Name: Fixed
   m_TagString: Untagged
@@ -243,6 +244,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 12.917519, y: 20.319044}
   m_EdgeRadius: 0
+--- !u!114 &5099824569964274024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796459149908446875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c04e11e9e0400fd429f9bb1814502ae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: {fileID: 11400000, guid: 9154036ac1582064fb74626ff018f362, type: 2}
 --- !u!1 &4318747217623380063
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,6 +349,7 @@ GameObject:
   - component: {fileID: 7465164770752647796}
   - component: {fileID: 8963088271427526410}
   - component: {fileID: 116768765}
+  - component: {fileID: 2098827546520287570}
   m_Layer: 11
   m_Name: Broken
   m_TagString: Untagged
@@ -433,6 +448,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 12.917519, y: 20.319044}
   m_EdgeRadius: 0
+--- !u!114 &2098827546520287570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6716551031879649919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c04e11e9e0400fd429f9bb1814502ae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: {fileID: 11400000, guid: 14956b7a75563d143b80bd317f254d69, type: 2}
 --- !u!1 &7856975076613960043
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,7 +474,7 @@ GameObject:
   - component: {fileID: 8841127776949743471}
   - component: {fileID: 6294063517323882131}
   m_Layer: 12
-  m_Name: SpaceShip
+  m_Name: Spaceship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -507,11 +535,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4998ffc2302e9947ae6e8d3bfa4b620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onBuilt:
+    m_PersistentCalls:
+      m_Calls: []
+  onDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
   textObject: {fileID: 4318747217623380063}
   timeToBuild: 1.5
   buildings:
-  - {fileID: 6716551031879649919}
-  - {fileID: 1796459149908446875}
+  - {fileID: 2098827546520287570}
+  - {fileID: 5099824569964274024}
 --- !u!50 &6294063517323882131
 Rigidbody2D:
   serializedVersion: 4
