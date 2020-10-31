@@ -22,7 +22,6 @@ public class OAPlayerInventory : MonoBehaviour
 
     public bool CanWithdraw(OAResource resource)
     {
-        Debug.Log(resource.InstanceType);
         return resources[resource.InstanceType] >= resource.Amount;
     }
 
