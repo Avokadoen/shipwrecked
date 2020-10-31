@@ -133,6 +133,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: {fileID: 11400000, guid: 461b89e7e258678458d2463a2e83aec8, type: 2}
-  onPickup:
-    m_PersistentCalls:
-      m_Calls: []

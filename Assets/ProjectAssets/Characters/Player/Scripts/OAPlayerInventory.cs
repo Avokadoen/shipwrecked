@@ -1,14 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 // Not to be confused with OAPlayerEquipment
 public class OAPlayerInventory : MonoBehaviour
 {
+    [SerializeField]
+    private UnityEvent onPickup;
+
     Dictionary<OAResource.Type, uint> resources = new Dictionary<OAResource.Type, uint>(){
-        {OAResource.Type.ShinyScale, 100},
-        {OAResource.Type.BlueScale, 100},
-        {OAResource.Type.Spike, 100},
+        {OAResource.Type.ShinyScale, 0},
+        {OAResource.Type.BlueScale, 0},
+        {OAResource.Type.Spike, 0},
     };
 
     void Awake()
@@ -28,6 +32,7 @@ public class OAPlayerInventory : MonoBehaviour
 
     public void OnPickup(OAResource resource)
     {
+        onPickup.Invoke();
         resources[resource.InstanceType] += resource.Amount;
     }
 
