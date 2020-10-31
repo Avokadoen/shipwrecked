@@ -70,7 +70,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c515ee6334064514b875b7bac85b5d01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnable:
-  - {fileID: 5449274053428198464, guid: 5112bba9c9246734d88d21af902564d9, type: 3}
-  - {fileID: 4979725919897823806, guid: df34879293f6a334db70b07c90a37f72, type: 3}
-  - {fileID: 3235117850347381834, guid: 28f8d9de9a7b4c842a4eed8b387d6775, type: 3}
+  config: {fileID: 11400000, guid: 8c60a72cad79796439b093006add2054, type: 2}
+  tide: {fileID: 0}
+  inventory: {fileID: 0}

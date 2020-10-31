@@ -3,7 +3,7 @@ using UnityEngine;
 
 // Only support BoxCollider2D for now
 [RequireComponent(typeof(BoxCollider2D))]
-public class OAPickupSpawnPoint : MonoBehaviour
+public class OAPickupSpawnPoint : MonoBehaviour, IOAResourceMaster
 {
     // TODO: probability distribution 
     [SerializeField]
@@ -14,6 +14,10 @@ public class OAPickupSpawnPoint : MonoBehaviour
 
     [SerializeField]
     private OAPlayerInventory inventory;
+
+    [Tooltip("Will make it spawn when Start is called")]
+    [SerializeField]
+    private bool spawnOnStart = false;
 
     // store all spawned elements
     private List<OAPickupable> spawned = new List<OAPickupable>();
@@ -34,6 +38,9 @@ public class OAPickupSpawnPoint : MonoBehaviour
 
         tide.AddHighTideListener(OnHighTide);
         tide.AddLowTideListener(DespawnAll);
+
+        if (spawnOnStart)
+            OnHighTide();
     }
 
     public void OnHighTide()
