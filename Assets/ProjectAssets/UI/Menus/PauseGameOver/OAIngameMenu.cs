@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// State of game
 enum GameState
 {
     Running,
@@ -43,7 +44,7 @@ public class OAIngameMenu : MonoBehaviour
         mainMenuBtn.onClick.AddListener(OnMainMenuClick);
 
         playerKillable = GameObject.FindWithTag("Player").GetComponent<OAKillable>();
-        playerKillable.AddDeathListener(OnDied);
+        playerKillable.OnDeath.AddListener(OnDied);
     }
 
     void Update()

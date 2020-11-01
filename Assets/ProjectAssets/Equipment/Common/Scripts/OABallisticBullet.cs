@@ -1,11 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class OABallisticBullet : MonoBehaviour
 {
+    [Tooltip("When the bullet hits something")]
     [SerializeField]
+    private UnityEvent onHit;
+
     [Tooltip("The properties of the bullet")]
+    [SerializeField]
     private OABulletStats stats;
 
     [SerializeField]
@@ -44,6 +49,7 @@ public class OABallisticBullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
+        onHit.Invoke();
         col.gameObject.SendMessage("ApplyDamage", stats.baseDamage, SendMessageOptions.DontRequireReceiver); // TODO: this is probably terribly slow?
         pool.ReturnObject(this);
     }

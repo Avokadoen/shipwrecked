@@ -31,7 +31,7 @@ public class OADeathActivater : MonoBehaviour
         if (!despawner)
             despawner = GetComponent<OADespawner>();
 
-        killable.AddDeathListener(OnDeath);
+        killable.OnDeath.AddListener(OnDeath);
     }
 
     void OnDeath()
