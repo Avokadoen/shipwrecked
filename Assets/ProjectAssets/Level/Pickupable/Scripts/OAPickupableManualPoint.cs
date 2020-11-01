@@ -31,5 +31,8 @@ public class OAPickupableManualPoint: MonoBehaviour, IOAResourceMaster
         inventory.OnPickup(pickup.Value);
 
         Destroy(pickup.gameObject);
+
+        if (children.Count == 0)
+            Destroy(gameObject);
     }
 }

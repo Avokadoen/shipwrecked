@@ -62,9 +62,9 @@ public class OAPickupSpawnPoint : MonoBehaviour, IOAResourceMaster
             return;
 
         state = PersonalTideState.HighTide;
-        tideCount += 1;
         var spawnCount = config.initialSpawnCount + (config.spawnScaling * tideCount);
-        SpawnStuff((int) Mathf.Floor(spawnCount));
+        tideCount += 1;
+        SpawnStuff((int)Mathf.Floor(spawnCount));
     }
 
     public void SpawnStuff(int amount)

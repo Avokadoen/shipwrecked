@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5628bd7d8a9cfa4b9275da03269c3f8, type: 3}
   m_Name: RatStandard
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1976064644, guid: e84dcebb393f60f47b043817d3a8e7d2, type: 3}
+  prefabSensor: {fileID: 1976064644, guid: e84dcebb393f60f47b043817d3a8e7d2, type: 3}
+  prefabKillable: {fileID: 1976064643, guid: e84dcebb393f60f47b043817d3a8e7d2, type: 3}
   initialSpawnCount: 1
   spawnScaleRate: 5
