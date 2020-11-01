@@ -34,10 +34,12 @@ public class OATideAnimator : MonoBehaviour
     [Tooltip("Delegate of low tide event")]
     [SerializeField]
     UnityEvent onLowTide;
+    public UnityEvent OnLowTide { get => onLowTide; }
 
     [Tooltip("Delegate of high tide event")]
     [SerializeField]
     UnityEvent onHighTide;
+    public UnityEvent OnHighTide { get => onHighTide; }
 
     private float cycleDurationPos;
     private float cycleDir = 1;
@@ -45,28 +47,18 @@ public class OATideAnimator : MonoBehaviour
     private Vector3 startPos;
     private Vector3 updatePos;
 
+
     // Start is called before the first frame update
     void Start()
     {
         // Negative values does not really make sense here, so we abs the value
         lowTideDecline = Mathf.Abs(lowTideDecline);
 
-
         cycleDurationPos = cycleStartPosition;
         startPos = transform.position;
         startPos.y -= lowTideDecline;
         transform.position = startPos;
         
-    }
-
-    public void AddLowTideListener(UnityAction call)
-    {
-        onLowTide.AddListener(call);
-    }
-
-    public void AddHighTideListener(UnityAction call)
-    {
-        onHighTide.AddListener(call);
     }
 
     void Update()

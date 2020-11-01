@@ -24,6 +24,7 @@ public class OAKillable : MonoBehaviour
 
     [SerializeField]
     private UnityEvent onDeath;
+    public UnityEvent OnDeath { get => onDeath; }
 
     // Start is called before the first frame update
     void Awake()
@@ -56,11 +57,6 @@ public class OAKillable : MonoBehaviour
         {
             onHurt.Invoke();
         }
-    }
-
-    public void AddDeathListener(UnityAction call)
-    {
-        onDeath.AddListener(call);
     }
 
     [ContextMenu("Debug: kill unit")]

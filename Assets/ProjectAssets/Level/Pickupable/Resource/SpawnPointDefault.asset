@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dd01ae73eec22b4fa87b0802ac7ebaf, type: 3}
   m_Name: SpawnPointDefault
   m_EditorClassIdentifier: 
-  spawnable: []
-  initialSpawnCount: 0
-  spawnScaling: 0
+  spawnable:
+  - {fileID: 3235117850347381834, guid: 28f8d9de9a7b4c842a4eed8b387d6775, type: 3}
+  - {fileID: 5449274053428198464, guid: 5112bba9c9246734d88d21af902564d9, type: 3}
+  - {fileID: 4979725919897823806, guid: df34879293f6a334db70b07c90a37f72, type: 3}
+  initialSpawnCount: 1
+  spawnScaling: 1.5

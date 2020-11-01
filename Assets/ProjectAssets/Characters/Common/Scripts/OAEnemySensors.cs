@@ -68,11 +68,11 @@ public class OAEnemySensors : MonoBehaviour
 
         // TODO: This is slow, use a manager (anti) pattern to supply these
         playerState = GameObject.FindWithTag("Player").GetComponent<OAPlayerStateStore>();
-        // TODO: Also slow
         // Find ocean and listen for hightide. When we reach hightide we kill the enemy
         GameObject.FindWithTag("Ocean")
             .GetComponent<OATideAnimator>()
-            .AddHighTideListener(selfKillable.Kill);
+            .OnHighTide
+            .AddListener(selfKillable.Kill);
 
         playerAndBuldingLayer = LayerMask.GetMask(new string[] { "Player", "Building" });
         range = new Vector2(AttackStats.range * 1.2f, AttackStats.range);
