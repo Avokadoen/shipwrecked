@@ -11,6 +11,10 @@ public class OAOceanJukebox : MonoBehaviour
     [SerializeField]
     OATideAnimator tideAnimator;
 
+    [Tooltip("Enemy spawner")]
+    [SerializeField]
+    OAEnemySpawner spawner;
+
     [Tooltip("All caves in the level")]
     [SerializeField]
     List<OACaveTrigger> caveTriggers;
@@ -59,23 +63,14 @@ public class OAOceanJukebox : MonoBehaviour
 
         jukebox.SetTheme(highTideThemeId);
 
-        tideAnimator.AddHighTideListener(OnHighTide);
-        tideAnimator.AddLowTideListener(OnLowTide);
+        spawner.OnEradicated.AddListener(() => SetTheme(highTideThemeId));
+        tideAnimator.OnHighTide.AddListener(() => SetTheme(highTideThemeId));
+        tideAnimator.OnLowTide.AddListener(() => SetTheme(lowTideThemeId));
 
         foreach (var cave in caveTriggers)
         {
             cave.AddListener(OnEnterLeaveCave);
         }
-    }
-
-    void OnHighTide()
-    {
-        SetTheme(highTideThemeId);
-    }
-
-    void OnLowTide()
-    {
-        SetTheme(lowTideThemeId);
     }
 
     void SetTheme(int id)

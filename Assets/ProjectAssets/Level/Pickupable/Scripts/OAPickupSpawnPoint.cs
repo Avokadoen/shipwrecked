@@ -5,12 +5,23 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class OAPickupSpawnPoint : MonoBehaviour, IOAResourceMaster
 {
+    // TODO: make tide emit hightide on wave clear to avoid having this type of logic all over the place ...
+    private enum PersonalTideState
+    {
+        Unset,
+        HighTide,
+        LowTide
+    }
+
     // TODO: probability distribution 
     [SerializeField]
     private OAPickupableSpawnConfig config;
 
     [SerializeField]
     private OATideAnimator tide;
+
+    [SerializeField]
+    private OAEnemySpawner spawner;
 
     [SerializeField]
     private OAPlayerInventory inventory;
@@ -25,7 +36,8 @@ public class OAPickupSpawnPoint : MonoBehaviour, IOAResourceMaster
 
     private BoxCollider2D spawnArea;
 
-    private uint tideCount = 0; 
+    private uint tideCount = 0;
+    private PersonalTideState state = PersonalTideState.Unset;
 
     void Start()
     {
@@ -36,8 +48,9 @@ public class OAPickupSpawnPoint : MonoBehaviour, IOAResourceMaster
 
         spawnArea = GetComponent<BoxCollider2D>();
 
-        tide.AddHighTideListener(OnHighTide);
-        tide.AddLowTideListener(DespawnAll);
+        spawner.OnEradicated.AddListener(OnHighTide);
+        tide.OnHighTide.AddListener(OnHighTide);
+        tide.OnLowTide.AddListener(DespawnAll);
 
         if (spawnOnStart)
             OnHighTide();
@@ -45,6 +58,10 @@ public class OAPickupSpawnPoint : MonoBehaviour, IOAResourceMaster
 
     public void OnHighTide()
     {
+        if (state == PersonalTideState.HighTide)
+            return;
+
+        state = PersonalTideState.HighTide;
         tideCount += 1;
         var spawnCount = config.initialSpawnCount + (config.spawnScaling * tideCount);
         SpawnStuff((int) Mathf.Floor(spawnCount));
@@ -93,6 +110,7 @@ public class OAPickupSpawnPoint : MonoBehaviour, IOAResourceMaster
     // TODO: animation for this (Playe pop sound, visual cue ...)
     public void DespawnAll()
     {
+        state = PersonalTideState.LowTide;
         for (var i = spawned.Count - 1; i >= 0; i--)
         {
             MoveItem(spawned, prevSpawned, i, false);

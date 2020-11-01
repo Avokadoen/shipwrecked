@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 // Currently we only have one enemy so we keep this simpler than it should be ...
@@ -19,47 +20,47 @@ public class OAEnemySpawner : MonoBehaviour
     [SerializeField]
     OATideAnimator tides;
 
-    // [Tooltip("The sequence enemies spawn in. Make sure the count of this list is the sum on all pool data")]
-    // [SerializeField]
-    // List<int> indexSpawnSequence;
+    UnityEvent onEradicated = new UnityEvent();
+    public UnityEvent OnEradicated { get => onEradicated; }
 
-    bool isLowTide = false;
+    int waveCount = 0;
+
     int tideCycleCount = 1;
 
     // Start is called before the first frame update
     void Start()
     {
-        tides.AddLowTideListener(OnLowTideBegin);
-        tides.AddHighTideListener(OnLowTideEnd);
-    }
-
-    private void Update()
-    {
-        if (!isLowTide)
-            return;
+        tides.OnLowTide.AddListener(OnLowTideBegin);
     }
 
     void OnLowTideBegin()
     {
-        isLowTide = true;
+        waveCount = 0;
 
         foreach (var prototype in initialWave)
         {
+            waveCount += 1;
             var spawnCount = Mathf.Floor(prototype.initialSpawnCount * tideCycleCount * spawnRateScale);
             for (int i = 0; i < spawnCount; i++)
             {
-                var enemy = Instantiate(prototype.prefab);
-                enemy.transform.position = transform.position;
+                var killable = Instantiate(prototype.prefabKillable);
+                killable.transform.position = transform.position;
+
+                killable.OnDeath.AddListener(OnDead);
             }
         }
 
         tideCycleCount += 1;
     }
 
-    void OnLowTideEnd()
+
+    void OnDead()
     {
-        isLowTide = true;
-        // TODO: each enemy should despawn here
-        //       Probably do this decentralized (Each rat listens)
+        waveCount -= 1;
+
+        if (waveCount == 0)
+        {
+            onEradicated.Invoke();
+        }
     }
 }

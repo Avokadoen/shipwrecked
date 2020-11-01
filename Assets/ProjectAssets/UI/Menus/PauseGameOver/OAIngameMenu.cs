@@ -43,7 +43,7 @@ public class OAIngameMenu : MonoBehaviour
         mainMenuBtn.onClick.AddListener(OnMainMenuClick);
 
         playerKillable = GameObject.FindWithTag("Player").GetComponent<OAKillable>();
-        playerKillable.AddDeathListener(OnDied);
+        playerKillable.OnDeath.AddListener(OnDied);
     }
 
     void Update()
