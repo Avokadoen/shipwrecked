@@ -1620,6 +1620,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onDeathSelf:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1976064644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1689,7 +1692,7 @@ MonoBehaviour:
   - {fileID: 44252165}
   - {fileID: 59333732}
   killable: {fileID: 1976064643}
-  despawner: {fileID: 0}
+  despawner: {fileID: 3677677486270703457}
   fadeStepDelay: 0.1
   fadeStride: 0.02
 --- !u!114 &3677677486270703457

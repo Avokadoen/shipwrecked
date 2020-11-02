@@ -8,6 +8,13 @@ using UnityEngine.Events;
 // TODO: use pooling instead of destroying and creating new enemies
 public class OAEnemySpawner : MonoBehaviour
 {
+    private struct EnemyReference
+    {
+        public OAKillable killableRef;
+        public OADespawner despawnRef;
+        public OADeathActivater deathActivaterRef;
+    }
+
     [Tooltip("How much the spawning should scale for each wave")]
     [SerializeField]
     float spawnRateScale = 1.2f;
@@ -31,6 +38,9 @@ public class OAEnemySpawner : MonoBehaviour
 
     int tideCycleCount = 1;
 
+    List<EnemyReference> spawned = new List<EnemyReference>();
+    List<EnemyReference> prevSpawned = new List<EnemyReference>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,14 +60,37 @@ public class OAEnemySpawner : MonoBehaviour
             var spawnCount = Mathf.Floor(prototype.initialSpawnCount * tideCycleCount * spawnRateScale);
             for (int i = 0; i < spawnCount; i++)
             {
-                var killable = Instantiate(prototype.prefabKillable);
-                killable.transform.position = transform.position;
+                if (prevSpawned.Count > 0)
+                {
+                    prevSpawned[0].killableRef.Revive();
+                    prevSpawned[0].deathActivaterRef.OnRespawn();
+                    prevSpawned[0].killableRef.transform.position = transform.position;
 
-                tides.OnHighTide.AddListener(killable.Kill);
-                killable.OnDeath.AddListener(OnDead);
+                    MoveItem(prevSpawned, spawned, 0, true);
+                } else
+                {
+                    var killable = Instantiate(prototype.prefabKillable);
+                    killable.transform.position = transform.position;
+                    killable.transform.parent = transform;
 
-                var sensor = killable.GetComponent<OAEnemySensors>();
-                sensor.PlayerState = playerState;
+                    tides.OnHighTide.AddListener(killable.Kill);
+                    killable.OnDeathSelf.AddListener(OnDead);
+
+                    var sensor = killable.GetComponent<OAEnemySensors>();
+                    sensor.PlayerState = playerState;
+
+                    var despawner = killable.GetComponent<OADespawner>();
+                    despawner.OnDespawnSelf.AddListener(OnDespawn);
+
+                    var deathActivater = killable.GetComponent<OADeathActivater>();
+
+                    EnemyReference enemy;
+                    enemy.killableRef = killable;
+                    enemy.despawnRef = despawner;
+                    enemy.deathActivaterRef = deathActivater;
+
+                    spawned.Add(enemy);
+                }
             }
         }
 
@@ -65,7 +98,7 @@ public class OAEnemySpawner : MonoBehaviour
     }
 
 
-    void OnDead()
+    void OnDead(OAKillable dead)
     {
         waveCount -= 1;
 
@@ -73,5 +106,21 @@ public class OAEnemySpawner : MonoBehaviour
         {
             onEradicated.Invoke();
         }
+    }
+
+    void OnDespawn(OADespawner despawner)
+    {
+        var index = spawned.FindIndex(e => e.despawnRef == despawner);
+        MoveItem(spawned, prevSpawned, index, false);
+    }
+
+
+    // TODO: move this to OAExtensions
+    private void MoveItem(List<EnemyReference> from, List<EnemyReference> to, int index, bool active)
+    {
+        var pickup = from[index];
+        pickup.killableRef.gameObject.SetActive(active);
+        to.Add(pickup);
+        from.SwapRemoveAt(index);
     }
 }

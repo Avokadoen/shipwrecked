@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class OADespawner : MonoBehaviour
 {
+    private UnityEvent<OADespawner> onDespawnSelf = new UnityEvent<OADespawner>();
+    public UnityEvent<OADespawner> OnDespawnSelf { get => onDespawnSelf; }
+
+
     [SerializeField]
     private List<SpriteRenderer> srList = new List<SpriteRenderer>();
 
@@ -13,6 +18,7 @@ public class OADespawner : MonoBehaviour
 
     public float fadeStepDelay = .1f;
     public float fadeStride = .02f;
+
 
     public void Start()
     {
@@ -43,7 +49,7 @@ public class OADespawner : MonoBehaviour
             yield return new WaitForSeconds(fadeStepDelay);
         }
 
-        // TODO: supply to a pool instead
-        Destroy(this.gameObject);
+        // so that pooling can retake object
+        onDespawnSelf.Invoke(this);
     }
 }

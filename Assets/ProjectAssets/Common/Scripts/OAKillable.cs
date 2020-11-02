@@ -26,11 +26,18 @@ public class OAKillable : MonoBehaviour
     private UnityEvent onDeath;
     public UnityEvent OnDeath { get => onDeath; }
 
+    [SerializeField]
+    private UnityEvent<OAKillable> onDeathSelf;
+    public UnityEvent<OAKillable> OnDeathSelf { get => onDeathSelf; }
+
     // Start is called before the first frame update
     void Awake()
     {
         if (onDeath == null)
             onDeath = new UnityEvent();
+
+        if (onDeathSelf == null)
+            onDeathSelf = new UnityEvent<OAKillable>();
 
         OAExtentions.AssertObjectNotNull(healthStats, "OAKillable missing healthStats");
 
@@ -52,6 +59,7 @@ public class OAKillable : MonoBehaviour
         if (health <= 0)
         {
             onDeath.Invoke();
+            OnDeathSelf.Invoke(this);
         }
         else
         {
@@ -59,9 +67,17 @@ public class OAKillable : MonoBehaviour
         }
     }
 
+    public void Revive()
+    {
+        health = healthStats.maxHealth;
+    }
+
     [ContextMenu("Debug: kill unit")]
     public void Kill()
     {
+        if (health <= 0)
+            return;
+
         ApplyDamage(healthStats.maxHealth);
     }
 
