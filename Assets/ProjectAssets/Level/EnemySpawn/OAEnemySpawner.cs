@@ -16,6 +16,10 @@ public class OAEnemySpawner : MonoBehaviour
     [SerializeField]
     List<OAEnemyPoolPrototype> initialWave;
 
+    [Tooltip("Player state, used to supply enemies with reference")]
+    [SerializeField]
+    OAPlayerStateStore playerState;
+
     [Tooltip("Tide animator that animates the scene ocean")]
     [SerializeField]
     OATideAnimator tides;
@@ -31,6 +35,9 @@ public class OAEnemySpawner : MonoBehaviour
     void Start()
     {
         tides.OnLowTide.AddListener(OnLowTideBegin);
+
+        if (!playerState)
+            playerState = GameObject.FindWithTag("Player").GetComponent<OAPlayerStateStore>();
     }
 
     void OnLowTideBegin()
@@ -46,7 +53,11 @@ public class OAEnemySpawner : MonoBehaviour
                 var killable = Instantiate(prototype.prefabKillable);
                 killable.transform.position = transform.position;
 
+                tides.OnHighTide.AddListener(killable.Kill);
                 killable.OnDeath.AddListener(OnDead);
+
+                var sensor = killable.GetComponent<OAEnemySensors>();
+                sensor.PlayerState = playerState;
             }
         }
 
