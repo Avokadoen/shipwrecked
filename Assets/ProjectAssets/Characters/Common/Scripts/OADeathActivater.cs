@@ -61,5 +61,7 @@ public class OADeathActivater : MonoBehaviour
         {
             limb.OnRigid();
         }
+
+        despawner.Respawn();
     }
 }

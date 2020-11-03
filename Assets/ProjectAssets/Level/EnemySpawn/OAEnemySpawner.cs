@@ -31,6 +31,10 @@ public class OAEnemySpawner : MonoBehaviour
     [SerializeField]
     OATideAnimator tides;
 
+    [Tooltip("How long the spawner should wait between each enemy \nX is the lowest possible value (Inclusive) \nY is the highest possible value (Inclusive)")]
+    [SerializeField]
+    Vector2 spawnIntervalRndRange = new Vector2(0.1f, 2f);
+
     UnityEvent onEradicated = new UnityEvent();
     public UnityEvent OnEradicated { get => onEradicated; }
 
@@ -44,20 +48,22 @@ public class OAEnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tides.OnLowTide.AddListener(OnLowTideBegin);
+        tides.OnLowTide.AddListener(() => StartCoroutine(OnLowTideBegin()));
+        tides.OnHighTide.AddListener(() => StopAllCoroutines());
 
         if (!playerState)
             playerState = GameObject.FindWithTag("Player").GetComponent<OAPlayerStateStore>();
     }
 
-    void OnLowTideBegin()
+    IEnumerator OnLowTideBegin()
     {
         waveCount = 0;
 
         foreach (var prototype in initialWave)
         {
-            waveCount += 1;
-            var spawnCount = Mathf.Floor(prototype.initialSpawnCount * tideCycleCount * spawnRateScale);
+            
+            var spawnCount = (int) Mathf.Floor(prototype.initialSpawnCount * tideCycleCount * spawnRateScale);
+            waveCount += spawnCount;
             for (int i = 0; i < spawnCount; i++)
             {
                 if (prevSpawned.Count > 0)
@@ -91,6 +97,8 @@ public class OAEnemySpawner : MonoBehaviour
 
                     spawned.Add(enemy);
                 }
+                float waitTime = Random.Range(spawnIntervalRndRange.x, spawnIntervalRndRange.y);
+                yield return new WaitForSeconds(waitTime);
             }
         }
 

@@ -3080,6 +3080,14 @@ PrefabInstance:
       propertyPath: playerState
       value: 
       objectReference: {fileID: 27188994}
+    - target: {fileID: 6136351883673771233, guid: 3b29e6b407c60124e990e5b2fd235e6d, type: 3}
+      propertyPath: spawnIntervalRndRange.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6136351883673771233, guid: 3b29e6b407c60124e990e5b2fd235e6d, type: 3}
+      propertyPath: spawnIntervalRndRange.x
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 6136351883673771234, guid: 3b29e6b407c60124e990e5b2fd235e6d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -325.48
@@ -3232,11 +3240,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: cycleStartPosition
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: cycleDuration
-      value: 100
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8462571354843226871, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: playerState

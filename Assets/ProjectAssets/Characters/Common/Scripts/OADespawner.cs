@@ -12,10 +12,6 @@ public class OADespawner : MonoBehaviour
     [SerializeField]
     private List<SpriteRenderer> srList = new List<SpriteRenderer>();
 
-    // TODO: Enemy pool 
-    //[SerializeField]
-    //private GameObject parentObject = null;
-
     public float fadeStepDelay = .1f;
     public float fadeStride = .02f;
 
@@ -24,6 +20,19 @@ public class OADespawner : MonoBehaviour
     {
         if (srList.Count < 0)
             Debug.LogError("OADespawner srList is 0 in length");
+    }
+
+    /// <summary>
+    /// Resets material alpha to 1
+    /// </summary>
+    public void Respawn()
+    {
+        foreach (var spriteRenderer in srList)
+        {
+            Color c = spriteRenderer.material.color;
+            c.a = 1f;
+            spriteRenderer.material.color = c;
+        }
     }
 
     /// <summary>
