@@ -9,11 +9,16 @@ public class OAPlayerInventory : MonoBehaviour
     [SerializeField]
     private UnityEvent onPickup;
 
+    [SerializeField]
+    private UnityEvent<OAResource.Type, uint> onResourceChange;
+    public UnityEvent<OAResource.Type, uint> OnResourceChange { get => onResourceChange; }
+
     Dictionary<OAResource.Type, uint> resources = new Dictionary<OAResource.Type, uint>(){
         {OAResource.Type.ShinyScale, 0},
         {OAResource.Type.BlueScale, 0},
         {OAResource.Type.Spike, 0},
     };
+
 
     void Awake()
     {
@@ -21,6 +26,9 @@ public class OAPlayerInventory : MonoBehaviour
         var targetCount = System.Enum.GetValues(typeof(OAResource.Type)).Length - 1;
         if (resources.Count != targetCount)
             Debug.LogError("OAPlayerInventory initialized resources with wrong count");
+
+        if (onResourceChange == null)
+            onResourceChange = new UnityEvent<OAResource.Type, uint>();
 #endif
     }
 
@@ -34,6 +42,7 @@ public class OAPlayerInventory : MonoBehaviour
     {
         onPickup.Invoke();
         resources[resource.InstanceType] += resource.Amount;
+        onResourceChange.Invoke(resource.InstanceType, resources[resource.InstanceType]);
     }
 
     /// <summary>
@@ -47,6 +56,8 @@ public class OAPlayerInventory : MonoBehaviour
             return false;
 
         resources[resource.InstanceType] -= resource.Amount;
+
+        onResourceChange.Invoke(resource.InstanceType, resources[resource.InstanceType]);
         return true;
     }
 }
