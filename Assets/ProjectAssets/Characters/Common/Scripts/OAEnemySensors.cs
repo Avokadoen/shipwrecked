@@ -12,7 +12,7 @@ public class OAEnemySensors : MonoBehaviour
 
     [SerializeField]
     private OAPlayerStateStore playerState;
-    public OAPlayerStateStore PlayerState { get => playerState; }
+    public OAPlayerStateStore PlayerState { get => playerState; set => playerState = value; }
 
     [SerializeField]
     private Transform shipTransform;
@@ -66,13 +66,7 @@ public class OAEnemySensors : MonoBehaviour
         if (!selfKillable)
             selfKillable = GetComponent<OAKillable>();
 
-        // TODO: This is slow, use a manager (anti) pattern to supply these
-        playerState = GameObject.FindWithTag("Player").GetComponent<OAPlayerStateStore>();
-        // Find ocean and listen for hightide. When we reach hightide we kill the enemy
-        GameObject.FindWithTag("Ocean")
-            .GetComponent<OATideAnimator>()
-            .OnHighTide
-            .AddListener(selfKillable.Kill);
+        
 
         playerAndBuldingLayer = LayerMask.GetMask(new string[] { "Player", "Building" });
         range = new Vector2(AttackStats.range * 1.2f, AttackStats.range);

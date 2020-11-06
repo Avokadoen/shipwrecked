@@ -8,7 +8,7 @@ enum GameState
 {
     Running,
     Paused,
-    PlayerDead
+    Unreverseable
 }
 
 public class OAIngameMenu : MonoBehaviour
@@ -18,6 +18,9 @@ public class OAIngameMenu : MonoBehaviour
 
     [SerializeField]
     GameObject pauseText;
+
+    [SerializeField]
+    GameObject youWonText;
 
     [SerializeField]
     GameObject menu;
@@ -65,15 +68,25 @@ public class OAIngameMenu : MonoBehaviour
             case GameState.Paused:
                 OnResume();
                 break;
-            case GameState.PlayerDead:
+            case GameState.Unreverseable:
                 break;
         }
 
     }
 
+    public void OnWin()
+    {
+        gameState = GameState.Unreverseable;
+
+        menu.SetActive(true);
+        youWonText.SetActive(true);
+        pauseText.SetActive(false);
+        deadText.SetActive(false);
+    }
+
     void OnDied()
     {
-        gameState = GameState.PlayerDead;
+        gameState = GameState.Unreverseable;
 
         menu.SetActive(true);
         pauseText.SetActive(false);

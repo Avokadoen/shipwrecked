@@ -261,6 +261,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onDeathSelf:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1216151258472383370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,6 +477,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onDeathSelf:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &3163270024881953648
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -578,7 +584,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Build (E)
+  m_text: Hold 'E' to build
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1102,6 +1108,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onDeathSelf:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1475267008158708339
 MonoBehaviour:
   m_ObjectHideFlags: 0

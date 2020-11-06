@@ -1,23 +1,38 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class OADespawner : MonoBehaviour
 {
+    private UnityEvent<OADespawner> onDespawnSelf = new UnityEvent<OADespawner>();
+    public UnityEvent<OADespawner> OnDespawnSelf { get => onDespawnSelf; }
+
+
     [SerializeField]
     private List<SpriteRenderer> srList = new List<SpriteRenderer>();
 
-    // TODO: Enemy pool 
-    //[SerializeField]
-    //private GameObject parentObject = null;
-
     public float fadeStepDelay = .1f;
     public float fadeStride = .02f;
+
 
     public void Start()
     {
         if (srList.Count < 0)
             Debug.LogError("OADespawner srList is 0 in length");
+    }
+
+    /// <summary>
+    /// Resets material alpha to 1
+    /// </summary>
+    public void Respawn()
+    {
+        foreach (var spriteRenderer in srList)
+        {
+            Color c = spriteRenderer.material.color;
+            c.a = 1f;
+            spriteRenderer.material.color = c;
+        }
     }
 
     /// <summary>
@@ -43,7 +58,7 @@ public class OADespawner : MonoBehaviour
             yield return new WaitForSeconds(fadeStepDelay);
         }
 
-        // TODO: supply to a pool instead
-        Destroy(this.gameObject);
+        // so that pooling can retake object
+        onDespawnSelf.Invoke(this);
     }
 }
