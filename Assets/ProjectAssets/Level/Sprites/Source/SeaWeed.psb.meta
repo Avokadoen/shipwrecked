@@ -255,7 +255,52 @@ ScriptedImporter:
     mosaicPosition: {x: 4, y: 1459}
   characterData:
     bones: []
-    parts: []
+    parts:
+    - spritePosition:
+        x: 129
+        y: 768
+        width: 401
+        height: 1210
+      spriteId: 27bad4e1f71621443a88a081fa211de2
+      bones: 
+      parentGroup: 0
+      order: 0
+    - spritePosition:
+        x: 428
+        y: 639
+        width: 487
+        height: 1198
+      spriteId: b5820831bed9f2f4c952b07bbb3d2e90
+      bones: 
+      parentGroup: 0
+      order: 0
+    - spritePosition:
+        x: 563
+        y: 441
+        width: 793
+        height: 1428
+      spriteId: 3bbb9072d3db07445b6c1164438bb278
+      bones: 
+      parentGroup: 0
+      order: 0
+    - spritePosition:
+        x: 759
+        y: 236
+        width: 999
+        height: 1447
+      spriteId: 7cf8e1527a01d8648b130a9fdca4dca8
+      bones: 
+      parentGroup: 0
+      order: 0
+    - spritePosition:
+        x: 891
+        y: 121
+        width: 1206
+        height: 1124
+      spriteId: 29d8b889c130be44c83f38c121428f29
+      bones: 
+      parentGroup: 0
+      order: 0
     dimension: {x: 0, y: 0}
     characterGroups: []
   generateGOHierarchy: 0
