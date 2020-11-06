@@ -117,7 +117,7 @@ public class OAPickupSpawnPoint : MonoBehaviour, IOAResourceMaster
         }
     }
 
-
+    // TODO: move this to OAExtensions
     private void MoveItem(List<OAPickupable> from, List<OAPickupable> to, int index, bool active)
     {
         var pickup = from[index];

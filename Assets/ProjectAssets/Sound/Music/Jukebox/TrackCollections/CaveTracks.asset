@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseRndRange: {x: 0, y: 0}
   clips:
-  - {fileID: 8300000, guid: ba4c5a890f36fe6418a73d5c91878a4c, type: 3}
   - {fileID: 8300000, guid: 3f75bce4e8b7d4da3b3f3bb6c8afeba8, type: 3}
   fadeDuration: 2
   fadeIn:
