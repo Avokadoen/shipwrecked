@@ -13,6 +13,8 @@ public class OAHUDEquipmentAssigner : MonoBehaviour
     [SerializeField]
     int slotStridePx = 10;
 
+    List<RectTransform> equipmentHud = new List<RectTransform>();
+
     // TODO: start function
 
     public void RegisterEquipmentHudElements(in List<OAEquipment> equipments)
@@ -35,6 +37,16 @@ public class OAHUDEquipmentAssigner : MonoBehaviour
             Vector3 newPos = objectRectTransform.localPosition;
             newPos.x += slotStridePx * i;
             objectRectTransform.localPosition = newPos;
+
+            equipmentHud.Add(objectRectTransform);
+        }
+    }
+
+    public void SetActiveEquipmentHud(bool active)
+    {
+        foreach(var eqHud in equipmentHud)
+        {
+            eqHud.gameObject.SetActive(active);
         }
     }
 }
