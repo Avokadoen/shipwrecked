@@ -46,6 +46,9 @@ public class OAMessagePanel : MonoBehaviour
     [SerializeField]
     Animator anim;
 
+    private UnityEvent onMessageComplete;
+    public UnityEvent OnMessageComplete { get => onMessageComplete; }
+
     private OAAudioPlayer audioPlayer;
     private AudioSource source;
 
@@ -56,6 +59,9 @@ public class OAMessagePanel : MonoBehaviour
         source = GetComponent<AudioSource>();
 
         anim.SetInteger("status", (int)Status.Idle);
+
+        if (onMessageComplete == null)
+            onMessageComplete = new UnityEvent();
     }
 
     [ContextMenu("test")]
@@ -131,6 +137,8 @@ public class OAMessagePanel : MonoBehaviour
         }
 
         source.Stop();
+
+        onMessageComplete.Invoke();
 
         yield return new WaitForSeconds(closePanelDelay);
 
