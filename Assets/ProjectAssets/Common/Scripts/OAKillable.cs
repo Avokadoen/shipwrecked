@@ -14,6 +14,11 @@ public class OAKillable : MonoBehaviour
     [SerializeField]
     private UnityEvent onHurt;
 
+    [Tooltip("When the entity recieves damage")]
+    [SerializeField]
+    private UnityEvent<int> onHurtHealth;
+    public UnityEvent<int> OnHurtHealth { get => onHurtHealth; }
+
     [SerializeField]
     private OAHealth healthStats = null;
 
@@ -39,6 +44,9 @@ public class OAKillable : MonoBehaviour
         if (onDeathSelf == null)
             onDeathSelf = new UnityEvent<OAKillable>();
 
+        if (onHurtHealth == null)
+            onHurtHealth = new UnityEvent<int>();
+
         OAExtentions.AssertObjectNotNull(healthStats, "OAKillable missing healthStats");
 
         if (health <= 0)
@@ -53,6 +61,7 @@ public class OAKillable : MonoBehaviour
 
         if (health + damage <= 0) // if we did not die in this call
         {
+            onHurtHealth.Invoke(health);
             return;
         }
 

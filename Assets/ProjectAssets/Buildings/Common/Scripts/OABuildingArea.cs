@@ -10,6 +10,7 @@ public class OABuildingArea : MonoBehaviour
     [Tooltip("When the building area gets a new (better) building")]
     [SerializeField]
     private UnityEvent onBuilt;
+    public UnityEvent OnBuilt { get => onBuilt; }
 
     [Tooltip("When the building area gets destroyed one tier")]
     [SerializeField]
@@ -37,6 +38,7 @@ public class OABuildingArea : MonoBehaviour
             return !isMaxed && inventory.CanWithdraw(buildings[currentBuilding + 1].Cost);
         }
     }
+
 
     private float buildButtonHeldDuration;
 

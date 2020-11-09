@@ -155,7 +155,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8346333977200126801
 Transform:
   m_ObjectHideFlags: 0
@@ -311,6 +311,7 @@ MonoBehaviour:
   vmCamPlayer: {fileID: 0}
   vmCamShip: {fileID: 0}
   playerState: {fileID: 0}
+  hud: {fileID: 0}
 --- !u!1 &2461349829579066507
 GameObject:
   m_ObjectHideFlags: 0
