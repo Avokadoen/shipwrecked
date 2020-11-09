@@ -44,7 +44,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.544
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -241,11 +241,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48845a1220c20664f9539e81c809e862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthStats: {fileID: 11400000, guid: 981e6a0abdcfbcb42b418682b837e2d6, type: 2}
+  health: -1
   onHurt:
     m_PersistentCalls:
       m_Calls: []
-  healthStats: {fileID: 11400000, guid: 981e6a0abdcfbcb42b418682b837e2d6, type: 2}
-  health: -1
+  onHurtHealth:
+    m_PersistentCalls:
+      m_Calls: []
   onDeath:
     m_PersistentCalls:
       m_Calls:
@@ -457,11 +460,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48845a1220c20664f9539e81c809e862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthStats: {fileID: 11400000, guid: e1479d427c84ec94292502ce33a43fa7, type: 2}
+  health: -1
   onHurt:
     m_PersistentCalls:
       m_Calls: []
-  healthStats: {fileID: 11400000, guid: e1479d427c84ec94292502ce33a43fa7, type: 2}
-  health: -1
+  onHurtHealth:
+    m_PersistentCalls:
+      m_Calls: []
   onDeath:
     m_PersistentCalls:
       m_Calls:
@@ -1088,11 +1094,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48845a1220c20664f9539e81c809e862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthStats: {fileID: 11400000, guid: a72451352f668c34ea5a20f071dfeadb, type: 2}
+  health: -1
   onHurt:
     m_PersistentCalls:
       m_Calls: []
-  healthStats: {fileID: 11400000, guid: a72451352f668c34ea5a20f071dfeadb, type: 2}
-  health: -1
+  onHurtHealth:
+    m_PersistentCalls:
+      m_Calls: []
   onDeath:
     m_PersistentCalls:
       m_Calls:
@@ -1200,7 +1209,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0

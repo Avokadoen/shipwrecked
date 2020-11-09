@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+using ShipEmotion = OAMessageBroadcastBehaviour.ShipEmotion;
+
 // TODO: the dialog should be a state machine where we always go through tutorial state (maybe add options in setting to skip)
 [RequireComponent(typeof(OAAudioPlayer))]
 public class OAMessagePanel : MonoBehaviour
@@ -46,6 +48,14 @@ public class OAMessagePanel : MonoBehaviour
     [SerializeField]
     Animator anim;
 
+    [SerializeField]
+    Animator spaceshipPortrait;
+
+    [SerializeField]
+    OABuildingArea shipArea;
+
+    GameObject wreckedShip;
+
     private UnityEvent onMessageComplete;
     public UnityEvent OnMessageComplete { get => onMessageComplete; }
 
@@ -62,27 +72,22 @@ public class OAMessagePanel : MonoBehaviour
 
         if (onMessageComplete == null)
             onMessageComplete = new UnityEvent();
+
+        wreckedShip = GameObject.FindGameObjectWithTag("WreckedShip");
     }
 
-    [ContextMenu("test")]
-    void test()
-    {
-        SetMessage("This is a test of the set message. Does it work? I don't know. Let's find out. I make this string long to also test the playing of audio");
-    }
-
-    public void SetMessage(string message)
+    public void SetMessage(string message, ShipEmotion emotion)
     {
         profilePanel.SetActive(true);
         textPanel.gameObject.SetActive(true);
 
-
         StopAllCoroutines();
-        StartCoroutine(WriteMessage(message));
+        StartCoroutine(WriteMessage(message, emotion));
     }
 
     // SPAGHETTI WARNING!!! ! :'( 
     // TODO: rewrite all of this
-    IEnumerator WriteMessage(string message)
+    IEnumerator WriteMessage(string message, ShipEmotion emotion)
     {
         anim.SetInteger("status", (int)Status.Open);
 
@@ -102,6 +107,8 @@ public class OAMessagePanel : MonoBehaviour
 
         while (pos != message.Length)
         {
+            spaceshipPortrait.SetInteger("shipEmotion", wreckedShip.activeSelf ? (int) ShipEmotion.Dead : (int) emotion);
+
             if (audioDuration >= audioLength)
             {
                 audioLength = playDialogSound();
