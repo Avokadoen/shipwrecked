@@ -738,7 +738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb5765fcaf1f614e9dcc4f13f901b69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: Sandhilld.
+  message: The enemy creatures seems to be coming from those sand hills ...
   playDelay: 1
   disableNext: 0
   emotion: 3
@@ -1132,7 +1132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb5765fcaf1f614e9dcc4f13f901b69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: LowTide.
+  message: Low tide is begining ...
   playDelay: 0
   disableNext: 0
   emotion: 3
@@ -1207,7 +1207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb5765fcaf1f614e9dcc4f13f901b69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: Cave
+  message: These cave formation gives me the creeps
   playDelay: 1
   disableNext: 0
   emotion: 3
@@ -1373,7 +1373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: "Repair material found. \nPlease pick up the blue shells and come back
-    after to initiate repair.\n"
+    after to initiate repair\n"
   playDelay: 0
   disableNext: 0
   emotion: 0
@@ -1389,7 +1389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb5765fcaf1f614e9dcc4f13f901b69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: Mountain
+  message: You will have to repair me before you can see the top of those mountains
   playDelay: 1
   disableNext: 0
   emotion: 0
@@ -1462,7 +1462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb5765fcaf1f614e9dcc4f13f901b69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: Attack.
+  message: HEEEEEEEEELP!!
   playDelay: 0
   disableNext: 0
   emotion: 2
@@ -1596,7 +1596,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb5765fcaf1f614e9dcc4f13f901b69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: Boat.
+  message: My scanners seems to indicate that the structure is made by some unknown
+    intelligent lifeform
   playDelay: 1
   disableNext: 0
   emotion: 0
@@ -1845,7 +1846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb5765fcaf1f614e9dcc4f13f901b69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: High Tide.
+  message: High tide has arrived
   playDelay: 0
   disableNext: 0
   emotion: 0
