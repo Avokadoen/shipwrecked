@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ocean
+  - HUD
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Ground
   - PlayerProjectile
   - Pickupable
-  - 
+  - EnemySpawn
   - 
   - 
   - 

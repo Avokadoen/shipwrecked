@@ -13,7 +13,6 @@ public class OAAudioPlayer : MonoBehaviour
     [SerializeField]
     List<AudioClip> clips;
 
-
     AudioSource source;
 
     void Awake()

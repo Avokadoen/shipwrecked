@@ -8,7 +8,7 @@ enum GameState
 {
     Running,
     Paused,
-    PlayerDead
+    Unreverseable
 }
 
 public class OAIngameMenu : MonoBehaviour
@@ -18,6 +18,9 @@ public class OAIngameMenu : MonoBehaviour
 
     [SerializeField]
     GameObject pauseText;
+
+    [SerializeField]
+    GameObject youWonText;
 
     [SerializeField]
     GameObject menu;
@@ -30,6 +33,9 @@ public class OAIngameMenu : MonoBehaviour
 
     [SerializeField]
     Button mainMenuBtn;
+
+    [SerializeField]
+    GameObject inventory;
 
     OAKillable playerKillable;
 
@@ -47,10 +53,16 @@ public class OAIngameMenu : MonoBehaviour
         playerKillable.OnDeath.AddListener(OnDied);
     }
 
+    // TODO: clean this miss (convert to a state machine)
     void Update()
     {
         // Set time scale to 0 if we have paused
         Time.timeScale = (gameState == GameState.Paused) ? 0 : 1;
+
+        if (Input.GetKeyDown(KeyCode.Tab) && gameState == GameState.Running)
+        {
+            OnInventory();
+        }
 
         if (!Input.GetKeyDown(KeyCode.Escape))
         {
@@ -65,16 +77,41 @@ public class OAIngameMenu : MonoBehaviour
             case GameState.Paused:
                 OnResume();
                 break;
-            case GameState.PlayerDead:
+            case GameState.Unreverseable:
                 break;
         }
 
     }
 
+    public void OnWin()
+    {
+        gameState = GameState.Unreverseable;
+
+        inventory.SetActive(false);
+        menu.SetActive(true);
+        youWonText.SetActive(true);
+        pauseText.SetActive(false);
+        deadText.SetActive(false);
+    }
+
+    void OnInventory()
+    {
+        gameState = GameState.Running;
+
+        inventory.SetActive(!inventory.activeSelf);
+
+        youWonText.SetActive(false);
+        menu.SetActive(false);
+        pauseText.SetActive(false);
+        deadText.SetActive(false);
+    }
+
     void OnDied()
     {
-        gameState = GameState.PlayerDead;
+        gameState = GameState.Unreverseable;
 
+        inventory.SetActive(false);
+        youWonText.SetActive(false);
         menu.SetActive(true);
         pauseText.SetActive(false);
         deadText.SetActive(true);
@@ -84,6 +121,8 @@ public class OAIngameMenu : MonoBehaviour
     {
         gameState = GameState.Paused;
 
+        inventory.SetActive(false);
+        youWonText.SetActive(false);
         menu.SetActive(true);
         pauseText.SetActive(true);
         deadText.SetActive(false);

@@ -19,3 +19,6 @@ You can read our design document here *TODO LINK*
 - Ajanthan Jeyatharan - *TODO ROLE*
 - Elise Korsmo Fjeld - *TODO ROLE*
 
+# Sources:
+
+- Bubble sound - https://www.youtube.com/watch?v=yB5Taq3jdzM

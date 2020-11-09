@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 // Used to hold all shared state for the player. It also updates the animator and selects the correct
@@ -119,6 +118,11 @@ public class OAPlayerStateStore : MonoBehaviour
 
     void OnCollisionExit2D(Collision2D col)
     {
+        if (!gameObject.activeSelf)
+        {
+            return;
+        }
+
         if (col.gameObject.layer == groundLayer)
         {
             StartCoroutine(SmoothIsGrounded());
