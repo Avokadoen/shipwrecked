@@ -35,6 +35,9 @@ public class OAMessageBroadcastBehaviour : StateMachineBehaviour
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.SetBool("next", false);
+
+        hasPlayed = false;
+        playCount = 0;
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -48,9 +51,8 @@ public class OAMessageBroadcastBehaviour : StateMachineBehaviour
             return;
         }
        
-        var sendEmotion = animator.GetBool("isEmotionOverride") ? (ShipEmotion) animator.GetInteger("emotionOverrideValue") : emotion;
         var panel = animator.GetComponent<OAMessagePanelRef>().Panel;
-        panel.SetMessage(message, sendEmotion);
+        panel.SetMessage(message, emotion);
 
         if (!disableNext) 
             panel.OnMessageComplete.AddListener(() => animator.SetBool("next", true));

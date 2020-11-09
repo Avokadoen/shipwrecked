@@ -144,10 +144,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4240015963781407396}
   - component: {fileID: 4512023253867083738}
+  - component: {fileID: 8827830090503131627}
   - component: {fileID: 2959775806489136263}
-  m_Layer: 0
+  - component: {fileID: 5271340500896704727}
+  m_Layer: 11
   m_Name: Wrecked
-  m_TagString: Untagged
+  m_TagString: WreckedShip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -217,6 +219,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &8827830090503131627
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178734547468526388}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.06389141, y: 0.064068794}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 35.079998, y: 24.802656}
+    newSize: {x: 35.079998, y: 24.802656}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 12.917519, y: 20.319044}
+  m_EdgeRadius: 0
 --- !u!114 &2959775806489136263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,6 +258,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: {fileID: 11400000, guid: a0aac4e226737024fa2fda35b7f2ff76, type: 2}
+--- !u!114 &5271340500896704727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1178734547468526388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48845a1220c20664f9539e81c809e862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthStats: {fileID: 11400000, guid: a72451352f668c34ea5a20f071dfeadb, type: 2}
+  health: -1
+  onHurt:
+    m_PersistentCalls:
+      m_Calls: []
+  onHurtHealth:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeathSelf:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1796459149908446875
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,6 +1046,7 @@ GameObject:
   - component: {fileID: 8963088271427526410}
   - component: {fileID: 116768765}
   - component: {fileID: 2098827546520287570}
+  - component: {fileID: 320603007462137353}
   m_Layer: 11
   m_Name: Broken
   m_TagString: Untagged
@@ -1102,7 +1157,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c04e11e9e0400fd429f9bb1814502ae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: {fileID: 11400000, guid: 14956b7a75563d143b80bd317f254d69, type: 2}
+  cost: {fileID: 11400000, guid: a0aac4e226737024fa2fda35b7f2ff76, type: 2}
+--- !u!114 &320603007462137353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6716551031879649919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48845a1220c20664f9539e81c809e862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthStats: {fileID: 11400000, guid: a72451352f668c34ea5a20f071dfeadb, type: 2}
+  health: -1
+  onHurt:
+    m_PersistentCalls:
+      m_Calls: []
+  onHurtHealth:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8841127776949743471}
+        m_TargetAssemblyTypeName: OABuildingArea, Assembly-CSharp
+        m_MethodName: OnBuildingTierDestroyed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDeathSelf:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7856975076613960043
 GameObject:
   m_ObjectHideFlags: 0
@@ -1115,6 +1208,7 @@ GameObject:
   - component: {fileID: 5566033968265609666}
   - component: {fileID: 8841127776949743471}
   - component: {fileID: 6294063517323882131}
+  - component: {fileID: 3049547606901502810}
   m_Layer: 12
   m_Name: SpaceShip
   m_TagString: Untagged
@@ -1236,6 +1330,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3049547606901502810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7856975076613960043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71a0944a5b6663d459d612fec7ce7500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ocean: {fileID: 0}
+  spawner: {fileID: 0}
+  playerHealth: {fileID: 0}
+  shipHealth: []
+  shipArea: {fileID: 8841127776949743471}
+  onTakingDamageCooldownTime: 40
+  onPlayerHurtCooldownTime: 40
 --- !u!1 &8247262614575772612
 GameObject:
   m_ObjectHideFlags: 0

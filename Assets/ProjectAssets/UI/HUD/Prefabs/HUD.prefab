@@ -999,6 +999,7 @@ MonoBehaviour:
   textPanel: {fileID: 1156267358593089628}
   anim: {fileID: 5754249083640219156}
   spaceshipPortrait: {fileID: 8445632720539741569}
+  shipArea: {fileID: 0}
 --- !u!1 &4134793061362610487
 GameObject:
   m_ObjectHideFlags: 0

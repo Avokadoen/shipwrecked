@@ -1101,6 +1101,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b41a549e14e0ac7408da722837689ea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &554950122 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 320603007462137353, guid: 629b7cd0cb6eedd4290b0128689fb0f6, type: 3}
+  m_PrefabInstance: {fileID: 1355308226}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48845a1220c20664f9539e81c809e862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &557461686 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1220649182868475617, guid: 629b7cd0cb6eedd4290b0128689fb0f6, type: 3}
@@ -1798,6 +1809,17 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 4072066865170603480, guid: 3ef9a932874a4bd4781f56ce361e73e8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3ef9a932874a4bd4781f56ce361e73e8, type: 3}
+--- !u!114 &747064351 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5271340500896704727, guid: 629b7cd0cb6eedd4290b0128689fb0f6, type: 3}
+  m_PrefabInstance: {fileID: 1355308226}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48845a1220c20664f9539e81c809e862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &786127064 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 786127064, guid: b6fb36ffe24974d20bfb435fc39188c0, type: 3}
@@ -3364,6 +3386,30 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3049547606901502810, guid: 629b7cd0cb6eedd4290b0128689fb0f6, type: 3}
+      propertyPath: shipHealth.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3049547606901502810, guid: 629b7cd0cb6eedd4290b0128689fb0f6, type: 3}
+      propertyPath: playerHealth
+      value: 
+      objectReference: {fileID: 1960603092}
+    - target: {fileID: 3049547606901502810, guid: 629b7cd0cb6eedd4290b0128689fb0f6, type: 3}
+      propertyPath: spawner
+      value: 
+      objectReference: {fileID: 632556160}
+    - target: {fileID: 3049547606901502810, guid: 629b7cd0cb6eedd4290b0128689fb0f6, type: 3}
+      propertyPath: ocean
+      value: 
+      objectReference: {fileID: 1576219129}
+    - target: {fileID: 3049547606901502810, guid: 629b7cd0cb6eedd4290b0128689fb0f6, type: 3}
+      propertyPath: shipHealth.Array.data[0]
+      value: 
+      objectReference: {fileID: 747064351}
+    - target: {fileID: 3049547606901502810, guid: 629b7cd0cb6eedd4290b0128689fb0f6, type: 3}
+      propertyPath: shipHealth.Array.data[1]
+      value: 
+      objectReference: {fileID: 554950122}
     - target: {fileID: 7856975076613960043, guid: 629b7cd0cb6eedd4290b0128689fb0f6, type: 3}
       propertyPath: m_Name
       value: SpaceShip
@@ -4363,6 +4409,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4072066865170603463, guid: 3ef9a932874a4bd4781f56ce361e73e8, type: 3}
   m_PrefabInstance: {fileID: 1055324949}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1960603092 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 300322545, guid: 913d91de287df88408f26f726444cf2f, type: 3}
+  m_PrefabInstance: {fileID: 889731443}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48845a1220c20664f9539e81c809e862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1975352544 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4072066866085774298, guid: 3ef9a932874a4bd4781f56ce361e73e8, type: 3}
@@ -4790,11 +4847,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: cycleStartPosition
-      value: 26
+      value: 39
       objectReference: {fileID: 0}
     - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: cycleDuration
-      value: 80
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8462571354843226871, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: playerState

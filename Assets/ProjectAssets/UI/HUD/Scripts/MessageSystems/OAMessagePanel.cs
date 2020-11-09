@@ -54,6 +54,8 @@ public class OAMessagePanel : MonoBehaviour
     [SerializeField]
     OABuildingArea shipArea;
 
+    GameObject wreckedShip;
+
     private UnityEvent onMessageComplete;
     public UnityEvent OnMessageComplete { get => onMessageComplete; }
 
@@ -71,6 +73,7 @@ public class OAMessagePanel : MonoBehaviour
         if (onMessageComplete == null)
             onMessageComplete = new UnityEvent();
 
+        wreckedShip = GameObject.FindGameObjectWithTag("WreckedShip");
     }
 
     public void SetMessage(string message, ShipEmotion emotion)
@@ -78,15 +81,13 @@ public class OAMessagePanel : MonoBehaviour
         profilePanel.SetActive(true);
         textPanel.gameObject.SetActive(true);
 
-        spaceshipPortrait.SetInteger("shipEmotion", (int) emotion);
-
         StopAllCoroutines();
-        StartCoroutine(WriteMessage(message));
+        StartCoroutine(WriteMessage(message, emotion));
     }
 
     // SPAGHETTI WARNING!!! ! :'( 
     // TODO: rewrite all of this
-    IEnumerator WriteMessage(string message)
+    IEnumerator WriteMessage(string message, ShipEmotion emotion)
     {
         anim.SetInteger("status", (int)Status.Open);
 
@@ -106,6 +107,8 @@ public class OAMessagePanel : MonoBehaviour
 
         while (pos != message.Length)
         {
+            spaceshipPortrait.SetInteger("shipEmotion", wreckedShip.activeSelf ? (int) ShipEmotion.Dead : (int) emotion);
+
             if (audioDuration >= audioLength)
             {
                 audioLength = playDialogSound();

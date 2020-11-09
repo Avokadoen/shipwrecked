@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 using PoiId = OAPointOfInterest.PoiId;
+
+// TODO: event timers should be their own class or something
 
 public class OASpaceShipSensor : MonoBehaviour
 {
@@ -17,29 +20,60 @@ public class OASpaceShipSensor : MonoBehaviour
     OAKillable playerHealth;
 
     [SerializeField]
+    List<OAKillable> shipHealth;
+
+    [SerializeField]
     OABuildingArea shipArea;
+
+    [SerializeField]
+    float onTakingDamageCooldownTime = 40;
+    float takingDamageCDCounter = 0f;
+
+    [SerializeField]
+    float onPlayerHurtCooldownTime = 40;
+    float playerHurtCDCounter = 0f;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(GameObject.FindGameObjectWithTag("MessageBroadcaster"));
+        takingDamageCDCounter = onTakingDamageCooldownTime;
+        playerHurtCDCounter = onPlayerHurtCooldownTime;
+
         spaceshipMessager = GameObject.FindGameObjectWithTag("MessageBroadcaster").GetComponent<Animator>();
 
         spawner.OnEradicated.AddListener(() => spaceshipMessager.SetBool("onWipeOut", true));
         ocean.OnHighTide.AddListener(() => spaceshipMessager.SetBool("onHighTide", true));
         ocean.OnLowTide.AddListener(() => spaceshipMessager.SetBool("onLowTide", true));
 
-        // TODO: this needs a cooldown
-        playerHealth.OnHurtHealth.AddListener((health) => spaceshipMessager.SetBool("onPlayerhurt", health <= 30));
+        playerHealth.OnHurtHealth.AddListener((health) => {
+            if (playerHurtCDCounter < onPlayerHurtCooldownTime)
+                return;
 
-        spaceshipMessager.SetBool("isEmotionOverride", true);
-        spaceshipMessager.SetInteger("emotionOverrideValue", (int) OAMessageBroadcastBehaviour.ShipEmotion.Dead);
-        shipArea.OnBuilt.AddListener(() => spaceshipMessager.SetBool("isEmotionOverride", false));
+            spaceshipMessager.SetBool("onPlayerHurt", health <= 30);
+            playerHurtCDCounter = 0;
+        });
+
+        foreach(var health in shipHealth)
+        {
+            health.OnHurt.AddListener(() => {
+                if (takingDamageCDCounter < onTakingDamageCooldownTime)
+                    return;
+
+                spaceshipMessager.SetBool("onTakingDamage", true);
+                takingDamageCDCounter = 0;
+            });
+        }
+    }
+
+    void Update()
+    {
+        takingDamageCDCounter = Mathf.Min(Time.deltaTime + takingDamageCDCounter, onTakingDamageCooldownTime + 1f);
+        playerHurtCDCounter = Mathf.Min(Time.deltaTime + playerHurtCDCounter, onPlayerHurtCooldownTime + 1f);
     }
 
     public void OnTriggerEnterPOI(PoiId identifier)
     {
-        Debug.Log(GameObject.FindGameObjectWithTag("MessageBroadcaster"));
         HandleTriggerEvent(identifier, true);   
     }
 
@@ -63,6 +97,9 @@ public class OASpaceShipSensor : MonoBehaviour
                 break;
             case PoiId.Mountain:
                 spaceshipMessager.SetBool("playerSeesMountain", isEnter);
+                break;
+            case PoiId.BlueShellTut:
+                spaceshipMessager.SetBool("playerSeesBlueShell", isEnter);
                 break;
         }
     }

@@ -9,7 +9,8 @@ public class OAPointOfInterest : MonoBehaviour
         Boat,
         Cave,
         Sand,
-        Mountain
+        Mountain,
+        BlueShellTut
     }
 
     [SerializeField]

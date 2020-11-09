@@ -10,22 +10,23 @@ using UnityEngine.Events;
 /// </summary>
 public class OAKillable : MonoBehaviour
 {
-    [Tooltip("When the entity recieves damage")]
-    [SerializeField]
-    private UnityEvent onHurt;
-
-    [Tooltip("When the entity recieves damage")]
-    [SerializeField]
-    private UnityEvent<int> onHurtHealth;
-    public UnityEvent<int> OnHurtHealth { get => onHurtHealth; }
-
-    [SerializeField]
+        [SerializeField]
     private OAHealth healthStats = null;
 
     [Tooltip("Health when killable is spawned, -1 means killable will spawn with max health")]
     [SerializeField]
     private int health = -1;
     public int Health { get => health; }
+
+    [Tooltip("When the entity recieves damage")]
+    [SerializeField]
+    private UnityEvent onHurt;
+    public UnityEvent OnHurt { get => onHurt; }
+
+    [Tooltip("When the entity recieves damage")]
+    [SerializeField]
+    private UnityEvent<int> onHurtHealth;
+    public UnityEvent<int> OnHurtHealth { get => onHurtHealth; }
 
     [SerializeField]
     private UnityEvent onDeath;
@@ -44,9 +45,6 @@ public class OAKillable : MonoBehaviour
         if (onDeathSelf == null)
             onDeathSelf = new UnityEvent<OAKillable>();
 
-        if (onHurtHealth == null)
-            onHurtHealth = new UnityEvent<int>();
-
         OAExtentions.AssertObjectNotNull(healthStats, "OAKillable missing healthStats");
 
         if (health <= 0)
@@ -59,9 +57,9 @@ public class OAKillable : MonoBehaviour
     {
         health -= damage;
 
-        if (health + damage <= 0) // if we did not die in this call
+        // if we are dead, but did not die in this call
+        if (health + damage <= 0) 
         {
-            onHurtHealth.Invoke(health);
             return;
         }
 
@@ -72,6 +70,7 @@ public class OAKillable : MonoBehaviour
         }
         else
         {
+            onHurtHealth.Invoke(health);
             onHurt.Invoke();
         }
     }
@@ -88,6 +87,13 @@ public class OAKillable : MonoBehaviour
             return;
 
         ApplyDamage(healthStats.maxHealth);
+    }
+
+
+    [ContextMenu("Debug: damage unit")]
+    public void DamageUnit()
+    {
+        ApplyDamage(1);
     }
 
 }
