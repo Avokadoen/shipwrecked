@@ -16,6 +16,7 @@ MonoBehaviour:
   clips:
   - {fileID: 8300000, guid: 1a9e1688ea2ad4afb9b0079322749792, type: 3}
   - {fileID: 8300000, guid: ea67aa0f086544acd99bceefcd033173, type: 3}
+  - {fileID: 8300000, guid: 65fd653fbe97ffa42a150e7ea3ed6e35, type: 3}
   fadeDuration: 5
   fadeIn:
     serializedVersion: 2
