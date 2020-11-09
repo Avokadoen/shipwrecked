@@ -58,8 +58,8 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.75
-  m_HasExitTime: 1
-  m_HasFixedDuration: 1
+  m_HasExitTime: 0
+  m_HasFixedDuration: 0
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
@@ -124,7 +124,13 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: playerSeesSandHills
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: hasCommentedSand
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1091273330752243723}
   m_Solo: 0
@@ -177,10 +183,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb5765fcaf1f614e9dcc4f13f901b69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: Playerwounded
+  message: Player wounded
   playDelay: 1
   disableNext: 0
   emotion: 3
+--- !u!1101 &-6513151240284379186
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: next
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 6931590354868837645}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 0
+  m_HasFixedDuration: 0
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1102 &-5883722341183046554
 AnimatorState:
   serializedVersion: 5
@@ -217,12 +248,14 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SeeingBoatFirstTimeMessage
+  m_Name: SeeingBoatFirstTime
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions: []
+  m_Transitions:
+  - {fileID: -5265843623540806591}
   m_StateMachineBehaviours:
   - {fileID: 1995527003930607919}
+  - {fileID: -5549409380851328528}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -237,6 +270,44 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &-5549409380851328528
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75ec985be57db3349a5a92e7d6911a75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasCommentedName: hasCommentedBoat
+--- !u!1101 &-5265843623540806591
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: next
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 6931590354868837645}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 0
+  m_HasFixedDuration: 0
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1102 &-5210786296594735587
 AnimatorState:
   serializedVersion: 5
@@ -275,16 +346,16 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -7943080628860681105}
-    m_Position: {x: -30, y: 380, z: 0}
+    m_Position: {x: -480, y: 350, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1272690596795471303}
-    m_Position: {x: 660, y: 380, z: 0}
+    m_Position: {x: 210, y: 350, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5883722341183046554}
-    m_Position: {x: 1000, y: 380, z: 0}
+    m_Position: {x: 550, y: 350, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2321120093045885931}
-    m_Position: {x: 320, y: 380, z: 0}
+    m_Position: {x: -130, y: 350, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 841027498991451957}
     m_Position: {x: -20, y: -160, z: 0}
@@ -293,10 +364,10 @@ AnimatorStateMachine:
     m_Position: {x: 650, y: -160, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4043394033425253822}
-    m_Position: {x: 1300, y: -160, z: 0}
+    m_Position: {x: 1320, y: -160, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5677559549580480056}
-    m_Position: {x: 1300, y: -90, z: 0}
+    m_Position: {x: 1320, y: -40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -206263535937262552}
     m_Position: {x: 1000, y: -160, z: 0}
@@ -311,29 +382,29 @@ AnimatorStateMachine:
     m_Position: {x: 300, y: -160, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2346839141678752321}
-    m_Position: {x: 2220, y: -120, z: 0}
+    m_Position: {x: -370, y: 170, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8238115467224034347}
-    m_Position: {x: 2220, y: -200, z: 0}
+    m_Position: {x: -370, y: 90, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7371941022635787628}
-    m_Position: {x: 2220, y: -280, z: 0}
+    m_Position: {x: -370, y: 10, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6911008058660419774}
-    m_Position: {x: 1300, y: -20, z: 0}
+    m_Position: {x: 1320, y: 80, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1091273330752243723}
-    m_Position: {x: 1300, y: 50, z: 0}
+    m_Position: {x: 1320, y: 210, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: -300, y: 470, z: 0}
-  m_EntryPosition: {x: -300, y: 390, z: 0}
-  m_ExitPosition: {x: -300, y: 430, z: 0}
+  m_AnyStatePosition: {x: -750, y: 440, z: 0}
+  m_EntryPosition: {x: -750, y: 360, z: 0}
+  m_ExitPosition: {x: -750, y: 400, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: -7943080628860681105}
+  m_DefaultState: {fileID: 6931590354868837645}
 --- !u!114 &-5094734824069716795
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -386,9 +457,11 @@ AnimatorState:
   m_Name: EnterCaveFirstTimeMessage
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions: []
+  m_Transitions:
+  - {fileID: -6513151240284379186}
   m_StateMachineBehaviours:
   - {fileID: -17279082755339200}
+  - {fileID: -1935799388182050566}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -423,8 +496,8 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.75
-  m_HasExitTime: 1
-  m_HasFixedDuration: 1
+  m_HasExitTime: 0
+  m_HasFixedDuration: 0
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
@@ -453,6 +526,22 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &-2594422788775490914
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eb5765fcaf1f614e9dcc4f13f901b69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: Sandhilld.
+  playDelay: 1
+  disableNext: 0
+  emotion: 3
 --- !u!1101 &-2593846605912933298
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -532,6 +621,19 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &-1935799388182050566
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75ec985be57db3349a5a92e7d6911a75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasCommentedName: hasCommentedCave
 --- !u!1101 &-1817304223522132512
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -614,6 +716,31 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1101 &-1197902238175165094
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: next
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 6931590354868837645}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 0
+  m_HasFixedDuration: 0
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1101 &-833207320979330660
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -665,8 +792,8 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.75
-  m_HasExitTime: 1
-  m_HasFixedDuration: 1
+  m_HasExitTime: 0
+  m_HasFixedDuration: 0
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
@@ -832,7 +959,7 @@ AnimatorController:
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 0
+    m_DefaultBool: 1
     m_Controller: {fileID: 0}
   - m_Name: emotionOverrideValue
     m_Type: 3
@@ -865,6 +992,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92779104c55e6b14ab8c8ab149cae995, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &285565538905311498
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75ec985be57db3349a5a92e7d6911a75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasCommentedName: hasCommentedMountain
+--- !u!114 &688236193638614129
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eb5765fcaf1f614e9dcc4f13f901b69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: Mountain
+  playDelay: 1
+  disableNext: 0
+  emotion: 0
 --- !u!1101 &738136732664800590
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -888,8 +1044,8 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.75
-  m_HasExitTime: 1
-  m_HasFixedDuration: 1
+  m_HasExitTime: 0
+  m_HasFixedDuration: 0
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
@@ -946,8 +1102,11 @@ AnimatorState:
   m_Name: SeeingSandHillsFirstTime
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
+  m_Transitions:
+  - {fileID: -1197902238175165094}
+  m_StateMachineBehaviours:
+  - {fileID: -2594422788775490914}
+  - {fileID: 6355740355647648703}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -990,7 +1149,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: playerSeesMountain
+    m_ConditionEvent: playerSeesBoat
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: hasCommentedBoat
@@ -1004,8 +1163,8 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.75
-  m_HasExitTime: 1
-  m_HasFixedDuration: 1
+  m_HasExitTime: 0
+  m_HasFixedDuration: 0
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
@@ -1148,6 +1307,31 @@ MonoBehaviour:
   playDelay: 1
   disableNext: 0
   emotion: 0
+--- !u!1101 &2898075936412459189
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: next
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 6931590354868837645}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 0
+  m_HasFixedDuration: 0
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1101 &3677163815794167915
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -1206,6 +1390,19 @@ MonoBehaviour:
   playDelay: 1
   disableNext: 0
   emotion: 0
+--- !u!114 &6355740355647648703
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75ec985be57db3349a5a92e7d6911a75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasCommentedName: hasCommentedSand
 --- !u!1102 &6911008058660419774
 AnimatorState:
   serializedVersion: 5
@@ -1216,8 +1413,11 @@ AnimatorState:
   m_Name: SeeingMountainFirstTime
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
+  m_Transitions:
+  - {fileID: 2898075936412459189}
+  m_StateMachineBehaviours:
+  - {fileID: 688236193638614129}
+  - {fileID: 285565538905311498}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1

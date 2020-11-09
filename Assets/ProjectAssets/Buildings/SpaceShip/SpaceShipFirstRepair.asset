@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 777faf6e3c1a7cf41a7976a102070c43, type: 3}
-  m_Name: UnuiltCost
+  m_Name: SpaceShipFirstRepair
   m_EditorClassIdentifier: 
-  amount: 1
-  instanceType: 0
+  amount: 4
+  instanceType: 1

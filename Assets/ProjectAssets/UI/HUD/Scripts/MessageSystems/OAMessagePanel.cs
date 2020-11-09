@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+using ShipEmotion = OAMessageBroadcastBehaviour.ShipEmotion;
+
 // TODO: the dialog should be a state machine where we always go through tutorial state (maybe add options in setting to skip)
 [RequireComponent(typeof(OAAudioPlayer))]
 public class OAMessagePanel : MonoBehaviour
@@ -46,6 +48,12 @@ public class OAMessagePanel : MonoBehaviour
     [SerializeField]
     Animator anim;
 
+    [SerializeField]
+    Animator spaceshipPortrait;
+
+    [SerializeField]
+    OABuildingArea shipArea;
+
     private UnityEvent onMessageComplete;
     public UnityEvent OnMessageComplete { get => onMessageComplete; }
 
@@ -62,19 +70,15 @@ public class OAMessagePanel : MonoBehaviour
 
         if (onMessageComplete == null)
             onMessageComplete = new UnityEvent();
+
     }
 
-    [ContextMenu("test")]
-    void test()
-    {
-        SetMessage("This is a test of the set message. Does it work? I don't know. Let's find out. I make this string long to also test the playing of audio");
-    }
-
-    public void SetMessage(string message)
+    public void SetMessage(string message, ShipEmotion emotion)
     {
         profilePanel.SetActive(true);
         textPanel.gameObject.SetActive(true);
 
+        spaceshipPortrait.SetInteger("shipEmotion", (int) emotion);
 
         StopAllCoroutines();
         StartCoroutine(WriteMessage(message));

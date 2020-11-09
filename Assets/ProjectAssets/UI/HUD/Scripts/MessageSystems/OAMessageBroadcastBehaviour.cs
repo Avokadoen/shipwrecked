@@ -48,9 +48,9 @@ public class OAMessageBroadcastBehaviour : StateMachineBehaviour
             return;
         }
        
-
+        var sendEmotion = animator.GetBool("isEmotionOverride") ? (ShipEmotion) animator.GetInteger("emotionOverrideValue") : emotion;
         var panel = animator.GetComponent<OAMessagePanelRef>().Panel;
-        panel.SetMessage(message);
+        panel.SetMessage(message, sendEmotion);
 
         if (!disableNext) 
             panel.OnMessageComplete.AddListener(() => animator.SetBool("next", true));

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ocean
   - HUD
+  - MessageBroadcaster
   layers:
   - Default
   - TransparentFX
