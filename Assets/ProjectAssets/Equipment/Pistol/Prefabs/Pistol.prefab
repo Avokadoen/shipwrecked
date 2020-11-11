@@ -131,6 +131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c091570f6ed817c4d9d38e24eeb6d385, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hudPrefab: {fileID: 6856908189478078619, guid: 81ec1d3ccbca4b748ada25f1eaa7842a, type: 3}
+  hudPrefab: {fileID: 1466254367670500117, guid: 81ec1d3ccbca4b748ada25f1eaa7842a, type: 3}
   sr: {fileID: 7831042024067847237}
   distance: 1.5

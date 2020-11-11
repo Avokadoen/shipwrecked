@@ -7,10 +7,10 @@ public class OAEquipment : MonoBehaviour
 {
     [Tooltip("This is the object that will represent the equipment in the hud")]
     [SerializeField]
-    Button hudPrefab;
-    public GameObject HudPrefab
+    OAEquipmentHUDClick hudPrefab;
+    public OAEquipmentHUDClick HudPrefab
     {
-        get => hudPrefab.gameObject;
+        get => hudPrefab;
     }
 
     [Tooltip("Sprite renderer that will be flipped it equipment reaches >90* rotation")]

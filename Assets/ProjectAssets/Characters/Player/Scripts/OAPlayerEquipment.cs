@@ -81,35 +81,6 @@ public class OAPlayerEquipment : MonoBehaviour
         SetEquipmentIndex(equiptIndex);
     }
 
-    void Update()
-    {
-        // TODO: we migth not need this many options
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            SetEquipmentIndex(0);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            SetEquipmentIndex(1);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            SetEquipmentIndex(2);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            SetEquipmentIndex(3);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            SetEquipmentIndex(4);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha6))
-        {
-            SetEquipmentIndex(5);
-        }
-    }
-
     void FixedUpdate()
     {
         // If the player is not using a valid index, we don't compute.

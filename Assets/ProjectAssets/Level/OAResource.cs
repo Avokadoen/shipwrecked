@@ -10,7 +10,21 @@ public class OAResource : ScriptableObject
         Unset,
         ShinyScale,
         BlueScale,
-        Spike,
+        Spike
+    }
+
+    public static string TypeToString(Type rType)
+    {
+        switch (rType) {
+            case Type.ShinyScale:
+                return "shiny scale";
+            case Type.BlueScale:
+                return "blue scale";
+            case Type.Spike:
+                return "spike";
+            default:
+                return "ILLEGAL TYPE, YOU FOUND A BUG ;)";
+        }
     }
 
 

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
-// TODO: Register event when user holds build button
 // TODO: Change text based on bound key to built button
 public class OABuildingArea : MonoBehaviour
 {
@@ -18,7 +18,9 @@ public class OABuildingArea : MonoBehaviour
 
     [Tooltip("Child object that holds canvas for text")]
     [SerializeField]
-    private GameObject textObject = null;
+    private GameObject textCanvas = null;
+    private TMPro.TextMeshProUGUI buildText;
+    private TMPro.TextMeshProUGUI resourceText;
 
     [Tooltip("How long the player needs to hold Build button")]
     [SerializeField]
@@ -39,22 +41,38 @@ public class OABuildingArea : MonoBehaviour
         }
     }
 
+    private readonly string BuildInstructions = "BuildInstructions";
+    private readonly string ResourceInformation = "ResourceInformation";
 
     private float buildButtonHeldDuration;
 
     // Start is called before the first frame update
     void Awake()
     {
-        OAExtentions.AssertObjectNotNull(textObject, "OABuildingArea missing textObject");
+        OAExtentions.AssertObjectNotNull(textCanvas, "OABuildingArea missing textObject");
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<OAPlayerInventory>();
+
+        buildText = textCanvas.transform
+            .Find(BuildInstructions)
+            .GetComponent<TMPro.TextMeshProUGUI>();
+
+        resourceText = textCanvas.transform
+            .Find(ResourceInformation)
+            .gameObject
+            .GetComponent<TMPro.TextMeshProUGUI>();
+
+
+        buildText.gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        resourceText.gameObject.SetActive(UpdateResourceText());
+
         if (!CanBuild)
             return;
 
-        textObject.SetActive(true);
+        buildText.gameObject.SetActive(true);
     }
 
     public void OnBuildingTierDestroyed()
@@ -66,6 +84,8 @@ public class OABuildingArea : MonoBehaviour
         buildings[currentBuilding].gameObject.SetActive(false);
         currentBuilding -= 1;
         buildings[currentBuilding].gameObject.SetActive(true);
+
+        UpdateResourceText();
 
         onDestroyed.Invoke();
     }
@@ -94,17 +114,34 @@ public class OABuildingArea : MonoBehaviour
             buildings[currentBuilding].gameObject.SetActive(true);
             buildButtonHeldDuration = 0;
 
-            if (!CanBuild)
-                textObject.SetActive(false);
+            resourceText.gameObject.SetActive(UpdateResourceText());
 
             onBuilt.Invoke();
+
+            buildText.gameObject.SetActive(CanBuild);
         }
     }
 
     private void OnTriggerExit2D(Collider2D col)
     {
-        textObject.SetActive(false);
+        buildText.gameObject.SetActive(false);
+        resourceText.gameObject.SetActive(false);
 
         buildButtonHeldDuration = 0;
+    }
+
+    private bool UpdateResourceText()
+    {
+        if (currentBuilding >= buildings.Count - 1)
+            return false;
+
+        // set resource information text
+        var cost = buildings[currentBuilding + 1].Cost;
+        var resourceType = OAResource.TypeToString(cost.InstanceType);
+        var amount = cost.Amount;
+        var holdingAmount = inventory.GetAmount(cost.InstanceType);
+        resourceText.text = $"{holdingAmount}/{amount} {resourceType}s";
+
+        return true;
     }
 }
