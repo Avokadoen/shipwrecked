@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 // TODO: component to fade HUD when not in use
 public class OAHUDEquipmentAssigner : MonoBehaviour
@@ -14,8 +15,7 @@ public class OAHUDEquipmentAssigner : MonoBehaviour
     int slotStridePx = 10;
 
     List<RectTransform> equipmentHud = new List<RectTransform>();
-
-    // TODO: start function
+    List<Button> EquipmentButtons = new List<Button>();
 
     public void RegisterEquipmentHudElements(in List<OAEquipment> equipments)
     {
@@ -24,8 +24,9 @@ public class OAHUDEquipmentAssigner : MonoBehaviour
         for(var i = 0; i < equipments.Count; i++)
         {
             var hudObject = Instantiate(equipments[i].HudPrefab, transform);
-            hudObject.equipmentId = i;
-            hudObject.equipment = playerEquipment;
+            hudObject.EquipmentId = i;
+            hudObject.Equipment = playerEquipment;
+            hudObject.KeyAsString = (i + 1).ToString();
 
             // Copy rect transform values, didn't find a simpler way of doing it :(
             var objectRectTransform = hudObject.transform.GetComponent<RectTransform>();
@@ -43,6 +44,37 @@ public class OAHUDEquipmentAssigner : MonoBehaviour
             objectRectTransform.localPosition = newPos;
 
             equipmentHud.Add(objectRectTransform);
+
+            EquipmentButtons.Add(objectRectTransform.GetComponent<Button>());
+        }
+    }
+
+    private void Update()
+    {
+        // TODO: we migth not need this many options
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            OnKeyboardButtonShortcut(0);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            OnKeyboardButtonShortcut(1);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            OnKeyboardButtonShortcut(2);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            OnKeyboardButtonShortcut(3);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            OnKeyboardButtonShortcut(4);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            OnKeyboardButtonShortcut(5);
         }
     }
 
@@ -52,5 +84,15 @@ public class OAHUDEquipmentAssigner : MonoBehaviour
         {
             eqHud.gameObject.SetActive(active);
         }
+    }
+
+    private void OnKeyboardButtonShortcut(int index)
+    {
+        if (index >= EquipmentButtons.Count || index < 0)
+        {
+            return;
+        }
+
+        EquipmentButtons[index].onClick.Invoke();
     }
 }
