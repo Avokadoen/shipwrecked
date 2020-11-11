@@ -50,9 +50,6 @@ public class OAPlayerStateStore : MonoBehaviour
         animator.SetBool("isUnderWater", isUnderWater);
         landMovement.enabled = !isUnderWater;
         swimMovement.enabled = isUnderWater;
-
-        if (isUnderWater)
-            playerEquipment.SetEquipmentIndex(-1);
     }
 
     // Start is called before the first frame update

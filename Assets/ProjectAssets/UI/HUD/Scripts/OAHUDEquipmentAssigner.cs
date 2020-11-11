@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 // TODO: component to fade HUD when not in use
@@ -94,5 +95,6 @@ public class OAHUDEquipmentAssigner : MonoBehaviour
         }
 
         EquipmentButtons[index].onClick.Invoke();
+        EventSystem.current.SetSelectedGameObject(EquipmentButtons[index].gameObject, null);
     }
 }
