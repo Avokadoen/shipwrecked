@@ -1729,7 +1729,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.1, y: 0.27}
   m_AnchorMax: {x: 0.9, y: 0.93}
-  m_AnchoredPosition: {x: -0.000030517578, y: 0.50006104}
+  m_AnchoredPosition: {x: -0.000061035156, y: 0.50006104}
   m_SizeDelta: {x: 0.000061035156, y: -4.7333984}
   m_Pivot: {x: 0.4999999, y: 0.5000001}
 --- !u!222 &7687639798998578305
@@ -3123,6 +3123,34 @@ PrefabInstance:
     - target: {fileID: 6856908189478078617, guid: b61e26f3171316846b9b0ed9a1c604bd, type: 3}
       propertyPath: m_Name
       value: InventoryIcon
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856908189478078619, guid: b61e26f3171316846b9b0ed9a1c604bd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856908189478078619, guid: b61e26f3171316846b9b0ed9a1c604bd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856908189478078619, guid: b61e26f3171316846b9b0ed9a1c604bd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856908189478078619, guid: b61e26f3171316846b9b0ed9a1c604bd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4714428039053165368}
+    - target: {fileID: 6856908189478078619, guid: b61e26f3171316846b9b0ed9a1c604bd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: OAIngameMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856908189478078619, guid: b61e26f3171316846b9b0ed9a1c604bd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnInventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 6856908189478078619, guid: b61e26f3171316846b9b0ed9a1c604bd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b61e26f3171316846b9b0ed9a1c604bd, type: 3}

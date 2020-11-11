@@ -19,9 +19,13 @@ public class OAHUDEquipmentAssigner : MonoBehaviour
 
     public void RegisterEquipmentHudElements(in List<OAEquipment> equipments)
     {
+        var playerEquipment = GameObject.FindGameObjectWithTag("Player").GetComponent<OAPlayerEquipment>();
+
         for(var i = 0; i < equipments.Count; i++)
         {
             var hudObject = Instantiate(equipments[i].HudPrefab, transform);
+            hudObject.equipmentId = i;
+            hudObject.equipment = playerEquipment;
 
             // Copy rect transform values, didn't find a simpler way of doing it :(
             var objectRectTransform = hudObject.transform.GetComponent<RectTransform>();

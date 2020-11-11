@@ -45,6 +45,7 @@ public class OAMainMenu : MonoBehaviour
 
     public void OnQuitBtnClick()
     {
+        // TODO: fix: crashes the page in webgl target
         // Only works when built
         Application.Quit();
     }
