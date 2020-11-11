@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edf518bb26728374aad57a99d3d65d23, type: 3}
-  m_Name: RatMoveDefault
+  m_Script: {fileID: 11500000, guid: 777faf6e3c1a7cf41a7976a102070c43, type: 3}
+  m_Name: SpaceShipFirstRepair
   m_EditorClassIdentifier: 
-  movementSpeed: 100
-  maxSpeed: 10
-  jumpForce: 1
+  amount: 3
+  instanceType: 2

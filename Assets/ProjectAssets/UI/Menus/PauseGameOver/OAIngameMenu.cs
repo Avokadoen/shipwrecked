@@ -37,8 +37,6 @@ public class OAIngameMenu : MonoBehaviour
     [SerializeField]
     GameObject inventory;
 
-    OAKillable playerKillable;
-
     GameState gameState = GameState.Running;
 
     void Start()
@@ -49,8 +47,15 @@ public class OAIngameMenu : MonoBehaviour
         retryBtn.onClick.AddListener(OnRetryClick);
         mainMenuBtn.onClick.AddListener(OnMainMenuClick);
 
-        playerKillable = GameObject.FindWithTag("Player").GetComponent<OAKillable>();
-        playerKillable.OnDeath.AddListener(OnDied);
+        GameObject.FindWithTag("Player")
+            .GetComponent<OAKillable>()
+            .OnDeath
+            .AddListener(OnDied);
+
+        GameObject.FindWithTag("WreckedShip")
+            .GetComponent<OAKillable>()
+            .OnDeath
+            .AddListener(OnDied);
     }
 
     // TODO: clean this miss (convert to a state machine)

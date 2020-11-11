@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edf518bb26728374aad57a99d3d65d23, type: 3}
-  m_Name: RatMoveDefault
+  m_Script: {fileID: 11500000, guid: 8dd01ae73eec22b4fa87b0802ac7ebaf, type: 3}
+  m_Name: BlueShellSpawnArea
   m_EditorClassIdentifier: 
-  movementSpeed: 100
-  maxSpeed: 10
-  jumpForce: 1
+  spawnable:
+  - {fileID: 5449274053428198464, guid: 5112bba9c9246734d88d21af902564d9, type: 3}
+  initialSpawnCount: 0
+  spawnScaling: 0.4
