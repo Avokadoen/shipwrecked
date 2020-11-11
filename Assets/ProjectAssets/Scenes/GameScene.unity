@@ -1103,7 +1103,7 @@ MonoBehaviour:
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
   m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
+  m_InputActionsPerSecond: 0
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
 --- !u!114 &536684068
@@ -2414,6 +2414,18 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.y
       value: -0.00005174762
       objectReference: {fileID: 0}
+    - target: {fileID: 300322538, guid: 913d91de287df88408f26f726444cf2f, type: 3}
+      propertyPath: equippables.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 300322538, guid: 913d91de287df88408f26f726444cf2f, type: 3}
+      propertyPath: equippables.Array.data[1]
+      value: 
+      objectReference: {fileID: 1877408000}
+    - target: {fileID: 300322538, guid: 913d91de287df88408f26f726444cf2f, type: 3}
+      propertyPath: equippables.Array.data[0]
+      value: 
+      objectReference: {fileID: 6942270000687444880, guid: c7151934676598f4e9b2659fadd73654, type: 3}
     - target: {fileID: 300322545, guid: 913d91de287df88408f26f726444cf2f, type: 3}
       propertyPath: onHurtHealth.m_PersistentCalls.m_Calls.Array.size
       value: 0
@@ -5532,6 +5544,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensor: {fileID: 245579916}
   poiId: 0
+--- !u!114 &1877408000 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 51662162963873028, guid: 913d91de287df88408f26f726444cf2f, type: 3}
+  m_PrefabInstance: {fileID: 889731443}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c091570f6ed817c4d9d38e24eeb6d385, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1891034506
 GameObject:
   m_ObjectHideFlags: 0
