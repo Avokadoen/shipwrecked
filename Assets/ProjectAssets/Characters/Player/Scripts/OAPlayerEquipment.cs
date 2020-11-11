@@ -41,16 +41,12 @@ public class OAPlayerEquipment : MonoBehaviour
 
     public void SetEquipmentIndex(int index)
     {
-        // If player is under water we don't allow setting the index
-        int isUnderWater = System.Convert.ToInt32(stateStore.IsUnderWater);
-        index = index - ((index + 1) * isUnderWater);
-
         if (IsValidEquipt)
             equippables[equiptIndex].gameObject.SetActive(false);
 
         equiptIndex = index;
 
-        if (IsValidEquipt)
+        if (IsValidEquipt && equippables[equiptIndex].Visual)
         {
             equippables[equiptIndex].gameObject.SetActive(true);
             equipmentParticles.SetActive(true);
@@ -88,6 +84,9 @@ public class OAPlayerEquipment : MonoBehaviour
             return;
 
         var equipt = equippables[equiptIndex];
+
+        if (!equipt.Visual)
+            return;
 
         // Get mouse position in world pos
         // TODO: garbage is created here ...

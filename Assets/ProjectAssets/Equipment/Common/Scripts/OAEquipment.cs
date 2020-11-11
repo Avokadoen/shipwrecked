@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class OAEquipment : MonoBehaviour
 {
+    [SerializeField]
+    bool visual = true;
+    public bool Visual { get => visual; }
+
     [Tooltip("This is the object that will represent the equipment in the hud")]
     [SerializeField]
     OAEquipmentHUDClick hudPrefab;
@@ -29,12 +33,18 @@ public class OAEquipment : MonoBehaviour
     void Start()
     {
         OAExtentions.AssertObjectNotNull(hudPrefab, "Equipment missing hud icon");
-        OAExtentions.AssertObjectNotNull(sr, "Equipment missing sprite renderer");
+
+        if (visual)
+        {
+            OAExtentions.AssertObjectNotNull(sr, "Equipment missing sprite renderer");
+        }
     }
 
     public void SetFlipY(bool flipY)
     {
-        // TODO: if not sr not null?
+        if (!visual)
+            return;
+
         sr.flipY = flipY;
     }
 }
