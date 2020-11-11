@@ -461,7 +461,6 @@ MonoBehaviour:
   vmCamPlayer: {fileID: 0}
   vmCamShip: {fileID: 0}
   playerState: {fileID: 0}
-  hud: {fileID: 0}
 --- !u!1 &2461349829579066507
 GameObject:
   m_ObjectHideFlags: 0
@@ -1345,7 +1344,9 @@ MonoBehaviour:
   ocean: {fileID: 0}
   spawner: {fileID: 0}
   playerHealth: {fileID: 0}
-  shipHealth: []
+  shipHealth:
+  - {fileID: 5271340500896704727}
+  - {fileID: 320603007462137353}
   shipArea: {fileID: 8841127776949743471}
   onTakingDamageCooldownTime: 40
   onPlayerHurtCooldownTime: 40

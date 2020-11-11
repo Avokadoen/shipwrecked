@@ -64,6 +64,10 @@ public class OASpaceShipSensor : MonoBehaviour
                 takingDamageCDCounter = 0;
             });
         }
+
+        // If the ship gets totally destroyed
+        shipHealth[0].OnDeath.AddListener(() => spaceshipMessager.SetBool("onShipDead", true));
+        playerHealth.OnDeath.AddListener(() => spaceshipMessager.SetBool("onPlayerDead", true));
     }
 
     void Update()

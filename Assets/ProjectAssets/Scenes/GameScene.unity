@@ -1130,17 +1130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b41a549e14e0ac7408da722837689ea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &554950122 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 320603007462137353, guid: 629b7cd0cb6eedd4290b0128689fb0f6, type: 3}
-  m_PrefabInstance: {fileID: 1355308226}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48845a1220c20664f9539e81c809e862, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &557461686 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1220649182868475617, guid: 629b7cd0cb6eedd4290b0128689fb0f6, type: 3}
@@ -1910,17 +1899,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 4072066865170603480, guid: 3ef9a932874a4bd4781f56ce361e73e8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3ef9a932874a4bd4781f56ce361e73e8, type: 3}
---- !u!114 &747064351 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5271340500896704727, guid: 629b7cd0cb6eedd4290b0128689fb0f6, type: 3}
-  m_PrefabInstance: {fileID: 1355308226}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48845a1220c20664f9539e81c809e862, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &786127064 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 786127064, guid: b6fb36ffe24974d20bfb435fc39188c0, type: 3}
@@ -3596,10 +3574,6 @@ PrefabInstance:
       propertyPath: playerState
       value: 
       objectReference: {fileID: 27188994}
-    - target: {fileID: 1178734547468526388, guid: 629b7cd0cb6eedd4290b0128689fb0f6, type: 3}
-      propertyPath: m_TagString
-      value: WreckedShip
-      objectReference: {fileID: 0}
     - target: {fileID: 1220649182868475617, guid: 629b7cd0cb6eedd4290b0128689fb0f6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 36.903915
@@ -3644,34 +3618,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -2.801
       objectReference: {fileID: 0}
-    - target: {fileID: 1796459149908446875, guid: 629b7cd0cb6eedd4290b0128689fb0f6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3049547606901502810, guid: 629b7cd0cb6eedd4290b0128689fb0f6, type: 3}
-      propertyPath: shipHealth.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3049547606901502810, guid: 629b7cd0cb6eedd4290b0128689fb0f6, type: 3}
-      propertyPath: playerHealth
-      value: 
-      objectReference: {fileID: 1960603092}
-    - target: {fileID: 3049547606901502810, guid: 629b7cd0cb6eedd4290b0128689fb0f6, type: 3}
-      propertyPath: spawner
-      value: 
-      objectReference: {fileID: 632556160}
     - target: {fileID: 3049547606901502810, guid: 629b7cd0cb6eedd4290b0128689fb0f6, type: 3}
       propertyPath: ocean
       value: 
       objectReference: {fileID: 1576219129}
     - target: {fileID: 3049547606901502810, guid: 629b7cd0cb6eedd4290b0128689fb0f6, type: 3}
-      propertyPath: shipHealth.Array.data[0]
+      propertyPath: spawner
       value: 
-      objectReference: {fileID: 747064351}
+      objectReference: {fileID: 632556160}
     - target: {fileID: 3049547606901502810, guid: 629b7cd0cb6eedd4290b0128689fb0f6, type: 3}
-      propertyPath: shipHealth.Array.data[1]
+      propertyPath: playerHealth
       value: 
-      objectReference: {fileID: 554950122}
+      objectReference: {fileID: 1960603092}
     - target: {fileID: 7856975076613960043, guid: 629b7cd0cb6eedd4290b0128689fb0f6, type: 3}
       propertyPath: m_Name
       value: Spaceship
@@ -4794,6 +4752,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3167919104164247311, guid: b6fb36ffe24974d20bfb435fc39188c0, type: 3}
+      propertyPath: m_Points.Array.data[1].x
+      value: -40.07046
+      objectReference: {fileID: 0}
+    - target: {fileID: 3167919104164247311, guid: b6fb36ffe24974d20bfb435fc39188c0, type: 3}
+      propertyPath: m_Points.Array.data[1].y
+      value: 3.9088693
+      objectReference: {fileID: 0}
+    - target: {fileID: 3167919104164247311, guid: b6fb36ffe24974d20bfb435fc39188c0, type: 3}
+      propertyPath: m_Points.Array.data[2].x
+      value: -34.557533
+      objectReference: {fileID: 0}
+    - target: {fileID: 3167919104164247311, guid: b6fb36ffe24974d20bfb435fc39188c0, type: 3}
+      propertyPath: m_Points.Array.data[2].y
+      value: 2.675581
+      objectReference: {fileID: 0}
+    - target: {fileID: 3167919104164247311, guid: b6fb36ffe24974d20bfb435fc39188c0, type: 3}
+      propertyPath: m_Points.Array.data[3].x
+      value: -30.447777
+      objectReference: {fileID: 0}
+    - target: {fileID: 3167919104164247311, guid: b6fb36ffe24974d20bfb435fc39188c0, type: 3}
+      propertyPath: m_Points.Array.data[3].y
+      value: 2.4127207
+      objectReference: {fileID: 0}
     - target: {fileID: 3255888212102135734, guid: b6fb36ffe24974d20bfb435fc39188c0, type: 3}
       propertyPath: m_Name
       value: Level
@@ -5509,11 +5491,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6136351883673771234, guid: 3b29e6b407c60124e990e5b2fd235e6d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -325.48
+      value: -324.7
       objectReference: {fileID: 0}
     - target: {fileID: 6136351883673771234, guid: 3b29e6b407c60124e990e5b2fd235e6d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 71.36
+      value: 66.54
       objectReference: {fileID: 0}
     - target: {fileID: 6136351883673771234, guid: 3b29e6b407c60124e990e5b2fd235e6d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5659,7 +5641,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: cycleStartPosition
-      value: 20
+      value: 59
       objectReference: {fileID: 0}
     - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: cycleDuration

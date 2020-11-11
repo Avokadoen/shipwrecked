@@ -16,7 +16,8 @@ public class OAWin : MonoBehaviour
     OAPlayerStateStore playerState;
     public OAPlayerStateStore PlayerState { get => playerState; }
 
-    public GameObject hud;
+    private GameObject hud;
+    public GameObject Hud { get => hud; }
 
     // Start is called before the first frame update
     void Start()

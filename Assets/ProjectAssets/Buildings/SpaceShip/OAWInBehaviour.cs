@@ -11,7 +11,7 @@ public class OAWInBehaviour : StateMachineBehaviour
     {
         Time.timeScale = 0;
         win = animator.GetComponent<OAWin>();
-        win.hud.GetComponent<OAIngameMenu>().OnWin();
+        win.Hud.GetComponent<OAIngameMenu>().OnWin();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
