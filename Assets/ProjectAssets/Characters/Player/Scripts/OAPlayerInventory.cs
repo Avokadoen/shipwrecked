@@ -37,6 +37,10 @@ public class OAPlayerInventory : MonoBehaviour
         return resources[resource.InstanceType] >= resource.Amount;
     }
 
+    public uint GetAmount(OAResource.Type rType)
+    {
+        return resources[rType];
+    }
 
     public void OnPickup(OAResource resource)
     {

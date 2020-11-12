@@ -27,7 +27,7 @@ public class OAWin : MonoBehaviour
         vmCamPlayer.SetActive(false);
         playerState.gameObject.SetActive(false);
 
-        // TODO: This is kinda hacky ...
+        // TODO: This is kinda hacky ... TODO: also add inventory element and resolve this hack
         hud = GameObject.FindGameObjectWithTag("HUD");
         hud.GetComponent<OAHUDEquipmentAssigner>().SetActiveEquipmentHud(false);
     }

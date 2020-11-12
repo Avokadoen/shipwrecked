@@ -99,7 +99,7 @@ public class OAIngameMenu : MonoBehaviour
         deadText.SetActive(false);
     }
 
-    void OnInventory()
+    public void OnInventory()
     {
         gameState = GameState.Running;
 
