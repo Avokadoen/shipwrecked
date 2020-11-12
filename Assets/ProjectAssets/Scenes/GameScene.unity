@@ -496,6 +496,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42a9dcc093ba1b409b12f224e7a25e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &240610873 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8519082118146384221, guid: f7efae81fcf89bb4fa7ea3546ae6edb5, type: 3}
+  m_PrefabInstance: {fileID: 8519082117733287587}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &241271467 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6484923415127592922, guid: 913d91de287df88408f26f726444cf2f, type: 3}
@@ -3651,6 +3656,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 369209042}
     m_Modifications:
+    - target: {fileID: 1181774991, guid: 629b7cd0cb6eedd4290b0128689fb0f6, type: 3}
+      propertyPath: vmCamPlayer
+      value: 
+      objectReference: {fileID: 240610873}
+    - target: {fileID: 1181774991, guid: 629b7cd0cb6eedd4290b0128689fb0f6, type: 3}
+      propertyPath: vmCamShip
+      value: 
+      objectReference: {fileID: 1709678659}
+    - target: {fileID: 1181774991, guid: 629b7cd0cb6eedd4290b0128689fb0f6, type: 3}
+      propertyPath: playerState
+      value: 
+      objectReference: {fileID: 27188994}
     - target: {fileID: 1220649182868475617, guid: 629b7cd0cb6eedd4290b0128689fb0f6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 36.903915
@@ -5258,6 +5275,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1709678659 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8043506910547263712, guid: f7efae81fcf89bb4fa7ea3546ae6edb5, type: 3}
+  m_PrefabInstance: {fileID: 8519082117733287587}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1734808888
 GameObject:
   m_ObjectHideFlags: 0

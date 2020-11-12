@@ -30,7 +30,7 @@ public class OAMainMenu : MonoBehaviour
         {
             yield return new WaitForSeconds(playDelay);
 
-            UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("IntroScene");
         }
 
         StartCoroutine(LoadGameScene());
