@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/ProjectAssets/Scenes/GameScene copy.unity.meta
+guid: d41422ce7d3e541afb51e914c9191ba5
+=======
 guid: 1074ce87a39c8124ea3e5b0ceedbda6d
 folderAsset: yes
+>>>>>>> 9da0675579bfc7248707322604235d0dd6aada95:Assets/ProjectAssets/Intro.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
