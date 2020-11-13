@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: RatMoveDefault
   m_EditorClassIdentifier: 
   movementSpeed: 100
-  maxSpeed: 10
+  maxSpeed: 11
   jumpForce: 1

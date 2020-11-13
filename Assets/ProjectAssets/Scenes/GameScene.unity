@@ -4893,7 +4893,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
   m_PrefabInstance: {fileID: 8462571356358218509}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1706730921}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68ac8edbda06b734899ebcff4fdc5c07, type: 3}
@@ -5577,37 +5577,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1706730921 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8462571354843226872, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
-  m_PrefabInstance: {fileID: 8462571356358218509}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &1706730922
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1706730921}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.6844946, y: 1.9014454}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4, y: 4}
-    newSize: {x: 4, y: 4}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.6310108, y: 0.19710934}
-  m_EdgeRadius: 0
 --- !u!1 &1709678659 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8043506910547263712, guid: f7efae81fcf89bb4fa7ea3546ae6edb5, type: 3}
@@ -6748,7 +6717,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: cycleStartPosition
-      value: 0
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: cycleDuration
@@ -6757,6 +6726,38 @@ PrefabInstance:
     - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: lowTideDecline
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
+      propertyPath: tideCycle.m_Curve.Array.data[1].value
+      value: 0.7769195
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
+      propertyPath: tideCycle.m_Curve.Array.data[1].time
+      value: 0.60622364
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
+      propertyPath: tideCycle.m_Curve.Array.data[1].inSlope
+      value: 0.55136836
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
+      propertyPath: tideCycle.m_Curve.Array.data[1].outSlope
+      value: 0.55136836
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
+      propertyPath: tideCycle.m_Curve.Array.data[1].outWeight
+      value: 0.5174819
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
+      propertyPath: tideCycle.m_Curve.Array.data[2].inSlope
+      value: 0.412517
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
+      propertyPath: tideCycle.m_Curve.Array.data[2].outSlope
+      value: 0.412517
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
+      propertyPath: tideCycle.m_Curve.Array.data[2].inWeight
+      value: 0.5408155
       objectReference: {fileID: 0}
     - target: {fileID: 8462571354843226869, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: m_Offset.y
