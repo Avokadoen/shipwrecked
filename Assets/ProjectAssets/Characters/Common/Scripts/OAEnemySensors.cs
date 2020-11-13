@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿// #define SHOW_ATTACK_AREA
+
+using System.Collections;
 using UnityEngine;
 
 // TODO: rename
@@ -86,16 +88,27 @@ public class OAEnemySensors : MonoBehaviour
 
     void CommitAttack()
     {
-        int hitCount = Physics2D.CapsuleCastNonAlloc(
+        int hitCount = Physics2D.BoxCastNonAlloc(
             RatHead.position,
             range,
-            CapsuleDirection2D.Horizontal,
-            0,
+            0f,
             front,
             hits,
-            Mathf.Infinity,
+            attackStats.range,
             playerAndBuldingLayer.value
         );
+
+#if UNITY_EDITOR && SHOW_ATTACK_AREA
+        var horizontal = new Vector3(range.x, 0);
+        var vertical = new Vector3(0, -range.y);
+        var dur = 0.2f;
+        Debug.DrawRay(RatHead.position, horizontal, Color.red, dur);
+        Debug.DrawRay(RatHead.position, vertical, Color.red, dur);
+        Debug.DrawRay(RatHead.position + vertical, horizontal, Color.red, dur);
+        Debug.DrawRay(RatHead.position + horizontal, vertical, Color.red, dur);
+
+        Debug.Log(hitCount);
+#endif
 
         for (int i = 0; i < hitCount; i++)
         {
