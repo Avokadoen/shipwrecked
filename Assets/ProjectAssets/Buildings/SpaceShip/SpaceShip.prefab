@@ -258,6 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: {fileID: 11400000, guid: a0aac4e226737024fa2fda35b7f2ff76, type: 2}
+  buildingKillable: {fileID: 5271340500896704727}
 --- !u!114 &5271340500896704727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -432,6 +433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: {fileID: 11400000, guid: 9154036ac1582064fb74626ff018f362, type: 2}
+  buildingKillable: {fileID: 0}
 --- !u!114 &2967206785632911061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1210,6 +1212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: {fileID: 11400000, guid: a0aac4e226737024fa2fda35b7f2ff76, type: 2}
+  buildingKillable: {fileID: 320603007462137353}
 --- !u!114 &320603007462137353
 MonoBehaviour:
   m_ObjectHideFlags: 0

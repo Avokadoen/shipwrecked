@@ -8,4 +8,8 @@ public class OABuildingCost : MonoBehaviour
     [SerializeField]
     private OAResource cost;
     public OAResource Cost { get => cost; }
+
+    [SerializeField]
+    private OAKillable killable; 
+    public OAKillable Killable { get => killable; }
 }

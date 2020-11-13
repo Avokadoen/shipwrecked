@@ -80,7 +80,6 @@ public class OABuildingArea : MonoBehaviour
         if (currentBuilding > 1)
             return;
 
-        // TODO: set previous health to full
         buildings[currentBuilding].gameObject.SetActive(false);
         currentBuilding -= 1;
         buildings[currentBuilding].gameObject.SetActive(true);
@@ -107,12 +106,22 @@ public class OABuildingArea : MonoBehaviour
         {
             bool didWithdraw = inventory.OnWithdrawResource(buildings[currentBuilding + 1].Cost);
 
-            // TODO: check and drain resources at this stage
-            // TODO: set health of building to full, and set health of next building to full
+            System.Action<int> revive = (index) =>
+            {
+                if (buildings[currentBuilding].Killable)
+                {
+                    buildings[currentBuilding].Killable.Revive();
+                }
+            };
+
+            revive(currentBuilding); // heal previous tier if it is killable
+
             buildings[currentBuilding].gameObject.SetActive(false);
             currentBuilding += 1;
             buildings[currentBuilding].gameObject.SetActive(true);
             buildButtonHeldDuration = 0;
+
+            revive(currentBuilding); // heal new tier if it is killable
 
             resourceText.gameObject.SetActive(UpdateResourceText());
 

@@ -280,6 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: {fileID: 11400000, guid: 54c6d9904ae10e540bc71d45ba97247e, type: 2}
+  buildingKillable: {fileID: 2779292463041424320}
 --- !u!1 &3303246877036327910
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,6 +526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: {fileID: 11400000, guid: 50a041795630cf144a5a0da976786575, type: 2}
+  buildingKillable: {fileID: 5891538703023886763}
 --- !u!1 &4072066865153387027
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,6 +757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: {fileID: 11400000, guid: 14956b7a75563d143b80bd317f254d69, type: 2}
+  buildingKillable: {fileID: 0}
 --- !u!1 &4072066865421754124
 GameObject:
   m_ObjectHideFlags: 0
@@ -1134,6 +1137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: {fileID: 11400000, guid: d7fb2b0b46eec7d4b91ad580f1534ef6, type: 2}
+  buildingKillable: {fileID: 595913353462281425}
 --- !u!1 &5145482563777962934
 GameObject:
   m_ObjectHideFlags: 0
