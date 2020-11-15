@@ -15,10 +15,6 @@ public class OAEnemySpawner : MonoBehaviour
         public OADeathActivater deathActivaterRef;
     }
 
-    [Tooltip("How much the spawning should scale for each wave")]
-    [SerializeField]
-    float spawnRateScale = 1.2f;
-
     [Tooltip("Enemies that can spawn each frame")]
     [SerializeField]
     List<OAEnemyPoolPrototype> initialWave;
@@ -62,7 +58,7 @@ public class OAEnemySpawner : MonoBehaviour
         foreach (var prototype in initialWave)
         {
             
-            var spawnCount = (int) Mathf.Floor(prototype.initialSpawnCount * tideCycleCount * spawnRateScale);
+            var spawnCount = (int) Mathf.Floor(prototype.initialSpawnCount * prototype.spawnScaleRate * tideCycleCount);
             waveCount += spawnCount;
             for (int i = 0; i < spawnCount; i++)
             {
