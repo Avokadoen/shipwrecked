@@ -16,7 +16,6 @@ public static class OAExtentions
         list.RemoveAt(lastIndex);
     }
 
-
     public static Vector3 Rotate2D(this Vector3 v, float degrees)
     {
         float sin = Mathf.Sin(degrees * Mathf.Deg2Rad);

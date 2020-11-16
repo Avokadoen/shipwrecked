@@ -15,4 +15,4 @@ MonoBehaviour:
   prefabSensor: {fileID: 1976064644, guid: e84dcebb393f60f47b043817d3a8e7d2, type: 3}
   prefabKillable: {fileID: 1976064643, guid: e84dcebb393f60f47b043817d3a8e7d2, type: 3}
   initialSpawnCount: 1
-  spawnScaleRate: 5
+  spawnScaleRate: 1.2

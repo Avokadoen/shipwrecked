@@ -10,12 +10,18 @@ public class OABulletPool :  MonoBehaviour
     private int size = 50;
 
     [SerializeField]
+    [Tooltip("Max allowed size of the pool")]
+    private int maxSize = 200;
+
+    // total objects that that are bound to this pool
+    private int pooledCount;
+
+    [SerializeField]
     [Tooltip("Prefab that is meant to be pooled")]
     private GameObject prefab;
 
     [SerializeField]
-    private List<OABallisticBullet> freePool;
-    // private List<OABallisticBullet> takenPool; TODO: use this to reclaim bullets in the future
+    private OABallisticBullet[] freePool;
 
     void Awake()
     {
@@ -29,18 +35,16 @@ public class OABulletPool :  MonoBehaviour
             $"OAObjectPool prefab is no a OABallisticBullet!"
         );
 
-        freePool = new List<OABallisticBullet>(size);
-        // takenPool = new List<OABallisticBullet>(size);
+        freePool = new OABallisticBullet[maxSize];
+
         for (var i = 0; i < size; i++)
         {
-            var pooledObject = Instantiate(prefab);
-            pooledObject.transform.parent = transform;
-            pooledObject.SetActive(false);
-            var pooledBullet = pooledObject.GetComponent<OABallisticBullet>();
-            pooledBullet.Pool = this;
-            freePool.Insert(i, pooledBullet);
+            InstantiateBullet(i);
         }
+
+        pooledCount = size;
     }
+
 
     /// <summary>
     /// Retrieves the next object in the pool
@@ -50,13 +54,22 @@ public class OABulletPool :  MonoBehaviour
     /// <returns>A gameobject from the free pool</returns>
     public OABallisticBullet GetNext()
     {
-        if (freePool.Count <= 0)
+        if (size <= 0)
         {
-            return null; // TODO: add to pool?
+            if (pooledCount < maxSize)
+            {
+                InstantiateBullet();
+                pooledCount += 1;
+                size = 1;
+            } else
+            {
+                return null; // TODO: return a fake OABallisticBullet?
+            }
         }
 
-        var element = freePool[0];
-        freePool.SwapRemoveAt(0);
+        var element = freePool[size - 1];
+        size -= 1;
+
         element.transform.parent = null;
         return element;
     }
@@ -65,8 +78,25 @@ public class OABulletPool :  MonoBehaviour
     public void ReturnObject(OABallisticBullet obj)
     {
         obj.transform.parent = transform;
-        freePool.Add(obj);
+        freePool[size] = obj;
+        size += 1;
         obj.gameObject.SetActive(false);
-        // TODO: check if we are over size
+    }
+
+    private void InstantiateBullet(int index = -1)
+    {
+        index = (index > -1) ? index : size;
+
+        if (index < 0 || index >= maxSize)
+            return;
+
+        var pooledObject = Instantiate(prefab);
+        pooledObject.transform.parent = transform;
+        pooledObject.SetActive(false);
+        var pooledBullet = pooledObject.GetComponent<OABallisticBullet>();
+        pooledBullet.Pool = this;
+
+       
+        freePool[index] = pooledBullet;
     }
 }
