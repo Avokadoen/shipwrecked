@@ -91,6 +91,8 @@ public class OARangedWeapon : MonoBehaviour
         } 
 
         energy = (offCooldown) ? Mathf.Min(1f, energy + energyRegenRate * Time.deltaTime) : energy;
+
+        // TODO: lerp visual value. Seperate this into its own component.
         energyIndicator.value = energy;
     }
 
