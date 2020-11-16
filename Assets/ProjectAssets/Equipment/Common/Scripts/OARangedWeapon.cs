@@ -10,6 +10,9 @@ public class OARangedWeapon : MonoBehaviour
     private UnityEvent onFire = new UnityEvent();
 
     [SerializeField]
+    private UnityEvent onCoolingOff = new UnityEvent();
+
+    [SerializeField]
     private OABulletPool bullets;
 
     [SerializeField]
@@ -24,10 +27,12 @@ public class OARangedWeapon : MonoBehaviour
     [Tooltip("Used to offset spawn in world y axis")]
     private float bulletSpawnYOffset = 1.0f;
 
+    [SerializeField]
     [Tooltip("How much energy the weapon generate on one second")]
     private float energyRegenRate = 0.6f;
 
     // This could be on the bullet itself if we had multiple bullet types
+    [SerializeField]
     [Tooltip("How much it cost to fire one bullet")]
     private float energyiFreCost = 0.2f;
 
@@ -80,9 +85,11 @@ public class OARangedWeapon : MonoBehaviour
             }
 
             coolingOff = energy <= 0;
+
+            if (coolingOff)
+                onCoolingOff.Invoke();
         } 
 
-        // TODO: if the player is greedy and hold this to zero, then (s)he should have to wait for it to fully recharge
         energy = (offCooldown) ? Mathf.Min(1f, energy + energyRegenRate * Time.deltaTime) : energy;
         energyIndicator.value = energy;
     }
@@ -97,6 +104,9 @@ public class OARangedWeapon : MonoBehaviour
 
     private void OnDisable()
     {
+        if (!energyIndicator)
+            return;
+
         energyIndicator.transform.parent.gameObject.SetActive(false);
     }
 }
