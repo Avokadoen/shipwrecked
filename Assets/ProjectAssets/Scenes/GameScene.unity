@@ -2812,6 +2812,10 @@ PrefabInstance:
       propertyPath: pitchRange.y
       value: 1.1
       objectReference: {fileID: 0}
+    - target: {fileID: 5051115951825695508, guid: 913d91de287df88408f26f726444cf2f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6484923415127592902, guid: 913d91de287df88408f26f726444cf2f, type: 3}
       propertyPath: m_Name
       value: Player

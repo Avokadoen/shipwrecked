@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class OARangedWeapon : MonoBehaviour
 {
@@ -23,8 +24,17 @@ public class OARangedWeapon : MonoBehaviour
     [Tooltip("Used to offset spawn in world y axis")]
     private float bulletSpawnYOffset = 1.0f;
 
-    private float lastFireCounter = 0.0f;
+    [Tooltip("How much energy the weapon generate on one second")]
+    private float energyRegenRate = 0.6f;
 
+    // This could be on the bullet itself if we had multiple bullet types
+    [Tooltip("How much it cost to fire one bullet")]
+    private float energyiFreCost = 0.2f;
+
+    private float lastFireCounter = 0.0f;
+    private float energy = 1f;
+    private bool coolingOff = false;
+    private Slider energyIndicator;
 
     void Awake()
     {
@@ -32,12 +42,28 @@ public class OARangedWeapon : MonoBehaviour
         lastFireCounter = fireCooldown;
     }
 
+    private void Start()
+    {
+        energyIndicator = GameObject.FindGameObjectWithTag("HUD")
+                                        .transform
+                                        .Find("WeaponEnergy")
+                                        .Find("EnergyValue")
+                                        .GetComponent<Slider>();
+
+        energyIndicator.transform.parent.gameObject.SetActive(false);
+
+        gameObject.SetActive(false);
+    }
+
     // Update is called once per frame
     void Update()
     {
         // We don't allow infinte number incrementaiton!
         lastFireCounter = Mathf.Min(lastFireCounter + Time.deltaTime, fireCooldown + 1);
-        if (Input.GetButton("Fire1") && lastFireCounter >= fireCooldown)
+        coolingOff = (coolingOff) ? energy < 1 : false;
+
+        var offCooldown = lastFireCounter >= fireCooldown;
+        if (Input.GetButton("Fire1") && offCooldown && !coolingOff) 
         {
             lastFireCounter = 0f;
             var bullet = bullets.GetNext();
@@ -49,7 +75,28 @@ public class OARangedWeapon : MonoBehaviour
                 Vector3 spawn = transform.position + (direction * bulletSpawnXOffset);
                 spawn.y += bulletSpawnYOffset;
                 bullet.ActivateBullet(direction, spawn);
+
+                energy -= energyiFreCost;
             }
-        }
+
+            coolingOff = energy <= 0;
+        } 
+
+        // TODO: if the player is greedy and hold this to zero, then (s)he should have to wait for it to fully recharge
+        energy = (offCooldown) ? Mathf.Min(1f, energy + energyRegenRate * Time.deltaTime) : energy;
+        energyIndicator.value = energy;
+    }
+
+    private void OnEnable()
+    {
+        if (!energyIndicator)
+            return;
+
+        energyIndicator.transform.parent.gameObject.SetActive(true);
+    }
+
+    private void OnDisable()
+    {
+        energyIndicator.transform.parent.gameObject.SetActive(false);
     }
 }
