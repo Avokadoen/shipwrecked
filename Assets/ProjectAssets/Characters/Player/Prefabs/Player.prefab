@@ -2248,6 +2248,7 @@ GameObject:
   - component: {fileID: 488328108}
   - component: {fileID: 7225076486816708070}
   - component: {fileID: 4140323838773518960}
+  - component: {fileID: 1240523442}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -2293,7 +2294,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a43d0cbe7f1bd124d976f2d3fa6e20a0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2645,6 +2646,21 @@ MonoBehaviour:
   onResourceChange:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1240523442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6484923415127592902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0172db98ba44804c8e94559f8eaa5f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashTime: 0.3
+  targetColor: {r: 1, g: 1, b: 1, a: 0}
+  killable: {fileID: 300322545}
 --- !u!1 &6484923415250818849
 GameObject:
   m_ObjectHideFlags: 0
@@ -4292,14 +4308,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 978996d439dac9446a994a18a11fffc8, type: 3}
---- !u!1 &3224795561987137340 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7026345852808338186, guid: 978996d439dac9446a994a18a11fffc8, type: 3}
-  m_PrefabInstance: {fileID: 5567115620254860342}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3224795561987137329 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7026345852808338183, guid: 978996d439dac9446a994a18a11fffc8, type: 3}
+  m_PrefabInstance: {fileID: 5567115620254860342}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3224795561987137340 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7026345852808338186, guid: 978996d439dac9446a994a18a11fffc8, type: 3}
   m_PrefabInstance: {fileID: 5567115620254860342}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7266781484352129694
