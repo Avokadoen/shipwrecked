@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 // TODO: convert to OA coding conventions.
 // TODO: account for player y position
@@ -10,10 +11,15 @@ using UnityEngine;
 /// <summary>
 /// Used to update ocean shader. 
 /// </summary>
+/// 
+[RequireComponent(typeof(OAWindowResize))]
 public class DisplacementBehaviour : MonoBehaviour 
 {
-    private Material _mat;
+    private Material _oceanMat;
+    private Material _uiMat;
     private RenderTexture _screenTex;
+    private RenderTexture _gameTexture;
+    private RenderTexture _uiTex;
     private RenderTexture _waterMaskTex;
 
     public Texture _displacementTex;
@@ -22,6 +28,7 @@ public class DisplacementBehaviour : MonoBehaviour
     public float _baseHeight = 0.4f;
     public float _scrollOffset = 0f;
     public float _heightOffset = 0f;
+    public Camera _uiCamera;
 
     private GameObject _postRenderCamObj;
     private Camera _postRenderCam;
@@ -30,19 +37,39 @@ public class DisplacementBehaviour : MonoBehaviour
 
     void Awake() 
     {
-        _screenTex = new RenderTexture(Screen.width, Screen.height, 24, RenderTextureFormat.Default);
-        _screenTex.wrapMode = TextureWrapMode.Repeat;
-        _waterMaskTex = new RenderTexture(Screen.width / 4, Screen.height / 4, 24, RenderTextureFormat.Default);
-        _waterMaskTex.wrapMode = TextureWrapMode.Repeat;
+        UnityAction onResize = () =>
+        {
+            Debug.Log(Screen.width);
+            _screenTex = new RenderTexture(Screen.width, Screen.height, 24, RenderTextureFormat.Default);
+            _screenTex.wrapMode = TextureWrapMode.Repeat;
 
-        _screenCam = GetComponent<Camera>();
-        _screenCam.SetTargetBuffers(_screenTex.colorBuffer, _screenTex.depthBuffer);
+            _gameTexture = new RenderTexture(Screen.width, Screen.height, 24, RenderTextureFormat.Default);
+            _gameTexture.wrapMode = TextureWrapMode.Repeat;
+
+            _uiTex = new RenderTexture(Screen.width, Screen.height, 24, RenderTextureFormat.Default);
+            _uiTex.wrapMode = TextureWrapMode.Repeat;
+
+            _waterMaskTex = new RenderTexture(Screen.width / 4, Screen.height / 4, 24, RenderTextureFormat.Default);
+            _waterMaskTex.wrapMode = TextureWrapMode.Repeat;
+
+            _screenCam = GetComponent<Camera>();
+            _screenCam.SetTargetBuffers(_screenTex.colorBuffer, _screenTex.depthBuffer);
+            _uiCamera.SetTargetBuffers(_uiTex.colorBuffer, _uiTex.depthBuffer);
+        };
+
+        onResize();
+        GetComponent<OAWindowResize>().OnWindowResize.AddListener(onResize);
+
         CreatePostRenderCam();
 
         _waterMask = 1 << LayerMask.NameToLayer("Water");
 
-        var shader = Shader.Find("Unlit/DisplacementShader");
-        _mat = new Material(shader);
+
+        var oceanShader = Shader.Find("Unlit/DisplacementShader");
+        _oceanMat = new Material(oceanShader);
+
+        var uiShader = Shader.Find("Unlit/UIShader");
+        _uiMat = new Material(uiShader);
     }
 
     void OnPostRender()
@@ -55,20 +82,29 @@ public class DisplacementBehaviour : MonoBehaviour
         _postRenderCam.Render();
 
         // TODO: some of this is a waste to do every post render. Move to start.
-        _mat.SetTexture("_MaskTex", _waterMaskTex);
-        _mat.SetTexture("_DisplacementTex", _displacementTex);
-        _mat.SetTexture("_WaterTex", _waterTex);
-        _mat.SetFloat("_Turbulence", _turbulence);
-        _mat.SetFloat("_BaseHeight", _baseHeight);
-        _mat.SetFloat("_ScrollOffset", _scrollOffset);
-        _mat.SetFloat("_HeightOffset", _heightOffset);
+        _oceanMat.SetTexture("_MaskTex", _waterMaskTex);
+        _oceanMat.SetTexture("_DisplacementTex", _displacementTex);
+        _oceanMat.SetTexture("_WaterTex", _waterTex);
+        _oceanMat.SetFloat("_Turbulence", _turbulence);
+        _oceanMat.SetFloat("_BaseHeight", _baseHeight);
+        _oceanMat.SetFloat("_ScrollOffset", _scrollOffset);
+        _oceanMat.SetFloat("_HeightOffset", _heightOffset);
 
-        Graphics.Blit(_screenTex, null, _mat);
-	}
+        // Perform ocean post processing
+        Graphics.Blit(_screenTex, _gameTexture, _oceanMat);
+
+        // Send post processed game render and ui to ui shader
+        _uiMat.SetTexture("_GameTex", _gameTexture);
+        _uiMat.SetTexture("_UITex", _uiTex);
+
+        // Render the combined texture
+        Graphics.Blit(_uiTex, null, _uiMat);
+    }
 
     private void CreatePostRenderCam() 
     {
         _postRenderCamObj = new GameObject("PostRenderCam");
+        // TODO: not set this as child of main camera?
         _postRenderCamObj.transform.position = transform.position;
         _postRenderCamObj.transform.rotation = transform.rotation;
         _postRenderCam = _postRenderCamObj.AddComponent<Camera>();

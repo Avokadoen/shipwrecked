@@ -1,22 +1,15 @@
-﻿Shader "Unlit/SpriteDamageFlash"
+﻿Shader "Unlit/UIShader"
 {
     Properties
     {
-		// TODO: Color field
-		_Color ("Color", Color) = (1, 1, 1, 1)
-        _MainTex ("Texture", 2D) = "white" {}
-		_TargetColor ("TargetColor", Color) = (1, 1, 1, 1)
-		_FlashTime ("FlashTime", float) = 0.4
-		_FlashPos ("FlashPosition", float) = 0
+		_MainTex ("Texture", 2D) = "white" {}
+        _GameTex ("Texture", 2D) = "white" {}
+		_UITex ("Texture", 2D) = "white" {}
     }
     SubShader
     {
-        Tags { "RenderType"="Transparent" "Queue"="Transparent" }
+        Tags { "RenderType"="Opaque" }
         LOD 100
-
-		ZWrite Off
-		Cull Off
-		Blend SrcAlpha OneMinusSrcAlpha 
 
         Pass
         {
@@ -41,13 +34,12 @@
                 float4 vertex : SV_POSITION;
             };
 
-            sampler2D _MainTex;
+            sampler2D _GameTex;
+			sampler2D _UITex;
+
             float4 _MainTex_ST;
 
-			float4 _Color;
-			float4 _TargetColor;
-			float _FlashTime;
-			float _FlashPos;
+			fixed4 _Black = fixed4(0, 0, 0, 0);
 
             v2f vert (appdata v)
             {
@@ -61,13 +53,13 @@
             fixed4 frag (v2f i) : SV_Target
             {
                 // sample the texture
-                fixed4 col = tex2D(_MainTex, i.uv) * _Color;
+                fixed4 gameCol = tex2D(_GameTex, i.uv);
+				fixed4 uiCol = tex2D(_UITex, i.uv);
 				
-				float lerpPos =  _FlashPos / _FlashTime;
-				col[0] = lerp(col[0], _TargetColor[0], lerpPos);
-				col[1] = lerp(col[1], _TargetColor[1], lerpPos);
-				col[2] = lerp(col[2], _TargetColor[2], lerpPos);
-
+				fixed4 col;
+				col[0] = lerp(gameCol[0], uiCol[0], uiCol[3]);
+				col[1] = lerp(gameCol[1], uiCol[1], uiCol[3]);
+				col[2] = lerp(gameCol[2], uiCol[2], uiCol[3]);
 
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
