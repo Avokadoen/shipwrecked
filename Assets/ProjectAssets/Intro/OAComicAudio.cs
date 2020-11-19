@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(AudioSource))]
 public class OAComicAudio : MonoBehaviour
@@ -34,5 +36,10 @@ public class OAComicAudio : MonoBehaviour
         source.clip = comicSound[pos];
         source.Play();
         pos += 1;
+    }
+
+    public void KillAudio()
+    {
+        source.volume = 0;
     }
 }

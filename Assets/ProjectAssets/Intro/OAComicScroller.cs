@@ -35,4 +35,9 @@ public class OAComicScroller : MonoBehaviour
             clickTimer += Time.deltaTime;
         }
     }
+
+    public void SkipComic()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene");
+    }
 }
