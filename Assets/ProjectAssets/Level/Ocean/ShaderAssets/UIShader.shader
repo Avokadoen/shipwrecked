@@ -34,6 +34,7 @@
                 float4 vertex : SV_POSITION;
             };
 
+			sampler2D _MainTex;
             sampler2D _GameTex;
 			sampler2D _UITex;
 
@@ -56,10 +57,13 @@
                 fixed4 gameCol = tex2D(_GameTex, i.uv);
 				fixed4 uiCol = tex2D(_UITex, i.uv);
 				
-				fixed4 col;
-				col[0] = lerp(gameCol[0], uiCol[0], uiCol[3]);
-				col[1] = lerp(gameCol[1], uiCol[1], uiCol[3]);
-				col[2] = lerp(gameCol[2], uiCol[2], uiCol[3]);
+				fixed4 col = tex2D(_MainTex, fixed2(i.uv.x, i.uv.y)); 
+
+				col.r = lerp(gameCol.r, uiCol.r, uiCol.a);
+				col.g = lerp(gameCol.g, uiCol.g, uiCol.a);
+				col.b = lerp(gameCol.b, uiCol.b, uiCol.a);
+
+				col = gameCol;
 
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);

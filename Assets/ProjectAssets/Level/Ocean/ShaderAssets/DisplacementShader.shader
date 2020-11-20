@@ -43,7 +43,7 @@
 			sampler2D _DisplacementTex;
 			sampler2D _WaterTex;
 			sampler2D _MaskTex;
-			float4 _MainTex_ST;
+			float4 _MainTex_ST; // TODO: where is this used?, removing this causes error at line 57 or 56 
 			fixed4 _MainTex_TexelSize;
 			float _BaseHeight;
 			fixed _Turbulence;
