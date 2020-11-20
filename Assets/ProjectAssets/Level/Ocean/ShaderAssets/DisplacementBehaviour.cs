@@ -35,26 +35,31 @@ public class DisplacementBehaviour : MonoBehaviour
     private Camera _screenCam;
     private LayerMask _waterMask;
 
-    void Awake() 
+    void Start() 
     {
+        _screenCam = GetComponent<Camera>();
+
         UnityAction onResize = () =>
         {
-            Debug.Log(Screen.width);
-            _screenTex = new RenderTexture(Screen.width, Screen.height, 24, RenderTextureFormat.Default);
+            var width = Screen.width;
+            var height = Screen.height;
+
+            _screenTex = new RenderTexture(width, height, 24, RenderTextureFormat.ARGB32);
             _screenTex.wrapMode = TextureWrapMode.Repeat;
 
-            _gameTexture = new RenderTexture(Screen.width, Screen.height, 24, RenderTextureFormat.Default);
+            _gameTexture = new RenderTexture(width, height, 24, RenderTextureFormat.ARGB32);
             _gameTexture.wrapMode = TextureWrapMode.Repeat;
 
-            _uiTex = new RenderTexture(Screen.width, Screen.height, 24, RenderTextureFormat.Default);
+            _uiTex = new RenderTexture(width, height, 24, RenderTextureFormat.ARGB32);
             _uiTex.wrapMode = TextureWrapMode.Repeat;
 
-            _waterMaskTex = new RenderTexture(Screen.width / 4, Screen.height / 4, 24, RenderTextureFormat.Default);
+            _waterMaskTex = new RenderTexture(width / 4, height / 4, 0, RenderTextureFormat.R8);
             _waterMaskTex.wrapMode = TextureWrapMode.Repeat;
 
-            _screenCam = GetComponent<Camera>();
-            _screenCam.SetTargetBuffers(_screenTex.colorBuffer, _screenTex.depthBuffer);
             _uiCamera.SetTargetBuffers(_uiTex.colorBuffer, _uiTex.depthBuffer);
+            _uiCamera.enabled = false;
+
+            _screenCam.SetTargetBuffers(_screenTex.colorBuffer, _screenTex.depthBuffer);
         };
 
         onResize();
@@ -91,7 +96,10 @@ public class DisplacementBehaviour : MonoBehaviour
         _oceanMat.SetFloat("_HeightOffset", _heightOffset);
 
         // Perform ocean post processing
+        // Graphics.Blit(_screenTex, null, _oceanMat);
         Graphics.Blit(_screenTex, _gameTexture, _oceanMat);
+
+        _uiCamera.Render();
 
         // Send post processed game render and ui to ui shader
         _uiMat.SetTexture("_GameTex", _gameTexture);

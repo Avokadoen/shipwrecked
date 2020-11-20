@@ -18,6 +18,7 @@
             #pragma fragment frag
             // make fog work
             #pragma multi_compile_fog
+			#pragma target 3.0
 
             #include "UnityCG.cginc"
 
@@ -40,7 +41,7 @@
 
             float4 _MainTex_ST;
 
-			fixed4 _Black = fixed4(0, 0, 0, 0);
+			float4 _Black = float4(0, 0, 0, 0);
 
             v2f vert (appdata v)
             {
@@ -56,14 +57,11 @@
                 // sample the texture
                 fixed4 gameCol = tex2D(_GameTex, i.uv);
 				fixed4 uiCol = tex2D(_UITex, i.uv);
-				
-				fixed4 col = tex2D(_MainTex, fixed2(i.uv.x, i.uv.y)); 
+				fixed4 col = tex2D(_MainTex, i.uv); 
 
 				col.r = lerp(gameCol.r, uiCol.r, uiCol.a);
 				col.g = lerp(gameCol.g, uiCol.g, uiCol.a);
 				col.b = lerp(gameCol.b, uiCol.b, uiCol.a);
-
-				col = gameCol;
 
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);

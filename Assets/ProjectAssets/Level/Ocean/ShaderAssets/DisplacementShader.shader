@@ -16,13 +16,16 @@
 		Tags { "RenderType"="Transparent"  }
 		LOD 100
 
+		ZTest Always Cull Off ZWrite Off
+		Fog { Mode off }
+
 		Pass
 		{
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
-			// make fog work
-			#pragma multi_compile_fog
+			#pragma target 3.0
+			#pragma fragmentoption ARB_precision_hint_nicest // Target high precision
 			
 			#include "UnityCG.cginc"
 
@@ -43,12 +46,12 @@
 			sampler2D _DisplacementTex;
 			sampler2D _WaterTex;
 			sampler2D _MaskTex;
-			float4 _MainTex_ST; // TODO: where is this used?, removing this causes error at line 57 or 56 
-			fixed4 _MainTex_TexelSize;
+			float4 _MainTex_ST; // uv with texture scale
+			float4 _MainTex_TexelSize;
 			float _BaseHeight;
-			fixed _Turbulence;
-			fixed _ScrollOffset;
-			fixed _HeightOffset;
+			float _Turbulence;
+			float _ScrollOffset;
+			float _HeightOffset;
 			
 			v2f vert (appdata v)
 			{
@@ -61,40 +64,40 @@
 			}
 
 			float wave(float x) {
-				fixed waveOffset = 	cos((x - _Time + _ScrollOffset) * 60) * 0.004
+				float waveOffset = 	cos((x - _Time + _ScrollOffset) * 60) * 0.004
 									+ cos((x - 2 * _Time + _ScrollOffset) * 20) * 0.008
 									+ sin((x + 2 * _Time + _ScrollOffset) * 35) * 0.01
 									+ cos((x + 4 * _Time + _ScrollOffset) * 70) * 0.001;
 				return _BaseHeight + _HeightOffset + waveOffset * _Turbulence;
 			}
 			
-			fixed4 frag (v2f i) : SV_Target
+			float4 frag (v2f i) : SV_Target
 			{
-				fixed4 waterCol = tex2D(_WaterTex, i.uv);
-				fixed maskValue = tex2D(_MaskTex, i.uv).r;
+				float4 waterCol = tex2D(_WaterTex, i.uv);
+				float maskValue = tex2D(_MaskTex, i.uv).r;
 
 				float waveHeight = wave(i.uv.x);
-				fixed isTexelAbove = step(waveHeight, i.uv.y);
-				fixed isTexelBelow = 1 - isTexelAbove;
+				float isTexelAbove = step(waveHeight, i.uv.y);
+				float isTexelBelow = 1 - isTexelAbove;
 
-				fixed2 disPos = i.uv;
+				float2 disPos = i.uv;
 				disPos.x += (_Time[0]) % 2;
 				disPos.y += (_Time[0]) % 2;
-				fixed4 dis = tex2D(_DisplacementTex, disPos);
+				float4 dis = tex2D(_DisplacementTex, disPos);
 				i.uv.x += dis * 0.006 * isTexelBelow * maskValue * _Turbulence;
 				i.uv.y += dis * 0.006 * isTexelBelow * maskValue * _Turbulence;
 
-				fixed4 col = tex2D(_MainTex, fixed2(i.uv.x, i.uv.y)); 
-				fixed waterColBlendFac = maskValue * isTexelBelow * 0.5;				
+				float4 col = tex2D(_MainTex, i.uv);
+				float waterColBlendFac = maskValue * isTexelBelow * 0.5;
 				col.r = lerp(col.r, waterCol.r, waterColBlendFac);
 				col.g = lerp(col.g, waterCol.g, waterColBlendFac);
 				col.b = lerp(col.b, waterCol.b, waterColBlendFac);
 
 				float topDist = abs(i.uv.y - waveHeight);
-				fixed isNearTop = 1 - step(abs(_MainTex_TexelSize.y * 6), topDist);
-				fixed isVeryNearTop = 1 - step(abs(_MainTex_TexelSize.y * 3), topDist);
+				float isNearTop = 1 - step(abs(_MainTex_TexelSize.y * 6), topDist);
+				float isVeryNearTop = 1 - step(abs(_MainTex_TexelSize.y * 3), topDist);
 
-				fixed topColorBlendFac = isNearTop * isTexelBelow * maskValue;
+				float topColorBlendFac = isNearTop * isTexelBelow * maskValue;
 				col.r = lerp(col.r, waterCol.r * 0.83, topColorBlendFac);
 				col.g = lerp(col.g, waterCol.g * 0.83, topColorBlendFac);
 				col.b = lerp(col.b, waterCol.b * 0.83, topColorBlendFac);
