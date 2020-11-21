@@ -45,7 +45,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.10766792, y: 0.08020067}
+  m_Offset: {x: -0.10766792, y: 0.07557082}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -56,7 +56,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 10.570515, y: 9.724862}
+  m_Size: {x: 10.570515, y: 9.715603}
   m_EdgeRadius: 0
 --- !u!114 &1258092620
 MonoBehaviour:
@@ -123,21 +123,39 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 2
-      outSlope: 2
+      inSlope: 0.5070755
+      outSlope: 0.5070755
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.6000218
     - serializedVersion: 3
-      time: 0.60622364
-      value: 0.7769195
-      inSlope: 0.55136836
-      outSlope: 0.55136836
+      time: 0.27915254
+      value: 0.06535048
+      inSlope: 0.7121362
+      outSlope: 0.7121362
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.32497552
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.3395519
+      value: 0.16135056
+      inSlope: 0.9108363
+      outSlope: 0.9108363
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.37396878
+      outWeight: 0.5174819
+    - serializedVersion: 3
+      time: 0.5001051
+      value: 0.3498284
+      inSlope: 1.6766562
+      outSlope: 1.6766562
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.5174819
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.89211386
       value: 0.94349784
@@ -168,11 +186,15 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  lowTideThreshold: 0.37
+  lowTideThreshold: 0.35
   lowTideDecline: 12
   cycleDuration: 80
-  cycleStartPosition: 25
+  cycleStartPosition: 45
+  soonLookahead: 0.486
   onLowTide:
+    m_PersistentCalls:
+      m_Calls: []
+  onSoonLowTide:
     m_PersistentCalls:
       m_Calls: []
   onHighTide:
