@@ -31,10 +31,19 @@ public class OATideAnimator : MonoBehaviour
     [SerializeField]
     private float cycleStartPosition = 0;
 
+    [Range(0f, 1f)]
+    [SerializeField]
+    private float soonLookahead = 0.2f;
+
     [Tooltip("Delegate of low tide event")]
     [SerializeField]
     UnityEvent onLowTide;
     public UnityEvent OnLowTide { get => onLowTide; }
+
+    [SerializeField]
+    UnityEvent onSoonLowTide;
+    public UnityEvent OnSoonLowTide { get => onSoonLowTide; }
+    
 
     [Tooltip("Delegate of high tide event")]
     [SerializeField]
@@ -44,6 +53,7 @@ public class OATideAnimator : MonoBehaviour
     private float cycleDurationPos;
     private float cycleDir = 1;
     private bool wasUnderLowTideThresholdPrevious = false;
+    private bool didFireSoonEvent = false;
     private Vector3 startPos;
     private Vector3 updatePos;
 
@@ -72,6 +82,12 @@ public class OATideAnimator : MonoBehaviour
         // TODO: maybe refactor this bool hell?
         // Announce tide state if it changes one way or another
         bool isUnderThreshold = tideState <= lowTideThreshold;
+
+        if (tideState - soonLookahead <= lowTideThreshold && cycleDir < 0 && !didFireSoonEvent)
+        {
+            didFireSoonEvent = true;
+            onSoonLowTide.Invoke();
+        } 
         if (isUnderThreshold && !wasUnderLowTideThresholdPrevious)
         {
             onLowTide.Invoke();
@@ -79,6 +95,7 @@ public class OATideAnimator : MonoBehaviour
         else if (!isUnderThreshold && wasUnderLowTideThresholdPrevious)
         {
             onHighTide.Invoke();
+            didFireSoonEvent = false;
         }
         wasUnderLowTideThresholdPrevious = isUnderThreshold;
 

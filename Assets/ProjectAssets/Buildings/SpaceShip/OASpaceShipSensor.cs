@@ -45,6 +45,7 @@ public class OASpaceShipSensor : MonoBehaviour
         spawner.OnEradicated.AddListener(() => spaceshipMessager.SetBool("onWipeOut", true));
         ocean.OnHighTide.AddListener(() => spaceshipMessager.SetBool("onHighTide", true));
         ocean.OnLowTide.AddListener(() => spaceshipMessager.SetBool("onLowTide", true));
+        ocean.OnSoonLowTide.AddListener(() => spaceshipMessager.SetBool("onSoonLowTide", true));
 
         playerHealth.OnHurtHealth.AddListener((health) => {
             if (playerHurtCDCounter < onPlayerHurtCooldownTime)

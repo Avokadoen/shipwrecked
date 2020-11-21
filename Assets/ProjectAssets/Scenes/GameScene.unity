@@ -3431,11 +3431,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3744056917446020801, guid: e84dcebb393f60f47b043817d3a8e7d2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -292.95016
+      value: -293.19
       objectReference: {fileID: 0}
     - target: {fileID: 3744056917446020801, guid: e84dcebb393f60f47b043817d3a8e7d2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 62.94
+      value: 61.09
       objectReference: {fileID: 0}
     - target: {fileID: 3744056917446020801, guid: e84dcebb393f60f47b043817d3a8e7d2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6137,6 +6137,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8262079785681093550, guid: b6fb36ffe24974d20bfb435fc39188c0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -230.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 8262079785681093550, guid: b6fb36ffe24974d20bfb435fc39188c0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -10.55
+      objectReference: {fileID: 0}
     - target: {fileID: 8501319907804686939, guid: b6fb36ffe24974d20bfb435fc39188c0, type: 3}
       propertyPath: m_LocalPosition.z
       value: 1
@@ -7116,13 +7124,21 @@ PrefabInstance:
       propertyPath: playerState
       value: 
       objectReference: {fileID: 27188994}
+    - target: {fileID: 1258092621, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.07557082
+      objectReference: {fileID: 0}
+    - target: {fileID: 1258092621, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
+      propertyPath: m_Size.y
+      value: 9.715603
+      objectReference: {fileID: 0}
     - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: tideCycle.m_Curve.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: cycleStartPosition
-      value: 45
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: tideCycle.m_Curve.Array.data[1].time
@@ -7146,11 +7162,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: tideCycle.m_Curve.Array.data[2].time
-      value: 0.377058
+      value: 0.3395519
       objectReference: {fileID: 0}
     - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: tideCycle.m_Curve.Array.data[2].value
-      value: 0.18494065
+      value: 0.16135056
       objectReference: {fileID: 0}
     - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: tideCycle.m_Curve.Array.data[2].inSlope
@@ -7170,59 +7186,59 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: tideCycle.m_Curve.Array.data[3].time
-      value: 0.89211386
+      value: 0.5001051
       objectReference: {fileID: 0}
     - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: tideCycle.m_Curve.Array.data[3].value
-      value: 0.94349784
+      value: 0.3498284
       objectReference: {fileID: 0}
     - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: tideCycle.m_Curve.Array.data[3].inSlope
-      value: 0.412517
+      value: 1.6766562
       objectReference: {fileID: 0}
     - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: tideCycle.m_Curve.Array.data[3].outSlope
-      value: 0.412517
+      value: 1.6766562
       objectReference: {fileID: 0}
     - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: tideCycle.m_Curve.Array.data[3].inWeight
-      value: 0.5408155
+      value: 0.33333334
       objectReference: {fileID: 0}
     - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: tideCycle.m_Curve.Array.data[3].outWeight
-      value: 1
+      value: 0.33333334
       objectReference: {fileID: 0}
     - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: tideCycle.m_Curve.Array.data[4].time
-      value: 0.9615317
+      value: 0.89211386
       objectReference: {fileID: 0}
     - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: tideCycle.m_Curve.Array.data[4].value
-      value: 0.97711235
+      value: 0.94349784
       objectReference: {fileID: 0}
     - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: tideCycle.m_Curve.Array.data[4].inSlope
-      value: 0.57375985
+      value: 0.412517
       objectReference: {fileID: 0}
     - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: tideCycle.m_Curve.Array.data[4].outSlope
-      value: 0.57375985
+      value: 0.412517
       objectReference: {fileID: 0}
     - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: tideCycle.m_Curve.Array.data[4].inWeight
-      value: 0.33333334
+      value: 0.5408155
       objectReference: {fileID: 0}
     - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: tideCycle.m_Curve.Array.data[4].outWeight
-      value: 0.33333334
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: tideCycle.m_Curve.Array.data[5].time
-      value: 1
+      value: 0.9615317
       objectReference: {fileID: 0}
     - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: tideCycle.m_Curve.Array.data[5].value
-      value: 1
+      value: 0.97711235
       objectReference: {fileID: 0}
     - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: tideCycle.m_Curve.Array.data[1].inWeight
@@ -7239,6 +7255,38 @@ PrefabInstance:
     - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: tideCycle.m_Curve.Array.data[0].outWeight
       value: 0.6000218
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
+      propertyPath: tideCycle.m_Curve.Array.data[5].inSlope
+      value: 0.57375985
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
+      propertyPath: tideCycle.m_Curve.Array.data[5].outSlope
+      value: 0.57375985
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
+      propertyPath: tideCycle.m_Curve.Array.data[5].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
+      propertyPath: tideCycle.m_Curve.Array.data[5].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
+      propertyPath: tideCycle.m_Curve.Array.data[6].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
+      propertyPath: tideCycle.m_Curve.Array.data[6].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
+      propertyPath: lowTideThreshold
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462571354843226868, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
+      propertyPath: soonLookahead
+      value: 0.486
       objectReference: {fileID: 0}
     - target: {fileID: 8462571354843226872, guid: 36c8d1efeb811b74c8d486a97393437b, type: 3}
       propertyPath: m_Name

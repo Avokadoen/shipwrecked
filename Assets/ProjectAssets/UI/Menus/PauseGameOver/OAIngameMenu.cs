@@ -17,6 +17,9 @@ public class OAIngameMenu : MonoBehaviour
     GameObject deadText;
 
     [SerializeField]
+    GameObject shipDestroyedText;
+
+    [SerializeField]
     GameObject pauseText;
 
     [SerializeField]
@@ -55,7 +58,7 @@ public class OAIngameMenu : MonoBehaviour
         GameObject.FindWithTag("WreckedShip")
             .GetComponent<OAKillable>()
             .OnDeath
-            .AddListener(OnDied);
+            .AddListener(OnShipDestroyed);
     }
 
     // TODO: clean this miss (convert to a state machine)
@@ -120,6 +123,18 @@ public class OAIngameMenu : MonoBehaviour
         menu.SetActive(true);
         pauseText.SetActive(false);
         deadText.SetActive(true);
+    }
+
+    void OnShipDestroyed()
+    {
+        gameState = GameState.Unreverseable;
+
+        inventory.SetActive(false);
+        youWonText.SetActive(false);
+        menu.SetActive(true);
+        pauseText.SetActive(false);
+        deadText.SetActive(false);
+        shipDestroyedText.SetActive(true);
     }
 
     void OnPause()

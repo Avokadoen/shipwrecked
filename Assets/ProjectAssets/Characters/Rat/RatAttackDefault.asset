@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a714e7f7c9736664eb318ec37b20f7aa, type: 3}
   m_Name: RatAttackDefault
   m_EditorClassIdentifier: 
-  range: 2.18
-  damage: 8
-  attackSpeed: 0.9
+  range: 2.1
+  damage: 6
+  attackSpeed: 1.2
