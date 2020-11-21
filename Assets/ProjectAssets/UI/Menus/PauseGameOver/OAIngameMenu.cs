@@ -62,7 +62,7 @@ public class OAIngameMenu : MonoBehaviour
     void Update()
     {
         // Set time scale to 0 if we have paused
-        Time.timeScale = (gameState == GameState.Paused) ? 0 : 1;
+        Time.timeScale = (gameState != GameState.Running) ? 0 : 1;
 
         if (Input.GetKeyDown(KeyCode.Tab) && gameState == GameState.Running)
         {
