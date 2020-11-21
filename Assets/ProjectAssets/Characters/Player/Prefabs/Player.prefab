@@ -2540,7 +2540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c7825487b544544992c3e116be66ba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deadZone: 0.001
+  deadZone: 0.3
   flipOnHorizontalPositive: 1
   verticalSwimModifier: 0.2
   horizontalSwimModifier: 4

@@ -85,7 +85,7 @@ public class OAPlayerStateStore : MonoBehaviour
         // Update animator
         animator.SetBool("isGrounded", IsGrounded);
 
-        if (rigid.velocity.x > deadZone || rigid.velocity.x < -deadZone)
+        if ((rigid.velocity.x > deadZone || rigid.velocity.x < -deadZone) || horizontal != 0)
         {
             animator.SetBool("hasHorizontalMovement", true);
         }
@@ -94,7 +94,7 @@ public class OAPlayerStateStore : MonoBehaviour
             animator.SetBool("hasHorizontalMovement", false);
         }
 
-        if (rigid.velocity.y > deadZone || rigid.velocity.y < -deadZone)
+        if ((rigid.velocity.y > deadZone || rigid.velocity.y < -deadZone) || vertical != 0)
         {
             animator.SetBool("hasVerticalMovement", true);
             animator.SetBool("isVerticalMovUpwards", rigid.velocity.y > 0);
