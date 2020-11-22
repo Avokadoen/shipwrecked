@@ -272,6 +272,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4072066865170603462, guid: 3ef9a932874a4bd4781f56ce361e73e8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4072066866085774297, guid: 3ef9a932874a4bd4781f56ce361e73e8, type: 3}
       propertyPath: m_Name
       value: Barricade1
@@ -2397,17 +2401,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 369209042}
     m_Modifications:
+    - target: {fileID: 1403922315478949704, guid: 3ef9a932874a4bd4781f56ce361e73e8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4072066865170603462, guid: 3ef9a932874a4bd4781f56ce361e73e8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4072066866085774297, guid: 3ef9a932874a4bd4781f56ce361e73e8, type: 3}
       propertyPath: m_Name
       value: Barricade2
       objectReference: {fileID: 0}
     - target: {fileID: 4072066866085774298, guid: 3ef9a932874a4bd4781f56ce361e73e8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.617828
+      value: -18.56
       objectReference: {fileID: 0}
     - target: {fileID: 4072066866085774298, guid: 3ef9a932874a4bd4781f56ce361e73e8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 54.63
+      value: 54.78
       objectReference: {fileID: 0}
     - target: {fileID: 4072066866085774298, guid: 3ef9a932874a4bd4781f56ce361e73e8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3431,11 +3443,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3744056917446020801, guid: e84dcebb393f60f47b043817d3a8e7d2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -293.19
+      value: -308.5
       objectReference: {fileID: 0}
     - target: {fileID: 3744056917446020801, guid: e84dcebb393f60f47b043817d3a8e7d2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 61.09
+      value: 61.4
       objectReference: {fileID: 0}
     - target: {fileID: 3744056917446020801, guid: e84dcebb393f60f47b043817d3a8e7d2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4189,6 +4201,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 369209042}
     m_Modifications:
+    - target: {fileID: 1403922315478949704, guid: 3ef9a932874a4bd4781f56ce361e73e8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4072066866085774297, guid: 3ef9a932874a4bd4781f56ce361e73e8, type: 3}
       propertyPath: m_Name
       value: Barricade3

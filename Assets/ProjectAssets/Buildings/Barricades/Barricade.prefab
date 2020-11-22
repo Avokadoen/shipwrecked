@@ -153,6 +153,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4593694870336984521}
   - component: {fileID: 4318911524806399824}
+  - component: {fileID: 4238929233415251305}
   - component: {fileID: 2779292463041424320}
   - component: {fileID: 1216151258472383370}
   m_Layer: 11
@@ -229,6 +230,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &4238929233415251305
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403922315478949704}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.14426088, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 15.18, y: 9.2}
+    newSize: {x: 15.18, y: 9.2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 17.490833, y: 8.07}
+  m_EdgeRadius: 0
 --- !u!114 &2779292463041424320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,7 +307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: {fileID: 11400000, guid: 54c6d9904ae10e540bc71d45ba97247e, type: 2}
-  buildingKillable: {fileID: 2779292463041424320}
+  killable: {fileID: 0}
 --- !u!1 &3303246877036327910
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,7 +553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: {fileID: 11400000, guid: 50a041795630cf144a5a0da976786575, type: 2}
-  buildingKillable: {fileID: 5891538703023886763}
+  killable: {fileID: 0}
 --- !u!1 &4072066865153387027
 GameObject:
   m_ObjectHideFlags: 0
@@ -757,7 +784,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: {fileID: 11400000, guid: 14956b7a75563d143b80bd317f254d69, type: 2}
-  buildingKillable: {fileID: 0}
+  killable: {fileID: 0}
 --- !u!1 &4072066865421754124
 GameObject:
   m_ObjectHideFlags: 0
@@ -1137,7 +1164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cost: {fileID: 11400000, guid: d7fb2b0b46eec7d4b91ad580f1534ef6, type: 2}
-  buildingKillable: {fileID: 595913353462281425}
+  killable: {fileID: 0}
 --- !u!1 &5145482563777962934
 GameObject:
   m_ObjectHideFlags: 0
@@ -1539,7 +1566,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4123817863496172628}
   - component: {fileID: 2343306166014852347}
-  - component: {fileID: 1297652666633991451}
   m_Layer: 11
   m_Name: Spikes
   m_TagString: Untagged
@@ -1612,29 +1638,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &1297652666633991451
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8309789254773172942}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.14426088, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 20.78, y: 8.07}
-    newSize: {x: 20.78, y: 8.07}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 17.490833, y: 8.07}
-  m_EdgeRadius: 0
