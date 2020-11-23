@@ -1,6 +1,6 @@
 # Shipwrecked 
 
-This is a repository contains our submition to the course "Gamedesign - TPD4168". A game about an alien that becomes stranded on a strange planet.
+This is repository contains our submition to the course "Gamedesign - TPD4168". A game about an alien that becomes stranded on a strange planet.
 
 # Demo 
 An online demo can be found [here](https://avokadoen.itch.io/shipwrecked)
